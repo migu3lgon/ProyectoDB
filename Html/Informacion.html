@@ -3,9 +3,51 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Informacion Gio's Company</title>
+    <style>
+        .navigation_bar{
+            text-align:right;
+            margin-right: 10px;
+        }
+        #header_div {
+            padding-top:10px;
+            background-color: blue;
+        }
+        .logo{
+            margin-left: 50px;
+            margin-top: -5px;
+        }
+        .navigation_link{
+            color: black;
+            font-weight:bolder;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="row" id="header_div">
+            <div class="col-sm-1">
+                <figure>
+                    <img src="../Imagenes/logo.jpg" class="logo" />
+                </figure>
+            </div>
+            <div class="col-sm-4">
+                <input type="text" class="barra_de_busqueda" value="" placeholder='¿Qué busca?' />
+            </div>
+            <div class="col-sm-7">
+                <nav class="navigation_bar">
+                    <a href="Index.html" class="navigation_link">Inicio</a> | <a href="login.html" class="navigation_link">Ingresar</a> | <a href="register.html" class="navigation_link">Registrarse</a> | <a href="help.html" class="navigation_link">Ayuda</a>
+                </nav>
+            </div>
+        </div>
+    </header>
 
 </body>
 </html>
