@@ -12,7 +12,7 @@
             </div>
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="#">Inicio</a></li>
+              <li><a href="index.php">Inicio</a></li>
               <li><a href="#">Inicia Sesion</a></li>
               <li><a href="#">Registrate</a></li>
             </ul>
