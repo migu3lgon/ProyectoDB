@@ -19,7 +19,10 @@
 
         #header_div {
             padding-top: 10px;
-            background-color: blue;
+            background-color: red;
+        }
+		#footer_div{
+            background-color: lightgray;
         }
 
         .logo {
@@ -66,7 +69,7 @@
         <div class="col-sm-2"></div>
     </div>
     <footer>
-
+		
     </footer>
 </body>
 </html>
