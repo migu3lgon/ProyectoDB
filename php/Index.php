@@ -28,6 +28,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -39,6 +42,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -50,6 +56,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -61,57 +70,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x grid-margin-y align-center">
-
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
                         <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
 
@@ -130,6 +91,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -141,6 +105,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -152,6 +119,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -163,57 +133,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-        <div class="grid-container">
-            <div class="grid-x grid-margin-x grid-margin-y align-center">
-
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
                         <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
 
@@ -232,6 +154,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -243,6 +168,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -254,6 +182,9 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
                 <div class="cell small-12 medium-3">
@@ -265,6 +196,135 @@
                         <span class="product-card-desc">Product Description</span>
                         <br/>
                         <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y align-center">
+
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="grid-container">
+            <div class="grid-x grid-margin-x grid-margin-y align-center">
+
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
+                    </div>
+                </div>
+                <div class="cell small-12 medium-3">
+                    <div class="product-card">
+                        <div class="product-card-thumbnail">
+                            <a href="#"><img src="https://placehold.it/180x180"/></a>
+                        </div>
+                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
+                        <span class="product-card-desc">Product Description</span>
+                        <br/>
+                        <span class="product-card-price">$9.99</span>
+                        <br/>
+                        <button class="button">Comprar</button>
+                        <button class="button">Informacion</button>
                     </div>
                 </div>
 
