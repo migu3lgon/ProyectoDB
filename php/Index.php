@@ -15,9 +15,9 @@
 </head>
 <body>
     <?php include('NavigationBar.php') ?>
-    <div class="mainb">
+    <div class="mainb" align="center">
         <div class="grid-container">
-            <div class="grid-x grid-margin-x grid-margin-y align-center">
+            <div class="grid-x grid-margin-x grid-margin-y">
 
                 <div class="cell small-12 medium-3">
                     <div class="product-card">

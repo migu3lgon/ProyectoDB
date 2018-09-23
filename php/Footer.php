@@ -13,7 +13,7 @@
                     <hr/>
                     <a href="#">Inicio</a>
                     <a href="#">Contactenos</a>
-                    <a href="http://localhost/proyecto/proyectodw/php/informacion.php">Sobre Nosotros</a>
+                    <a href="informacion.php">Sobre Nosotros</a>
                     <a href="#">Ayuda</a>
                 </div>
                 <div class="cell auto">
