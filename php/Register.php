@@ -18,7 +18,7 @@
         <div class="grid-x align-center">
             <div class="cell small-5"
                 <form class="log-in-form">
-                    <h4 class="text-center">Registrate</h4>
+                    <h4 class="text-center">Regístrate</h4>
                     <label>E-mail
                         <input type="email" placeholder="somebody@example.com">
                     </label>
