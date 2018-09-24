@@ -18,7 +18,7 @@
         <div class="grid-x align-center">
             <div class="cell small-5"
                 <form class="log-in-form">
-                    <h4 class="text-center">Inicia sesión con tu correo electrónico</h4>
+                    <h4 class="text-center">Registrate</h4>
                     <label>E-mail
                         <input type="email" placeholder="somebody@example.com">
                     </label>
@@ -29,7 +29,7 @@
                     <p><input type="submit" class="button expanded" value="Log in"></input></p>
                     <p class="text-center"><a href="#">¿Olvidaste tu constraseña?</a></p>
                 </form>
-                <p>Si todavía no tienes una cuenta haz click <a href="Register.php">aquí</a></p>
+                <p>Si ya tienes una cuenta haz click <a href="Login.php">aquí</a></p>
             </div>
         </div>
     </div>
