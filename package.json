@@ -1,0 +1,26 @@
+{
+  "name": "gulp-proyecto",
+  "version": "1.0.0",
+  "description": "Proyecto de diseño web\r Funcionalidades y evaluación Diseño web:\r Responsivo (móvil y desktop)\r Homepage con listado de búsqueda y categorías\r Datos del anuncio deben traerse e inyectarse en la pagina por medio de un json y usando\r angular js\r Pagina de anuncio\r Pagina de creación de anuncio\r Pagina pagina de registro y login\r Pagina de perfil de usuario\r Pagina de contacto por anuncio\r Pagina de información e historia de la compañía (pagina web)\r Pagina de contacto con la compañía (pagina web)\r Página de preguntas frecuentes.\r Deberá implementar al menos un mixin utilizando buenas prácticas de implementación y\r con sentido adecuado dentro del proyecto..\r Fuentes y build en ambiente de desarrollo, fuentes versionadas en repositorio.\r Cualquier consideración y programación necesaria para cumplir con el planteamiento del\r requerimiento.\r Documentación:\r Manual funcional y técnico con wireframes. Description semántica de la estructura html\r de cada pagina.\r Set de htmls funcionales generados con contenido de muestra y final según sea el caso\r con sus respectivas librerías. Entrega en ambiente de desarrollo funcional en web server\r local como el visto en clase.\r Tecnologías: Angular, foundation, Sass.\r Entregables: Fuentes en repositorio web (github), cada alumno con 10 commits,\r documentación. Listado de tareas efectuadas por cada integrante del grupo con %\r completado por cada uno. (podría ser verificable en el historial de git",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marcosmateom/ProyectoDW.git"
+  },
+  "author": "Mateo M y Miguel G",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/marcosmateom/ProyectoDW/issues"
+  },
+  "homepage": "https://github.com/marcosmateom/ProyectoDW#readme",
+  "devDependencies": {
+    "gulp": "^4.0.0"
+  },
+  "dependencies": {
+    "gulp-sass": "^4.0.1",
+    "gulp-webserver": "^0.9.1"
+  }
+}
