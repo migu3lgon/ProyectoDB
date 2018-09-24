@@ -6,7 +6,7 @@ var webserver = require('gulp-webserver');
 var Styles_f = function(done) {
     gulp.src('sass/**/*.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(gulp.dest('app/css/'));
+        .pipe(gulp.dest('css/'));
     done();
 };
 
