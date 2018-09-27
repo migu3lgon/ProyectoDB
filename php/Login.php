@@ -23,7 +23,7 @@
     <title>Gio's Company Home</title>
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
-    <link rel="stylesheet" href="../css/css.css">
+    <link type="text/css" rel="stylesheet" href="../css/css.css">
     <style>
     </style>
 </head>
@@ -52,28 +52,35 @@
                     }
                     if (/*((isset($_POST['sbmt'])==false)||((isset($_POST['login'])==false)))||*/true) {
                         //accion en caso que login sea exitoso o no
-                        ($log) ? $small = 'none' : $small = '' ;
-                        ($log) ? $br = '' : $br = '<br>' ;
-                        echo "<form class=\"log-in-form\" action='Login.php' method='post'>
-                            <h4 class=\"text-center\">Inicia sesión</h4>
-                            <label>E-mail
-                                <input type=\"email\" placeholder=\"somebody@example.com\" name='email'>
-                            </label>
-                            <label>Contaseña
-                                <input type=\"password\" placeholder=\"Contaseña\" name='pswd'>
-                            </label>
-                            <small class=\"advice\" style=\"display: ".$small."\">Por favor, verifica los datos ingresados</small>".$br."
-                            <input id=\"show-password\" type=\"checkbox\"><label for=\"show-password\">Mostrar contraseña</label>
-                            <p><input type=\"submit\" class=\"button expanded\" value=\"Submit\"></p>
-                            <p class=\"text-center\"><a href=\"#\">¿Olvidaste tu constraseña?</a></p>
-                            
-                            <input type=\"text\" style='display: none' name=\"sbmt\" value='true'>
-                            </form>
-                            <p>Si todavía no tienes una cuenta haz click <a href=\"Register.php\">aquí</a></p>";
+                        if ($log) {
+                            $small = 'none';
+                            $br = '';
+                            $err = '';
+                        }
+                        else{
+                            $small = '' ;
+                            $br = '<br>' ;
+                            $err = "error";
+                        }
                     }
 
                 ?>
-                
+                <form class="log-in-form" action='Login.php' method='post'>
+                            <h4 class="text-center">Inicia sesión</h4>
+                            <label class='<?php echo $err;?>' >E-mail
+                                <input type="email" placeholder="somebody@example.com" name='email'>
+                            </label>
+                            <label class='<?php echo $err;?>'>Contaseña
+                                <input type="password" placeholder="Contaseña" name='pswd'>
+                            </label>
+                            <small class="advice <?php echo $err;?>" style="display: <?php echo $small;?>">Por favor, verifica los datos ingresados</small><?php echo $br; ?>
+                            <input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>
+                            <p><input type="submit" class="button expanded" value="Submit"></p>
+                            <p class="text-center"><a href="#">¿Olvidaste tu constraseña?</a></p>
+                            
+                            <input type="text" style='display: none' name="sbmt" value='true'>
+                            </form>
+                            <p>Si todavía no tienes una cuenta haz click <a href="Register.php">aquí</a></p>
             </div>
         </div>
     </div>
