@@ -1,0 +1,3 @@
+call cambio_clave('correopruebaprocedure2', 'claveppp', 'facil' );
+call login('correopruebaprocedure2', 'facil');
+call registro('correopruebaprocedure2', 'claveppp');
