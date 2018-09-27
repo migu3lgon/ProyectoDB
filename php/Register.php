@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <?php include('NavigationBar.php') ?>
+    <?php include('/partials/NavigationBar.php') ?>
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell small-5"
@@ -34,7 +34,7 @@
         </div>
     </div>
 
-    <?php include('Footer.php') ?>
+    <?php include('/partials/Footer.php') ?>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>

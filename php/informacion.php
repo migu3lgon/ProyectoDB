@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <?php include('NavigationBar.php') ?>
+    <?php include('/partials/NavigationBar.php') ?>
     <div class="mainb">
         <h1 class="text-center">Informacion sobre Gio's Company</h1>
         <article>
@@ -40,7 +40,7 @@
             </div>
         </article>
     </div>
-    <?php include('Footer.php') ?>
+    <?php include('/partials/Footer.php') ?>
     
 
 

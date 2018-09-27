@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <?php include('NavigationBar.php') ?>
+    <?php include('/partials/NavigationBar.php') ?>
     <div class="mainb" align="center">
     <?php 
         for ($i=0; $i < 6; $i++) { 
@@ -87,7 +87,7 @@
     ?>  
     </div>
 
-    <?php include('Footer.php') ?>
+    <?php include('/partials/Footer.php') ?>
 
     <script src="js/vendor/jquery.js"></script>
     <script src="js/vendor/what-input.js"></script>
