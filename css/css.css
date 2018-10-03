@@ -22,3 +22,7 @@ header {
 .error {
     color: red;
 }
+
+#Titulo_Producto{
+  text-align: center;
+}
