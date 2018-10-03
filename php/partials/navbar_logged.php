@@ -10,12 +10,13 @@
                   </figure>
                   <li><input type="search" placeholder="Search"></li>
                   <li><button type="button" class="button">Search</button></li>
-                  <li> Este es el logged navbar</li>
                 </ul>
             </div>
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
               <li><a href="index.php">Inicio</a></li>
+              <li><a href="#">Mis Anuncios</a></li>
+              <li><a href="#">Perfil</a></li>
               <li><a href="../controladores/logout_c.php">Cierra Sesión</a></li>
             </ul>
           </div>
