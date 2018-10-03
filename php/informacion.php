@@ -14,7 +14,7 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb">
         <h1 class="text-center">Informacion sobre Gio's Company</h1>
         <article>

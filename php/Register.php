@@ -13,7 +13,7 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell small-5"
@@ -26,7 +26,7 @@
                         <input type="password" placeholder="Contaseña">
                     </label>
                     <input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>
-                    <p><input type="submit" class="button expanded" value="Log in"></input></p>
+                    <p><input type="submit" class="button expanded" value="Log in"></p>
                     <p class="text-center"><a href="#">¿Olvidaste tu constraseña?</a></p>
                 </form>
                 <p>Si ya tienes una cuenta haz click <a href="Login.php">aquí</a></p>

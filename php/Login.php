@@ -1,13 +1,6 @@
 <?php
-    $usuario = "root";
-    $contrasena = "";
-    $servidor = "localhost";
-    $basededatos = "gioscorp2";
-
-    $conexion = mysqli_connect($servidor,$usuario,$contrasena) or die("No se ha podido conectar al servidor de base de datos.");
-    $db = mysqli_select_db($conexion, $basededatos) or die("Parece que ha habido un error.");
-    if (isset($_POST['login'])) {
-        $log = $_POST['login'];
+    if (isset($_GET['login'])) {
+        $log = $_GET['login'];
     }
     else{
         $log = true;
@@ -28,44 +21,26 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
+    <?php 
+        //accion en caso que login sea exitoso o no
+        
+        if ($log) {
+            $small = 'none';
+            $br = '';
+            $err = '';
+        }
+        else{
+            $small = '' ;
+            $br = '<br>' ;
+            $err = "error";
+        }
+
+    ?>
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell small-5">
-                <?php
-                    if ((isset($_POST['email'])==true)&&((isset($_POST['pswd'])==true))) {
-                        $clave = $_POST['pswd'];
-                        $email = $_POST['email'];
-                        $con = "CALL login('".$email."','".$clave."')";
-                        $res = mysqli_query($conexion, $con) or die("Parece que algo ha salido mal!");
-                        while ($col = mysqli_fetch_array( $res ))
-                        {
-                            //logica de login
-                            ($col[0]=='success') ? $log = true : $log = false ;
-                            if ($log) {
-                                //Si el login fue exitoso redirect
-                                header("Location: http://localhost/proyectodw/php/index_logged.php"); /* Redirect browser */
-                                exit();
-                            }
-                            echo "<input type=\"text\" style='display: none' name=\"login\" value='".$log."'>";
-                        }
-                    }
-                    if (/*((isset($_POST['sbmt'])==false)||((isset($_POST['login'])==false)))||*/true) {
-                        //accion en caso que login sea exitoso o no
-                        if ($log) {
-                            $small = 'none';
-                            $br = '';
-                            $err = '';
-                        }
-                        else{
-                            $small = '' ;
-                            $br = '<br>' ;
-                            $err = "error";
-                        }
-                    }
-
-                ?>
-                <form class="log-in-form" action='Login.php' method='post'>
+                <form class="log-in-form" action='../controladores/login_c.php' method='post'>
                             <h4 class="text-center">Inicia sesión</h4>
                             <label class='<?php echo $err;?>' >E-mail
                                 <input type="email" placeholder="somebody@example.com" name='email'>
