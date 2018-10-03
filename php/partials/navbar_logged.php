@@ -16,8 +16,6 @@
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
               <li><a href="index.php">Inicio</a></li>
-              <li><a href="login.php">Inicia Sesión</a></li>
-              <li><a href="register.php">Registrate</a></li>
               <li><a href="../controladores/logout_c.php">Cierra Sesión</a></li>
             </ul>
           </div>
