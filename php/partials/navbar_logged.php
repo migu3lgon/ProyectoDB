@@ -10,7 +10,7 @@
                   </figure>
                   <li><input type="search" placeholder="Search"></li>
                   <li><button type="button" class="button">Search</button></li>
-                  <li>Este es el logged navbar</li>
+                  <li> Este es el logged navbar</li>
                 </ul>
             </div>
           <div class="top-bar-right">
