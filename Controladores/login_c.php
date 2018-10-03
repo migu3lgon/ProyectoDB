@@ -15,20 +15,20 @@ if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+$username = $_POST['email'];
+$password = $_POST['pswd'];
  
 $sql = "SELECT * FROM usuario WHERE correo = '".$username."'";
 
 $result = $conexion->query($sql);
 
 
-if ($result->num_rows > 0) {     
- }
+if ($result->num_rows > 0) {
+}     
+ 
  $row = $result->fetch_array(MYSQLI_ASSOC);
 
  if ($password == $row['psw']) { 
- 
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
     $_SESSION['start'] = time();
