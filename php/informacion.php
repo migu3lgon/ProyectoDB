@@ -24,7 +24,14 @@
                             <div class="cell small-12 medium-6 large-6 ">
                                 <section>
                                     <h2>Sobre Nosotros</h2>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                    <p>Gio's corp es una empresa dedicada a dar el mejor servicio a las personas que quieren vender sus articulos. 
+                                        La empresa brinda el mejor servicio para la venta de articulos brindando la manera mas comoda para que nuestros clientes 
+                                        puedan vender sus productos de una manera segura y con confianza de tener el respaldo de una empresa de gran integridad
+                                    </p>
+                                    <br/>
+                                    <P>Hasta el dia de hoy todos los clientes de Gio's Corp han disfrutado el mejor servicio en un e-comerce y hay miles de historias de clientes satisfechos.
+                                        Ademas gracias a nuestro ermoso sitio web y nuestras politicas de apoyo a los clientes, nos hemos convertido en un favorito de muchas personas para realizar todas sus compras en linea
+                                    </P>
                                 </section>
                             </div>
                         <!-- </section> -->
