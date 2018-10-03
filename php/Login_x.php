@@ -21,7 +21,7 @@
     </style>
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+    <?php include('/partials/NavigationBar.php')?>
     <?php 
         //accion en caso que login sea exitoso o no
         
@@ -40,7 +40,7 @@
     <div class="grid-container">
         <div class="grid-x align-center">
             <div class="cell small-5">
-                <form class="log-in-form" action='../controladores/login_c.php' method='post'>
+                <form class="log-in-form" action='../controladores/login.php' method='post'>
                             <h4 class="text-center">Inicia sesión</h4>
                             <label class='<?php echo $err;?>' >E-mail
                                 <input type="email" placeholder="somebody@example.com" name='email'>

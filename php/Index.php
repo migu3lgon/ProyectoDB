@@ -24,7 +24,7 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
     <?php 
         for ($i=0; $i < 6; $i++) { 
