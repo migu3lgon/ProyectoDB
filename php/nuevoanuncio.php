@@ -69,7 +69,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', 2)");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo' ,'$descripcion' ,$subcategoria ,$ubicacion ,'$image' ,0,0,$telefono, '$dataTime', 2)");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
