@@ -28,6 +28,7 @@
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
             Titulo del anuncio:<br>
+
             <input type="text" name="tituloa" value="" placeholder="ingrese el numero de departamento">
             <br>
             Descripcion:<br>
