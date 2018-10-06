@@ -8,8 +8,7 @@ $user_db = "root";
 $pass_db = "";
 $db_name = "gioscorp2";
 
-$conexion = mysqli_connect($host_db,$user_db,$pass_db) or die("No se ha podido conectar al servidor de base de datos.");
-$db = mysqli_select_db($conexion, $db_name) or die("Parece que ha habido un error.");
+$conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
 
 if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
@@ -25,9 +24,9 @@ $cons2 = "CALL login('".$username."','".$password."',@res);";
 //respuesta del SP
 $cons3 = "SELECT @res;";
 
-mysqli_query($conexion, $cons1) or die("Parece que algo ha salido mal!");
-mysqli_query($conexion, $cons2) or die("Parece que algo ha salido mal!");
-$bool = mysqli_query($conexion, $cons3) or die("Parece que algo ha salido mal!");
+$conexion->query($cons1) or die("Parece que algo ha salido mal!");
+$conexion->query($cons2) or die("Parece que algo ha salido mal!");
+$bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
     
  
  $row = mysqli_fetch_array( $bool );
