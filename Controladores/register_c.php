@@ -15,7 +15,10 @@ if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
 
+$name = $_POST['name'];
+$last_n = $_POST['last-n'];
 $username = $_POST['email'];
+$tel = $_POST['fnum'];
 $password = $_POST['pswd'];
  
 $sql = "SELECT * FROM usuario WHERE correo = '".$username."'";
