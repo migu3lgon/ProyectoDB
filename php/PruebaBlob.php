@@ -11,7 +11,7 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb">
         
     <form action="pruebablob.php" method="post" enctype="multipart/form-data">
