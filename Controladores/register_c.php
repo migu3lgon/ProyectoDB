@@ -17,31 +17,27 @@ if ($conexion->connect_error) {
 
 $name = $_POST['name'];
 $last_n = $_POST['last-n'];
-$username = $_POST['email'];
+$email = $_POST['email'];
 $tel = $_POST['fnum'];
 $password = $_POST['pswd'];
+
+$set_var = "SET @res = '';";
+$sp_call = "CALL registro('".$email."','".$password."','".$name."','".$last_n."',".$tel.",@res)";
+$sql = "SELECT @res;"
+
+$conexion->query($set_var);
+$conexion->query($sp_call);
+$bool = $conexion->query($sql);
+  
  
-$sql = "SELECT * FROM usuario WHERE correo = '".$username."'";
+$row = mysqli_fetch_array( $bool );
 
-$result = $conexion->query($sql);
-
-
-if ($result->num_rows > 0) {
-}     
- 
- $row = $result->fetch_array(MYSQLI_ASSOC);
-
- if ($password == $row['psw']) { 
-    $_SESSION['loggedin'] = true;
-    $_SESSION['username'] = $username;
-    $_SESSION['start'] = time();
-    $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
-
-    header('Location: http://localhost/proyectodw/php/index.php');
+ if ($row['@res']) { 
+    header('Location: http://localhost/proyectodw/php/register.php?register=1');
     exit();
 
  } else { 
-    header("Location: http://localhost/proyectodw/php/login.php?login=0");
+    header("Location: http://localhost/proyectodw/php/register.php?register=0");
     exit();
  }
  mysqli_close($conexion); 

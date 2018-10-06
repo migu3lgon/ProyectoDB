@@ -9,12 +9,31 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
-    <style>
-    </style>
+    <?php
+    if (isset($_GET['register'])) {
+        if ($_GET['register']) {
+            echo "
+            <div class=\"callout success\">
+                <h5>El registro ha sido exitoso</h5>
+                <p>Si deseas iniciar sesión haz click <a href='login.php'>aquí</a></p>
+            </div>
+            ";
+        }
+        else {
+            echo "
+            <div class=\"callout alert\">
+                <h5>El usuario ya existe</h5>
+                <p>Intentalo con otro correo</p>
+            </div>
+            ";
+        }
+    }
+    ?>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
+        
         <div class="grid-x align-center">
             <div class="cell small-5">
                 <form class="log-in-form" action='../controladores/register_c.php' method='post'>
