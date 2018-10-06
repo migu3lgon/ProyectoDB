@@ -20,30 +20,66 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
+        //querys para poblar los selects
+        $con_cat = $conn->query("SELECT * FROM categorias");
+        $con_subcat = $conn->query("SELECT * FROM subcategorias");
+        $con_ubic = $conn->query("SELECT * FROM ubicaciones");
+        //arrays de categorias y sub categorias
+        $cat_arr = array();
+        $subcat_arr = array();
+
+        //Poblar arrays para mostrar las categorias y sub categorias
+        $i = 0;
+        $j = 0;
+        while (($col = mysqli_fetch_array( $con_cat ))){  
+            $cat_arr[$i] = array($col[0],$col[1]);
+            $i = $i + 1;
+        }
+        while ($col2 = mysqli_fetch_array( $con_subcat )){
+            $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
+            $j = $j + 1;
+        }
+        $count_cat = count($cat_arr);
+        $count_subcat = count($subcat_arr);
+
     ?>
   </head>
   <body>
-  <?php include('/partials/NavigationBar.php') ?>
+  <?php include('../controladores/navbar_c.php') ?>
   <form class= "grid-container" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
-            Titulo del anuncio:<br>
-
+            Título del anuncio:<br>
             <input type="text" name="tituloa" value="" placeholder="ingrese el numero de departamento">
             <br>
-            Descripcion:<br>
+            Descripción:<br>
             <input type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento">
             <br>
-            categoria:<br>
-            <input type="text" name="categoriaa" value="" placeholder="ingrese el numero de departamento">
+            Categoría:<br>
+            <select name="subcategoriaa">
+                <?php
+                    for ($i=0; $i < $count_cat ; $i++) { 
+                        echo "<optgroup label=".$cat_arr[$i][1].">";
+                        for ($k=0; $k < $count_subcat; $k++) { 
+                            if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
+                                echo "<option value=".$subcat_arr[$k][0].">".$subcat_arr[$k][2]."</option>";
+                            }
+                        }
+                    }
+                ?>
+            </select>
             <br>
-            subcategoria:<br>
-            <input type="text" name="subcategoriaa" value="" placeholder="ingrese el numero de departamento">
+            ubicación:<br>
+            <select name="ubicaciona">
+                <?php
+                    while ($col = mysqli_fetch_array( $con_ubic ))
+                    {
+                        echo "<option value='".$col[0]."'>".$col[1]."</option>";
+                    }
+                ?>
+            </select>
             <br>
-            ubicacion:<br>
-            <input type="text" name="ubicaciona" value="" placeholder="ingrese el numero de departamento">
-            <br>
-            telefo de contacto:<br>
+            teléfono de contacto:<br>
             <input type="text" name="telefonoa" value="" placeholder="ingrese el numero de departamento">
             <br>
             Imagen:<br>
@@ -62,7 +98,6 @@
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
                     $descripcion = $_POST["descripciona"];
-                    $categoria = $_POST["categoriaa"];
                     $subcategoria = $_POST["subcategoriaa"];
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
