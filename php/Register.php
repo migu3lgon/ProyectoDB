@@ -16,14 +16,14 @@
     <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
         <div class="grid-x align-center">
-            <div class="cell small-5"
-                <form class="log-in-form">
+            <div class="cell small-5">
+                <form class="log-in-form" action='../controladores/register_c.php' method='post'>
                     <h4 class="text-center">Regístrate</h4>
                     <label>E-mail
-                        <input type="email" placeholder="somebody@example.com">
+                        <input name='email' type="email" placeholder="somebody@example.com">
                     </label>
                     <label>Contaseña
-                        <input type="password" placeholder="Contaseña">
+                        <input name='pswd' type="password" placeholder="Contaseña">
                     </label>
                     <input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>
                     <p><input type="submit" class="button expanded" value="Log in"></p>
