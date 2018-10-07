@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
-    <style>
-        
-    </style>
+    <script src='../js/vendor/foundation.js'></script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>

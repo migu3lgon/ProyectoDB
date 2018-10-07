@@ -19,9 +19,6 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
-    <style>
-        
-    </style>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>

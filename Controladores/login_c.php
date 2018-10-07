@@ -37,6 +37,12 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
     $_SESSION['start'] = time();
     $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
 
+    //Obtener el nombre para la navbar
+    $cons4 = "SELECT `nombre` from `usuario` where `correo` ='".$username."';";
+    $res = $conexion->query($cons4) or die("Parece que algo ha salido mal!");
+    $row = mysqli_fetch_array( $res );
+    $_SESSION['name'] = $row[0];
+
     header('Location: http://localhost/proyectodw/php/index.php');
     exit();
 
