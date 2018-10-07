@@ -21,13 +21,14 @@ $email = $_POST['email'];
 $tel = $_POST['fnum'];
 $password = $_POST['pswd'];
 
-$set_var = "SET @res = '';";
+//Variable para capturar respuesta
+$cons1 = "SET @res = '';";
 $sp_call = "CALL registro('".$email."','".$password."','".$name."','".$last_n."',".$tel.",@res)";
-$sql = "SELECT @res;"
+$cons3 = "SELECT @res;";
 
-$conexion->query($set_var);
+$conexion->query($cons1) or die("Parece que algo ha salido mal!");
 $conexion->query($sp_call);
-$bool = $conexion->query($sql);
+$bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
   
  
 $row = mysqli_fetch_array( $bool );
