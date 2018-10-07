@@ -54,7 +54,7 @@
     </form>
 
     <?php
-        if (isset($_POST["submit"])) {
+        if (isset($_POST["submit"]) && $_FILES["image"]['size']!=0) {
 
             $check = getimagesize($_FILES["image"]["tmp_name"]);
                 if($check /*!== false*/){
@@ -77,6 +77,23 @@
                         //echo $insert;
                 }
             }
+        }elseif(isset($_POST["submit"])){
+                    $dataTime = date("Y-m-d H:i:s");
+                    $titulo = $_POST["tituloa"];
+                    $descripcion = $_POST["descripciona"];
+                    $categoria = $_POST["categoriaa"];
+                    $subcategoria = $_POST["subcategoriaa"];
+                    $ubicacion = $_POST["ubicaciona"];
+                    $telefono = $_POST["telefonoa"];
+
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime', 2)");
+                    if($insert){
+                        echo "File uploaded successfully. -image";
+                    }else{
+                        echo "File upload failed, please try again.";
+                        //echo $insert;
+                }
+
         }
         $conn->close();
     ?>
