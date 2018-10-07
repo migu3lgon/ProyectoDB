@@ -28,25 +28,25 @@
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
             Titulo del anuncio:<br>
-            <input type="text" name="tituloa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
             Descripcion:<br>
-            <input type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto">
             <br>
             categoria:<br>
-            <input type="text" name="categoriaa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="categoriaa" value="" placeholder="">
             <br>
             subcategoria:<br>
-            <input type="text" name="subcategoriaa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="subcategoriaa" value="" placeholder="">
             <br>
             ubicacion:<br>
-            <input type="text" name="ubicaciona" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="ubicaciona" value="" placeholder="">
             <br>
             telefo de contacto:<br>
-            <input type="text" name="telefonoa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="telefonoa" value="" placeholder="ej: 54638126">
             <br>
             Imagen:<br>
-            <input type="file" name="image"/>
+            <input type="file" name="image"/>   
             <br>
             <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
           </div>
@@ -69,7 +69,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo' ,'$descripcion' ,$subcategoria ,$ubicacion ,'$image' ,0,0,$telefono, '$dataTime', 2)");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', 2)");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{

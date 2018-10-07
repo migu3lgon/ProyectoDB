@@ -24,7 +24,7 @@
   </head>
   <body>
       <?php
-            $prueba = $conn->query("SELECT * from anuncio where idanuncio=1 limit 1;");
+            $prueba = $conn->query("SELECT * from anuncio where idanuncio=57 limit 1;");
                 $row = $prueba->fetch_assoc(); 
                 $titulob = $row["titulo"];
                 $descripcionb = $row["descripcion"];
@@ -79,7 +79,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = 1");
+                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = 57");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
@@ -94,7 +94,7 @@
             $subcategoria = $_POST["subcategoriaa"];
             $ubicacion = $_POST["ubicaciona"];
             $telefono = $_POST["telefonoa"];
-            $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono' where idanuncio = 1");
+            $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono' where idanuncio = 57");
             if ($insert){
                 echo "nice";
             } else {
