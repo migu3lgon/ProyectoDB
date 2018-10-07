@@ -1,12 +1,10 @@
-<!--Verificar la sesion para seleccionar que navbar mostrar-->
+<!-- Verificar sesion -->
 <?php
-session_start();
-
 if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-  include('../php/partials/navbar_logged.php');    
+    
 } 
 else {
-  include('../php/partials/NavigationBar.php');    
+    header('Location: http://localhost/proyectodw/php/index.php');
 }
 
 $now = time();

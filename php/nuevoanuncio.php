@@ -45,7 +45,10 @@
     ?>
   </head>
   <body>
+  <!-- incluye al navegador-->
   <?php include('../controladores/navbar_c.php') ?>
+  <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+  <?php include('../controladores/checksession_c.php') ?>
   <form class= "grid-container" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">

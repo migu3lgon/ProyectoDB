@@ -15,7 +15,7 @@
     </style>
 </head>
 <body>
-    <?php include('/partials/NavigationBar.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     
     <h1 align="center">Nombre del producto</h1> 
     <div class="mainb">
