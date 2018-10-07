@@ -23,27 +23,37 @@
     ?>
   </head>
   <body>
+      <?php
+            $prueba = $conn->query("SELECT * from anuncio where idanuncio=1 limit 1;");
+                $row = $prueba->fetch_assoc(); 
+                $titulob = $row["titulo"];
+                $descripcionb = $row["descripcion"];
+                $subcategoriab = $row["idsubcategoria"];
+                $ubicacionb = $row["idubicacion"];
+                $telefonob = $row["telefono"];
+                
+       ?>
   <?php include('/partials/NavigationBar.php') ?>
-  <form class= "grid-container" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
+  <form class= "grid-container" action="modificarAnuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
             Titulo del anuncio:<br>
-            <input type="text" name="tituloa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="ingrese el numero de departamento">
             <br>
             Descripcion:<br>
-            <input type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento">
+            <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $descripcionb ?></textarea>
             <br>
             categoria:<br>
             <input type="text" name="categoriaa" value="" placeholder="ingrese el numero de departamento">
             <br>
             subcategoria:<br>
-            <input type="text" name="subcategoriaa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="subcategoriaa" value="<?php echo $subcategoriab ?>" placeholder="ingrese el numero de departamento">
             <br>
             ubicacion:<br>
-            <input type="text" name="ubicaciona" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="ubicaciona" value="<?php echo $ubicacionb ?>" placeholder="ingrese el numero de departamento">
             <br>
             telefo de contacto:<br>
-            <input type="text" name="telefonoa" value="" placeholder="ingrese el numero de departamento">
+            <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ingrese el numero de departamento">
             <br>
             Imagen:<br>
             <input type="file" name="image"/>
@@ -69,7 +79,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo' ,'$descripcion' ,$subcategoria ,$ubicacion ,'$image' ,0,0,$telefono, '$dataTime', 2)");
+                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = 1");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
@@ -78,7 +88,19 @@
                 }
             }
         }elseif(isset($_POST["submit"])){
-                    $dataTime = date("Y-m-d H:i:s");
+            $titulo = $_POST["tituloa"];
+            $descripcion = $_POST["descripciona"];
+            $categoria = $_POST["categoriaa"];
+            $subcategoria = $_POST["subcategoriaa"];
+            $ubicacion = $_POST["ubicaciona"];
+            $telefono = $_POST["telefonoa"];
+            $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono' where idanuncio = 1");
+            if ($insert){
+                echo "nice";
+            } else {
+                echo "fail"; echo $insert;
+            }
+                    /*$dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
                     $descripcion = $_POST["descripciona"];
                     $categoria = $_POST["categoriaa"];
@@ -86,13 +108,13 @@
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
 
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime', 2)");
-                    if($insert){
-                        echo "File uploaded successfully. -image";
+                    $insert = $conn->query("UPDATE anuncio set titulo = $titulo, where idanuncio = 1");                    if($insert){
+                        echo "File uploaded successfully.";
                     }else{
-                        echo "File upload failed, please try again.";
-                        //echo $insert;
-                }
+                        echo "File upload failed, please try again. -image";
+                        echo $titulo;
+                        //echo $insert;*/
+                //}
 
         }
         $conn->close();
