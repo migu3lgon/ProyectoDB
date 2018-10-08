@@ -31,17 +31,25 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
  
  $row = mysqli_fetch_array( $bool );
 
+ //Si el login es exitoso
  if ($row[0]) { 
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
     $_SESSION['start'] = time();
     $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+    
 
     //Obtener el nombre para la navbar
     $cons4 = "SELECT `nombre` from `usuario` where `correo` ='".$username."';";
     $res = $conexion->query($cons4) or die("Parece que algo ha salido mal!");
     $row = mysqli_fetch_array( $res );
     $_SESSION['name'] = $row[0];
+
+    //Obtener el id para manejo de anuncios
+    $cons5 = "SELECT `idusuario` from `usuario` where `correo` ='".$username."';";
+    $res2 = $conexion->query($cons5) or die("Parece que algo ha salido mal!");
+    $row2 = mysqli_fetch_array( $res2 );
+    $_SESSION['id_usuario'] = $row2[0];
 
     header('Location: http://localhost/proyectodw/php/index.php');
     exit();

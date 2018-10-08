@@ -94,6 +94,7 @@
     </form>
 
     <?php
+        $id = $_SESSION['id_usuario'];
         if (isset($_POST["submit"]) && $_FILES["image"]['size']!=0) {
 
             $check = getimagesize($_FILES["image"]["tmp_name"]);
@@ -108,7 +109,8 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', 2)");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id')");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
@@ -125,7 +127,8 @@
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
 
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime', 2)");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id')");
                     if($insert){
                         echo "File uploaded successfully. -image";
                     }else{

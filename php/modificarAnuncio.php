@@ -20,11 +20,17 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
+        $idanuncio = 54;
     ?>
   </head>
   <body>
+    <!-- incluye al navegador-->
+    <?php include('../controladores/navbar_c.php') ?>
+    <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+    <?php include('../controladores/checksession_c.php') ?>
       <?php
-            $prueba = $conn->query("SELECT * from anuncio where idanuncio=57 limit 1;");
+            
+            $prueba = $conn->query("SELECT * from anuncio where idanuncio=$idanuncio limit 1;");
                 $row = $prueba->fetch_assoc(); 
                 $titulob = $row["titulo"];
                 $descripcionb = $row["descripcion"];
@@ -79,7 +85,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = 57");
+                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = $idanuncio");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
