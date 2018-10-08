@@ -24,8 +24,10 @@
                   <ul class="menu vertical nested">
                   <li><a href="#">Perfil</a></li>  
                   <li><a href="#">Mis Anuncios</a></li>
+                  <li><a href="#">Monedero</a></li>
                   </ul>
                 </li>
+                <li><a href="#">Mensajes</a></li>
                 <li><a href="../controladores/logout_c.php">Cierra Sesión</a></li>
               </ul>
             </ul>
