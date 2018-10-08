@@ -1,6 +1,4 @@
-﻿
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -14,6 +12,7 @@
 </head>
 <body>
     <!--Verificar la sesion para seleccionar que navbar mostrar-->
+<!--logged navbar-->
 <header>
  <!-- Navigation Bar -->
  <div class="top-bar" id="Navigation_Bar">
@@ -28,13 +27,34 @@
             </div>
           <div class="top-bar-right">
             <ul class="dropdown menu" data-dropdown-menu>
-              <li><a href="index.html">Inicio</a></li>
-              <li><a href="login.html">Inicia Sesión</a></li>
-              <li><a href="register.html">Registrate</a></li>
+
+              <ul class="horizontal menu" data-accordion-menu>
+                <li><a href="index.html">Inicio</a></li>
+                <li>
+                  <a href="#">correo</a>
+                  <ul class="menu vertical nested">
+                  <li><a href="#">Perfil</a></li>  
+                  <li><a href="#">Mis Anuncios</a></li>
+                  <li><a href="nuevoanuncio.html">nuevo anuncio</a></li>
+                  <li><a href="#">Monedero</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Mensajes</a></li>
+                <li><a href="../controladores/logout_c.html">Cierra Sesión</a></li>
+              </ul>
             </ul>
           </div>
         </div>
- </header>    <div class="mainb" align="center">
+ </header>
+
+<!--scripts para el accordion menu-->
+<script src="../js/vendor/vendor.js"></script>
+<script src="../js/vendor/foundation.core.js"></script>
+<script src="../js/vendor/foundation.util.nest.js"></script>
+<script src="../js/vendor/foundation.accordion.js"></script>
+<script src="../js/vendor/foundation.accordionMenu.js"></script>
+<script src="../js/vendor/foundation.responsiveAccordionTabs.js"></script>
+<script src="../js/vendor/docs.js"></script>    <div class="mainb" align="center">
     
             <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y">

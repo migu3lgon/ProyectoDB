@@ -26,3 +26,7 @@ header {
 #Titulo_Producto{
   text-align: center;
 }
+#precio{
+    font-weight:  "bolder";
+    font-size: 30px;
+}
