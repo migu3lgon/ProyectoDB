@@ -83,7 +83,7 @@
             </select>
             <br>
             telefo de contacto:<br>
-            <input type="text" name="telefonoa" value="" placeholder="ej: 54638126">
+            <input type="text" name="telefonoa" value="" placeholder="ej: 54638126" pattern="[0-9]+">
             <br>
             Imagen:<br>
             <input type="file" name="image"/>   
