@@ -62,7 +62,13 @@
             <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
             Descripcion:<br>
-            <input type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto">
+            <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto"></textarea>
+            <br>
+            Datos tecnicos:<br>
+            <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese datos tecnicos del producto"></textarea>
+            <br> 
+            Mas informacion:<br>
+            <textarea type="text" name="masinfo" value="" placeholder="que mas decea indicar sobre su producto?"></textarea>
             <br>
             Categoría:<br>
             <select name="subcategoriaa">
@@ -109,6 +115,8 @@
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
                     $descripcion = $_POST["descripciona"];
+                    $datostecnicos = $_POST["datostecnicosa"];
+                    $masinformacion = $_POST["masinfo"];
                     $subcategoria = $_POST["subcategoriaa"];
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
@@ -116,8 +124,8 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
@@ -129,13 +137,14 @@
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
                     $descripcion = $_POST["descripciona"];
-                    $categoria = $_POST["categoriaa"];
+                    $datostecnicos = $_POST["datostecnicosa"];
+                    $masinformacion = $_POST["masinfo"];
                     $subcategoria = $_POST["subcategoriaa"];
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
 
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
                         echo "File uploaded successfully. -image";
                     }else{
