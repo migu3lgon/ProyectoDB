@@ -20,7 +20,7 @@ gulp.task('watch', function() {
 gulp.task('webserver', function() {
     gulp.src('app')
         .pipe(webserver({
-            fallback: './dist/index.html',
+            fallback: './sitetemplate.html',
             livereload: true,
             directoryListing: true,
             open: true
