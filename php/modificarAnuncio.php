@@ -74,10 +74,10 @@
             <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $descripcionb ?></textarea>
             <br>
             Datos Tecnicos:<br>
-            <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $datostecnicosb ?></textarea>
+            <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese el numero de departamento"><?php echo $datostecnicosb ?></textarea>
             <br>
             mas informacion:<br>
-            <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $masinformacionb ?></textarea>
+            <textarea type="text" name="masinfo" value="" placeholder="ingrese el numero de departamento"><?php echo $masinformacionb ?></textarea>
             <br>
             categoria:<br>
             <select name="subcategoriaa">
@@ -122,7 +122,8 @@
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
                     $descripcion = $_POST["descripciona"];
-                    $categoria = $_POST["categoriaa"];
+                    $datostecnicos = $_POST["datostecnicosa"];
+                    $masinformacion = $_POST["masinfo"];
                     $subcategoria = $_POST["subcategoriaa"];
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
@@ -130,7 +131,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent' where idanuncio = $idanuncio");
+                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion' where idanuncio = $idanuncio");
                     if($insert){
                         echo "File uploaded successfully.";
                     }else{
@@ -141,11 +142,13 @@
         }elseif(isset($_POST["submit"])){
             $titulo = $_POST["tituloa"];
             $descripcion = $_POST["descripciona"];
-            $categoria = $_POST["categoriaa"];
+            $datostecnicos = $_POST["datostecnicosa"];
+            $masinformacion = $_POST["masinfo"];
             $subcategoria = $_POST["subcategoriaa"];
             $ubicacion = $_POST["ubicaciona"];
             $telefono = $_POST["telefonoa"];
-            $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono' where idanuncio = 57");
+
+            $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion' where idanuncio = $idanuncio");
             if ($insert){
                 echo "nice";
             } else {
