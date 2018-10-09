@@ -20,7 +20,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
-        $idanuncio = 69;
+        $idanuncio = 72;
         //querys para poblar los selects
         $con_cat = $conn->query("SELECT * FROM categorias");
         $con_subcat = $conn->query("SELECT * FROM subcategorias");
