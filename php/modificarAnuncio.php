@@ -67,6 +67,7 @@
   <form class= "grid-container" action="modificarAnuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
+            <h4 class="text-center">Ingresa los datos</h4>
             Titulo del anuncio:<br>
             <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="ingrese el numero de departamento">
             <br>

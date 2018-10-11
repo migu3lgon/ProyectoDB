@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/navbar_c.php'); ?>
     <?php 
         //accion en caso que login sea exitoso o no
         

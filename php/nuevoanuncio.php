@@ -39,8 +39,7 @@
             $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
             $j = $j + 1;
         }
-        while ($col3 = mysqli_fetch_array( $con_ubic ))
-        {
+        while ($col3 = mysqli_fetch_array( $con_ubic )){
             $ubic_arr[$h] = array($col3[0],$col3[1]);
             $h = $h + 1;
         }
@@ -51,13 +50,33 @@
     ?>
   </head>
   <body>
-  <!-- incluye al navegador-->
-  <?php include('../controladores/navbar_c.php') ?>
-  <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-  <?php include('../controladores/checksession_c.php') ?>
-  <form class= "grid-container" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
+    <!-- incluye al navegador-->
+    <?php include('../controladores/navbar_c.php'); ?>
+    <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+    <?php include('../controladores/checksession_c.php'); ?>
+
+  <div class= "grid-container">
+    <?php
+        if (isset($_GET['bool'])) {
+            if ($_GET['bool']) {
+                echo "
+                <div class=\"callout success\">
+                    <h5>El anuncio se ha cargado con éxito.</h5>
+                </div>
+                ";
+            }
+            else {
+                echo "
+                <div class=\"callout alert\">
+                    <h5>Parece que algo ha salido mal, inténtalo de nuevo.</h5>
+                </div>
+                ";
+            }
+        }
+        ?>
       <div class="grid-x grid-margin-x align-center">
-        <div class= "cell small-12 medium-8">
+        <form class= "cell small-12 medium-8" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
+            <h4 class="text-center">Ingresa los datos</h4>
             Titulo del anuncio:<br>
             <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
@@ -88,9 +107,7 @@
             <select name="ubicaciona">
                 <?php
                     for ($l=0; $l < $count_subcat; $l++) { 
-                        
                         echo "<option value=".$ubic_arr[$l][0].">".$ubic_arr[$l][1]."</option>";
-                        
                     }
                 ?>
             </select>
@@ -102,14 +119,12 @@
             <input type="file" name="image"/>   
             <br>
             <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
-          </div>
+          </form>
         </div>
-    </form>
-
+    </div>
     <?php
         $id = $_SESSION['id_usuario'];
         if (isset($_POST["submit"]) && $_FILES["image"]['size']!=0) {
-
             $check = getimagesize($_FILES["image"]["tmp_name"]);
                 if($check /*!== false*/){
                     $dataTime = date("Y-m-d H:i:s");
@@ -127,11 +142,13 @@
                     $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
                         VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
-                        echo "File uploaded successfully.";
+                        //echo "File uploaded successfully.";
+                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
                     }else{
-                        echo "File upload failed, please try again.";
+                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
+                        //echo "File upload failed, please try again.";
                         //echo $insert;
-                }
+                    }
             }
         }elseif(isset($_POST["submit"])){
                     $dataTime = date("Y-m-d H:i:s");
@@ -146,11 +163,13 @@
                     $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
                         VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
-                        echo "File uploaded successfully. -image";
+                        //echo "File uploaded successfully.";
+                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
                     }else{
-                        echo "File upload failed, please try again.";
+                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
+                        //echo "File upload failed, please try again.";
                         //echo $insert;
-                }
+                    }
 
         }
         $conn->close();

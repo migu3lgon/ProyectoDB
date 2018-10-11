@@ -20,16 +20,14 @@
                 <div class=\"callout success\">
                     <h5>El registro ha sido exitoso</h5>
                     <p>Si deseas iniciar sesión haz click <a href='login.php'>aquí</a></p>
-                </div>
-                ";
+                </div>";
             }
             else {
                 echo "
                 <div class=\"callout alert\">
                     <h5>El usuario ya existe</h5>
                     <p>Intentalo con otro correo</p>
-                </div>
-                ";
+                </div>";
             }
         }
         ?>
