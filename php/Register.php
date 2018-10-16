@@ -51,7 +51,7 @@
                         <input name='pswd' id='password' type="text" placeholder="Contaseña" required>
                     </label>
                     <!--<input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>-->
-                    <p><input type="submit" class="button expanded" value="Log in"></p>
+                    <p><input type="submit" class="button expanded" value="Registrate"></p>
                 </form>
                 <p>Si ya tienes una cuenta haz click <a href="Login.php">aquí</a></p>
             </div>

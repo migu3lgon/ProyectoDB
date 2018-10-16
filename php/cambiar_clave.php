@@ -43,7 +43,7 @@
                         <input name='pswd_n' id='password' type="text" placeholder="Contaseña" required>
                     </label>
                     <!--<input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>-->
-                    <p><input type="submit" class="button expanded" value="Aceptar"></p>
+                    <p><input type="submit" class="button expanded" value="Cambiar"></p>
                 </form>
             </div>
         </div>

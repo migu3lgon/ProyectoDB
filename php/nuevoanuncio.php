@@ -77,16 +77,16 @@
       <div class="grid-x grid-margin-x align-center">
         <form class= "cell small-12 medium-8" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
             <h4 class="text-center">Ingresa los datos</h4>
-            Titulo del anuncio:<br>
+            Título del anuncio:<br>
             <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
-            Descripcion:<br>
+            Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto"></textarea>
             <br>
-            Datos tecnicos:<br>
+            Datos técnicos:<br>
             <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese datos tecnicos del producto"></textarea>
             <br> 
-            Mas informacion:<br>
+            Más información:<br>
             <textarea type="text" name="masinfo" value="" placeholder="que mas decea indicar sobre su producto?"></textarea>
             <br>
             Categoría:<br>
@@ -103,7 +103,7 @@
                 ?>
             </select>
             <br>
-            ubicación:<br>
+            Ubicación:<br>
             <select name="ubicaciona">
                 <?php
                     for ($l=0; $l < $count_subcat; $l++) { 
@@ -112,13 +112,13 @@
                 ?>
             </select>
             <br>
-            telefo de contacto:<br>
+            Teléfono de contacto:<br>
             <input type="text" name="telefonoa" value="" placeholder="ej: 54638126" pattern="[0-9]+">
             <br>
             Imagen:<br>
             <input type="file" name="image"/>   
             <br>
-            <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
+            <input class="button small-12 cell" type="submit" name="submit" value="Guardar Anuncio"/>
           </form>
         </div>
     </div>

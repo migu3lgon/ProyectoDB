@@ -68,19 +68,19 @@
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
             <h4 class="text-center">Ingresa los datos</h4>
-            Titulo del anuncio:<br>
+            Título del anuncio:<br>
             <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="ingrese el numero de departamento">
             <br>
-            Descripcion:<br>
+            Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $descripcionb ?></textarea>
             <br>
-            Datos Tecnicos:<br>
+            Datos Técnicos:<br>
             <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese el numero de departamento"><?php echo $datostecnicosb ?></textarea>
             <br>
-            mas informacion:<br>
+            Más informacián:<br>
             <textarea type="text" name="masinfo" value="" placeholder="ingrese el numero de departamento"><?php echo $masinformacionb ?></textarea>
             <br>
-            categoria:<br>
+            Categoría:<br>
             <select name="subcategoriaa">
                 <?php
                     for ($i=0; $i < $count_cat ; $i++) { 
@@ -94,7 +94,7 @@
                 ?>
             </select>
             <br>
-            ubicacion:<br>
+            Ubicación:<br>
             <select name="ubicaciona">
                 <?php
                     while ($col = mysqli_fetch_array( $con_ubic ))
@@ -104,13 +104,13 @@
                 ?>
             </select>
             <br>
-            telefo de contacto:<br>
+            Teléfono de contacto:<br>
             <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ingrese el numero de departamento">
             <br>
             Imagen:<br>
             <input type="file" name="image"/>
             <br>
-            <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
+            <input class="button small-12 cell" type="submit" name="submit" value="Modificar Anuncio"/>
           </div>
         </div>
     </form>

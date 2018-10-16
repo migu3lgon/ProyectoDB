@@ -47,7 +47,7 @@
             <ul class="dropdown menu" data-dropdown-menu>
               <ul class="dropdown menu" data-accordion-menu>
                 <li><a href="index.php">Inicio</a></li>
-                <li><a>Categorias</a>
+                <li><a>Categorías</a>
                   <ul class="menu vertical nested">
                       <?php
                           for ($i=0; $i < $count_cat ; $i++) { 
