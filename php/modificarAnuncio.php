@@ -25,6 +25,8 @@
         $con_cat = $conn->query("SELECT * FROM categorias");
         $con_subcat = $conn->query("SELECT * FROM subcategorias");
         $con_ubic = $conn->query("SELECT * FROM ubicaciones");
+        //query para obtener la imagen del anuncio
+        $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 
         //arrays de categorias y sub categorias
         $cat_arr = array();
         $subcat_arr = array();
@@ -42,6 +44,12 @@
         }
         $count_cat = count($cat_arr);
         $count_subcat = count($subcat_arr);
+        //insertar la imagen del anuncio en $imagenanuncio
+        while($row = mysqli_fetch_array($imagen))  
+                {  
+                     $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  />';  
+                }  
+                
 
     ?>
   </head>
@@ -107,7 +115,27 @@
             <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ingrese el numero de departamento">
             <br>
             Imagen:<br>
-            <input type="file" name="image"/>
+            <div class= "grid-container">
+                <div class="grid-x grid-margin-x align-center">
+                    <div class= "cell small-12 medium-6">
+                        <input type="file" name="image"/>
+                    </div>
+                    <div class= "cell small-12 medium-6">
+                        <?php
+                        //mostrar la imagen del anuncio $imagenanuncio
+                        echo $imagenanuncio;
+                            
+                            /*while($row = mysqli_fetch_array($imagen))  
+                            {  
+                                echo '  
+            
+                                    <img class="thumbnail prueba" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  />    
+                                ';  
+                            }  */
+                            ?>
+                    </div>
+                </div>
+            </div>        
             <br>
             <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
           </div>
