@@ -15,7 +15,7 @@
   //arrays de categorias y sub categorias
   $cat_arr = array();
   $subcat_arr = array();
-
+  $usuario = $_SESSION['username'];
   //Poblar arrays para mostrar las categorias y sub categorias
   $i = 0; $j = 0;
   while (($col = mysqli_fetch_array( $con_cat ))){  
