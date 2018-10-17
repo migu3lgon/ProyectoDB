@@ -1,8 +1,5 @@
 <?php
 session_start();
-?>
-
-<?php
 $host_db = "localhost";
 $user_db = "root";
 $pass_db = "";
@@ -37,6 +34,7 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
     $_SESSION['username'] = $username;
     $_SESSION['start'] = time();
     $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
+
     
 
     //Obtener el nombre para la navbar

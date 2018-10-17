@@ -27,10 +27,10 @@
         //arrays de categorias y sub categorias
         $cat_arr = array();
         $subcat_arr = array();
+        $ubic_arr = array();
 
         //Poblar arrays para mostrar las categorias y sub categorias
-        $i = 0;
-        $j = 0;
+        $i = 0; $j = 0; $h = 0;
         while (($col = mysqli_fetch_array( $con_cat ))){  
             $cat_arr[$i] = array($col[0],$col[1]);
             $i = $i + 1;
@@ -39,8 +39,14 @@
             $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
             $j = $j + 1;
         }
+        while ($col3 = mysqli_fetch_array( $con_ubic ))
+        {
+            $ubic_arr[$h] = array($col3[0],$col3[1]);
+            $h = $h + 1;
+        }
         $count_cat = count($cat_arr);
         $count_subcat = count($subcat_arr);
+        $count_ub = count($ubic_arr);
 
     ?>
   </head>
@@ -81,9 +87,10 @@
             ubicación:<br>
             <select name="ubicaciona">
                 <?php
-                    while ($col = mysqli_fetch_array( $con_ubic ))
-                    {
-                        echo "<option value='".$col[0]."'>".$col[1]."</option>";
+                    for ($l=0; $l < $count_subcat; $l++) { 
+                        
+                        echo "<option value=".$ubic_arr[$l][0].">".$ubic_arr[$l][1]."</option>";
+                        
                     }
                 ?>
             </select>

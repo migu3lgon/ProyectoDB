@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host_db = "localhost";
 $user_db = "root";
 $pass_db = "";
@@ -11,15 +12,13 @@ if ($conexion->connect_error) {
  die("La conexion falló: " . $conexion->connect_error);
 }
 
-$name = $_POST['name'];
-$last_n = $_POST['last-n'];
-$email = $_POST['email'];
-$tel = $_POST['fnum'];
+$email = $_SESSION['username'];
 $password = $_POST['pswd'];
+$new_passw = $_POST['pswd_n'];
 
 //Variable para capturar respuesta
 $cons1 = "SET @res = '';";
-$sp_call = "CALL registro('".$email."','".$password."','".$name."','".$last_n."',".$tel.",@res)";
+$sp_call = "CALL cambio_clave('".$email."','".$password."','".$new_passw."',@res)";
 $cons3 = "SELECT @res;";
 
 $conexion->query($cons1) or die("Parece que algo ha salido mal!");
@@ -30,11 +29,11 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
 $row = mysqli_fetch_array( $bool );
 
  if ($row['@res']) { 
-    header('Location: http://localhost/proyectodw/php/register.php?register=1');
+    header('Location: http://localhost/proyectodw/php/cambiar_clave.php?cambio=1');
     exit();
 
  } else { 
-    header("Location: http://localhost/proyectodw/php/register.php?register=0");
+    header("Location: http://localhost/proyectodw/php/cambiar_clave.php?cambio=0");
     exit();
  }
  mysqli_close($conexion); 
