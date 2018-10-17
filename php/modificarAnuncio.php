@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foundation for Sites</title>
+    <title>Gio's Company - Add</title>
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
@@ -20,7 +20,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
-        $idanuncio = 72;
+        $idanuncio = 62;
         //querys para poblar los selects
         $con_cat = $conn->query("SELECT * FROM categorias");
         $con_subcat = $conn->query("SELECT * FROM subcategorias");
@@ -75,19 +75,20 @@
   <form class= "grid-container" action="modificarAnuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
-            Titulo del anuncio:<br>
+            <h4 class="text-center">Ingresa los datos</h4>
+            Título del anuncio:<br>
             <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="ingrese el numero de departamento">
             <br>
-            Descripcion:<br>
+            Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $descripcionb ?></textarea>
             <br>
-            Datos Tecnicos:<br>
+            Datos Técnicos:<br>
             <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese el numero de departamento"><?php echo $datostecnicosb ?></textarea>
             <br>
-            mas informacion:<br>
+            Más informacián:<br>
             <textarea type="text" name="masinfo" value="" placeholder="ingrese el numero de departamento"><?php echo $masinformacionb ?></textarea>
             <br>
-            categoria:<br>
+            Categoría:<br>
             <select name="subcategoriaa">
                 <?php
                     for ($i=0; $i < $count_cat ; $i++) { 
@@ -101,7 +102,7 @@
                 ?>
             </select>
             <br>
-            ubicacion:<br>
+            Ubicación:<br>
             <select name="ubicaciona">
                 <?php
                     while ($col = mysqli_fetch_array( $con_ubic ))
@@ -111,7 +112,7 @@
                 ?>
             </select>
             <br>
-            telefo de contacto:<br>
+            Teléfono de contacto:<br>
             <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ingrese el numero de departamento">
             <br>
             Imagen:<br>
@@ -137,7 +138,7 @@
                 </div>
             </div>        
             <br>
-            <input class="button small-12 cell" type="submit" name="submit" value="SUBIR"/>
+            <input class="button small-12 cell" type="submit" name="submit" value="Modificar Anuncio"/>
           </div>
         </div>
     </form>

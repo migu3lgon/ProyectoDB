@@ -20,7 +20,7 @@
     </style>
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/navbar_c.php'); ?>
     <?php 
         //accion en caso que login sea exitoso o no
         
@@ -49,7 +49,7 @@
                             </label>
                                 <small class="advice <?php echo $err;?>" style="display: <?php echo $small;?>">Por favor, verifica los datos ingresados</small><?php echo $br; ?>
                             <input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>
-                                <p><input type="submit" class="button expanded" value="Submit"></p>
+                                <p><input type="submit" class="button expanded" value="Inicia Sesión"></p>
                             <p class="text-center"><a href="#">¿Olvidaste tu constraseña?</a></p>
                             
                             <input type="text" style='display: none' name="sbmt" value='true'>

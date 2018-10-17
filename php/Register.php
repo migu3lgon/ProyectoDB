@@ -20,16 +20,14 @@
                 <div class=\"callout success\">
                     <h5>El registro ha sido exitoso</h5>
                     <p>Si deseas iniciar sesión haz click <a href='login.php'>aquí</a></p>
-                </div>
-                ";
+                </div>";
             }
             else {
                 echo "
                 <div class=\"callout alert\">
                     <h5>El usuario ya existe</h5>
                     <p>Intentalo con otro correo</p>
-                </div>
-                ";
+                </div>";
             }
         }
         ?>
@@ -53,7 +51,7 @@
                         <input name='pswd' id='password' type="text" placeholder="Contaseña" required>
                     </label>
                     <!--<input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>-->
-                    <p><input type="submit" class="button expanded" value="Log in"></p>
+                    <p><input type="submit" class="button expanded" value="Registrate"></p>
                 </form>
                 <p>Si ya tienes una cuenta haz click <a href="Login.php">aquí</a></p>
             </div>

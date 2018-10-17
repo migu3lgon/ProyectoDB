@@ -3,7 +3,8 @@
 
 footer {
   padding: 80px 0px 40px 0px;
-  background-color: darkslategray; }
+  background-color: darkslategray;
+  color: white; }
 
 footer a {
   display: block; }
