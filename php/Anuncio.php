@@ -25,7 +25,7 @@
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $idanuncio = 72;
+        $idanuncio = 75;
             //obtener datos para poblar el anuncio
             $conexion = $conn->query("SELECT * from anuncio where idanuncio=$idanuncio limit 1;");
                 $row = $conexion->fetch_assoc(); 
@@ -36,6 +36,7 @@
                 $subcategoria = $row["idsubcategoria"];
                 $ubicacion = $row["idubicacion"];
                 $telefono = $row["telefono"];
+                $precio = $row["precio"];
                 //query para obtener la imagen del anuncio
                 $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 
                 while($row = mysqli_fetch_array($imagen))  
@@ -57,14 +58,14 @@
                 </div>
                 <div class="small-10 medium-4 cell">
                     <h2>Precio:</h2>
-                    <span id= "precio">Q 200,000</span>
-                    <h2>informacion general</h2>
+                    <span id= "precio">Q <?php echo number_format($precio, 2)?></span>
+                    <h2>Informacion General</h2>
                     <?php echo "<p>$descripcion</p>"; ?>
                     <h2>Datos Tecnicos</h2>
                     <?php echo "<p>$datostecnicos</p>"; ?>
                 </div>
                 <div class="small-10 cell">
-                    <h3>mas informacion</h3>
+                    <h3>Mas Informacion</h3>
                     <?php echo "<p>$masinformacion</p>"; ?>
                 </div>
                 <div id="bones de anuncio" class="cell small-10 button-group">
