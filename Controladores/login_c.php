@@ -36,7 +36,7 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
     $_SESSION['loggedin'] = true;
     $_SESSION['username'] = $username;
     $_SESSION['start'] = time();
-    $_SESSION['expire'] = $_SESSION['start'] + (5 * 60);
+    $_SESSION['expire'] = $_SESSION['start'] + (30 * 60);
     
 
     //Obtener el nombre para la navbar
