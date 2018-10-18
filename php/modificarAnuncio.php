@@ -20,7 +20,7 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         } 
-        $idanuncio = 62;
+        $idanuncio = 80;
         //querys para poblar los selects
         $con_cat = $conn->query("SELECT * FROM categorias");
         $con_subcat = $conn->query("SELECT * FROM subcategorias");
@@ -69,6 +69,7 @@
                 $subcategoriab = $row["idsubcategoria"];
                 $ubicacionb = $row["idubicacion"];
                 $telefonob = $row["telefono"];
+                $preciob = $row["precio"];
                 
        ?>
   <?php /* include('/partials/NavigationBar.php') */?>
@@ -77,16 +78,19 @@
         <div class= "cell small-12 medium-8">
             <h4 class="text-center">Ingresa los datos</h4>
             Título del anuncio:<br>
-            <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="ingrese el numero de departamento">
+            <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="Ingrese aqui el titulo de su anuncio">
+            <br>
+            Precio del articulo:<br>
+            <input type="text" name="precioa" value="<?php echo $preciob ?>" placeholder="Ingrese aqui el Precio de su articulo">
             <br>
             Descripción:<br>
-            <textarea type="text" name="descripciona" value="" placeholder="ingrese el numero de departamento"><?php echo $descripcionb ?></textarea>
+            <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui la descripcion de su anuncio"><?php echo $descripcionb ?></textarea>
             <br>
             Datos Técnicos:<br>
-            <textarea type="text" name="datostecnicosa" value="" placeholder="ingrese el numero de departamento"><?php echo $datostecnicosb ?></textarea>
+            <textarea type="text" name="datostecnicosa" value="" placeholder="Ingrese aqui los datos tecnicos del producto"><?php echo $datostecnicosb ?></textarea>
             <br>
             Más informacián:<br>
-            <textarea type="text" name="masinfo" value="" placeholder="ingrese el numero de departamento"><?php echo $masinformacionb ?></textarea>
+            <textarea type="text" name="masinfo" value="" placeholder="que mas decea indicar sobre su producto?"><?php echo $masinformacionb ?></textarea>
             <br>
             Categoría:<br>
             <select name="subcategoriaa">
@@ -113,7 +117,7 @@
             </select>
             <br>
             Teléfono de contacto:<br>
-            <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ingrese el numero de departamento">
+            <input type="text" name="telefonoa" value="<?php echo $telefonob ?>" placeholder="ej: 54638126">
             <br>
             Imagen:<br>
             <div class= "grid-container">
@@ -150,6 +154,7 @@
                 if($check /*!== false*/){
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
+                    $precio = $_POST["precioa"];
                     $descripcion = $_POST["descripciona"];
                     $datostecnicos = $_POST["datostecnicosa"];
                     $masinformacion = $_POST["masinfo"];
@@ -160,7 +165,7 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion' where idanuncio = $idanuncio");
+                    $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion', precio = '$precio' where idanuncio = $idanuncio");
                     if($insert){
                         echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{
@@ -169,6 +174,7 @@
             }
         }elseif(isset($_POST["submit"])){
             $titulo = $_POST["tituloa"];
+            $precio = $_POST["precioa"];
             $descripcion = $_POST["descripciona"];
             $datostecnicos = $_POST["datostecnicosa"];
             $masinformacion = $_POST["masinfo"];
