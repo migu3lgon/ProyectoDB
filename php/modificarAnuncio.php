@@ -162,11 +162,10 @@
                     //Insert image content into database
                     $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', Imagen = '$imgContent', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion' where idanuncio = $idanuncio");
                     if($insert){
-                        echo "File uploaded successfully.";
+                        echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{
-                        echo "File upload failed, please try again.";
-                        //echo $insert;
-                }
+                        echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
+                    }
             }
         }elseif(isset($_POST["submit"])){
             $titulo = $_POST["tituloa"];
@@ -178,10 +177,10 @@
             $telefono = $_POST["telefonoa"];
 
             $insert = $conn->query("UPDATE anuncio set titulo = '$titulo', descripcion ='$descripcion', idsubcategoria = '$subcategoria', idubicacion = '$ubicacion', telefono = '$telefono', datostecnicos ='$datostecnicos', masinformacion = '$masinformacion' where idanuncio = $idanuncio");
-            if ($insert){
-                echo "nice";
-            } else {
-                echo "fail"; echo $insert;
+            if($insert){
+                echo '<script language="javascript"> alert("Archivo modificado exitosamente") </script>';
+            }else{
+                echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
             }
                     /*$dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
