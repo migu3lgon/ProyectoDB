@@ -53,27 +53,9 @@
     <!-- incluye al navegador-->
     <?php include('../controladores/navbar_c.php'); ?>
     <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-    <?php include('../controladores/checksession_c.php'); ?>
+    <?php //include('../controladores/checksession_c.php'); ?>
 
   <div class= "grid-container">
-    <?php
-        if (isset($_GET['bool'])) {
-            if ($_GET['bool']) {
-                echo "
-                <div class=\"callout success\">
-                    <h5>El anuncio se ha cargado con éxito.</h5>
-                </div>
-                ";
-            }
-            else {
-                echo "
-                <div class=\"callout alert\">
-                    <h5>Parece que algo ha salido mal, inténtalo de nuevo.</h5>
-                </div>
-                ";
-            }
-        }
-        ?>
       <div class="grid-x grid-margin-x align-center">
         <form class= "cell small-12 medium-8" action="nuevoanuncio.php" method="post" enctype="multipart/form-data">
             <h4 class="text-center">Ingresa los datos</h4>
@@ -142,12 +124,9 @@
                     $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
                         VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
-                        //echo "File uploaded successfully.";
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
+                        echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
-                        //echo "File upload failed, please try again.";
-                        //echo $insert;
+                        echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
                     }
             }
         }elseif(isset($_POST["submit"])){
@@ -163,15 +142,12 @@
                     $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
                         VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion')");
                     if($insert){
-                        //echo "File uploaded successfully.";
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
+                        echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
-                        //echo "File upload failed, please try again.";
-                        //echo $insert;
+                        echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
                     }
-
         }
+        
         $conn->close();
     ?>
 
