@@ -53,7 +53,7 @@
     <!-- incluye al navegador-->
     <?php include('../controladores/navbar_c.php'); ?>
     <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-    <?php //include('../controladores/checksession_c.php'); ?>
+    <?php include('../controladores/checksession_c.php'); ?>
 
   <div class= "grid-container">
       <div class="grid-x grid-margin-x align-center">
