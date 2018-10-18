@@ -80,6 +80,9 @@
             Título del anuncio:<br>
             <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
+            Precio del articulo:<br>
+            <input type="text" name="precioa" value="" placeholder="Ingrese aqui el Precio de su articulo">
+            <br>
             Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto"></textarea>
             <br>
@@ -129,6 +132,7 @@
                 if($check /*!== false*/){
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
+                    $precio = $_POST["precioa"];
                     $descripcion = $_POST["descripciona"];
                     $datostecnicos = $_POST["datostecnicosa"];
                     $masinformacion = $_POST["masinfo"];
@@ -139,20 +143,21 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion', '$precio')");
                     if($insert){
-                        //echo "File uploaded successfully.";
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
+                        echo "File uploaded successfully.";
+                        //header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
                     }else{
-                        header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
-                        //echo "File upload failed, please try again.";
+                        //header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=0');
+                        echo "File upload failed, please try again.";
                         //echo $insert;
                     }
             }
         }elseif(isset($_POST["submit"])){
                     $dataTime = date("Y-m-d H:i:s");
                     $titulo = $_POST["tituloa"];
+                    $precio = $_POST["precioa"];
                     $descripcion = $_POST["descripciona"];
                     $datostecnicos = $_POST["datostecnicosa"];
                     $masinformacion = $_POST["masinfo"];
@@ -160,8 +165,8 @@
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
 
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion', '$precio')");
                     if($insert){
                         //echo "File uploaded successfully.";
                         header('Location: http://localhost/proyectodw/php/nuevoanuncio.php?bool=1');
