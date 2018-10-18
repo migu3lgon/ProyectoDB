@@ -14,7 +14,7 @@ $now = time();
 if (isset($_SESSION['expire'])) {
   if($now > $_SESSION['expire']) {
     session_destroy();
-    header('Location: http://localhost/proyectodw/php/index.php');
+    header('Location: http://localhost/proyectodb/php/index.php');
     exit();
   }
 }

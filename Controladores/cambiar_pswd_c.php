@@ -29,11 +29,11 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
 $row = mysqli_fetch_array( $bool );
 
  if ($row['@res']) { 
-    header('Location: http://localhost/proyectodw/php/cambiar_clave.php?cambio=1');
+    header('Location: http://localhost/proyectodb/php/cambiar_clave.php?cambio=1');
     exit();
 
  } else { 
-    header("Location: http://localhost/proyectodw/php/cambiar_clave.php?cambio=0");
+    header("Location: http://localhost/proyectodb/php/cambiar_clave.php?cambio=0");
     exit();
  }
  mysqli_close($conexion); 
