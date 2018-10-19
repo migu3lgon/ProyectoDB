@@ -36,7 +36,7 @@
             if ($_GET['cat']==$subcat_arr[$k][1]) {
                 echo '
                 <div class="cell">
-                <a href="view_p.php?subcat='.$subcat_arr[$k][1].'">
+                <a href="view_p.php?subcat='.$subcat_arr[$k][0].'">
                     <div class="card">
                         <img src="https://placehold.it/180x180">
                         <div class="card-section">
