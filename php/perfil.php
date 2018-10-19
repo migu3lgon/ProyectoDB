@@ -10,9 +10,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
-    if (isset($_GET['idusuario'])) {
-        $subcat = $_GET['subcat'];
-    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -68,8 +66,7 @@
                                             }
                                             $prodName = $row['titulo'];
                                             $prodPrice = $row['precio'];
-                                        }  
-                                        echo    '<div class="grid-x grid-margin-x align-middle">
+                                            echo    '<div class="grid-x grid-margin-x align-middle">
                                                     <div class="cell small-12 medium-3">
                                                         <h4>'.$prodName.'</h4>
                                                         <br>
@@ -89,7 +86,9 @@
                                                 </div>
                                                 <hr>
 
-                                        '
+                                        ';
+                                        }  
+                                        
                                         /*<div class="cell small-12 medium-3">
                                             <div class="product-card cont">
                                                 <div class="product-card-thumbnail anuncio">
@@ -103,7 +102,7 @@
                                                 <button class="button">Comprar</button>
                                                 <button class="button">Informacion</button>
                                             </div>
-                                        </div>*/;  
+                                        </div>*/
                                 ?>
                                 </div>
                                 <hr>
