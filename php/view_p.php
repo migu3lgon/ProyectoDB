@@ -80,11 +80,8 @@
                                 <button class="button">Informacion</button>
                             </div>
                         </div>';
-                    }
-
-
-                    
-                ?>  
+                    }  
+                ?> 
             </div>
         </div>
     </div>

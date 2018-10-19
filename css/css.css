@@ -1,3 +1,21 @@
+.error {
+  color: red; }
+
+.img_anuncio {
+  height: 100%;
+  width: auto; }
+
+.anuncio .img_anuncio {
+  max-height: 180px;
+  max-width: 100%;
+  min-height: 180px; }
+
+.cont {
+  white-space: nowrap;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis; }
+
 #Navigation_Bar_Logo {
   margin-right: 10px; }
 
@@ -14,3 +32,9 @@ header {
 
 .mainb {
   padding: 0px 0px 100px 0px; }
+
+.imagendeanuncio {
+  display: block;
+  margin-left: auto;
+  width: 400px;
+  float: right; }
