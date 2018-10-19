@@ -67,12 +67,12 @@
                         }  
                         echo '
                         <div class="cell small-12 medium-3">
-                            <div class="product-card">
+                            <div class="product-card cont">
                                 <div class="product-card-thumbnail anuncio">
                                     <a href="#">';echo $img.'</a>
                                 </div>
                                 <h2 class="product-card-title cont"><a href="#">';echo $prodName.'</a></h2>
-                                <span class="product-card-desc cont">';echo $prodDesc.'</span>
+                                <span class="product-card-desc">';echo $prodDesc.'</span>
                                 <br/>
                                 <span class="product-card-price">Q ';echo $prodPrice.'</span>
                                 <br/>
