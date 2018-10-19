@@ -1,2 +1,19 @@
 .error {
-  color: red; }
+    color: red;
+}
+
+.img_anuncio {
+    width: auto;
+}
+
+.anuncio {
+    height: 180px;
+    width: auto;
+}
+
+.cont {
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

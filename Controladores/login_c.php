@@ -48,11 +48,11 @@ $bool = $conexion->query($cons3) or die("Parece que algo ha salido mal!");
     $row2 = mysqli_fetch_array( $res2 );
     $_SESSION['id_usuario'] = $row2[0];
 
-    header('Location: http://localhost/proyectodw/php/index.php');
+    header('Location: http://localhost/proyectodb/php/index.php');
     exit();
 
  } else { 
-    header("Location: http://localhost/proyectodw/php/login.php?login=0");
+    header("Location: http://localhost/proyectodb/php/login.php?login=0");
     exit();
  }
  mysqli_close($conexion); 

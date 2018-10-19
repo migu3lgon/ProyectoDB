@@ -1,30 +1,37 @@
-# ProyectoDW
-Proyecto de diseño web
-Funcionalidades y evaluación Diseño web:
-Responsivo (móvil y desktop)
-Homepage con listado de búsqueda y categorías
-Datos del anuncio deben traerse e inyectarse en la pagina por medio de un json y usando
-angular js
-Pagina de anuncio
-Pagina de creación de anuncio
-Pagina pagina de registro y login
-Pagina de perfil de usuario
-Pagina de contacto por anuncio
-Pagina de información e historia de la compañía (pagina web)
-Pagina de contacto con la compañía (pagina web)
-Página de preguntas frecuentes.
-Deberá implementar al menos un mixin utilizando buenas prácticas de implementación y
-con sentido adecuado dentro del proyecto..
-Fuentes y build en ambiente de desarrollo, fuentes versionadas en repositorio.
+# ProyectoDB
+Proyecto de bases de datos
+Funcionalidades y evaluación DB:
+Login, registro y cambio de password.
+Creación de anuncios.
+Categorías y ubicaciones, categorías pagina de subcategorías
+Venta destacados * numero de días, luego de estos días, ya no mas destacado
+(implementado por procedimiento almacenado que se ejecuta todos los días a las 0:00
+hrs)
+Marcar un anuncio como vendido (manejado por trigger)
+Búsqueda con filtros de varias categorías, ubicaciones y texto
+Envío de correos por nuevo contacto o respuesta de un mensaje enviado, contacto
+registrado por anuncio y por usuario, interfaz para ver los mensajes respectivos entre los
+usuarios para ese anuncio con capacidad de responder. Manejo de perfiles registrados o
+anónimos.
+Subir una fotografia (blob)
+Servicio para entregar los datos de un anuncio, listado de categorías y subcategorías y de
+ubicaciones por medio de un json
+Actualización de anuncio.
+Manejo de perfil de usuario
+FNBC
+Invalidación de usuarios
+Implementar un procedimiento almacenado con parámetros out y que tenga sentido
+dentro del uso del portal.
+Implementar al menos 2 vistas y 2 funciones que tengan sentido dentro del uso del
+portal.
 Cualquier consideración y programación necesaria para cumplir con el planteamiento del
 requerimiento.
+Tecnologias: php y mysql
 Documentación:
-Manual funcional y técnico con wireframes. Description semántica de la estructura html
-de cada pagina.
-Set de htmls funcionales generados con contenido de muestra y final según sea el caso
-con sus respectivas librerías. Entrega en ambiente de desarrollo funcional en web server
-local como el visto en clase.
-Tecnologías: Angular, foundation, Sass.
-Entregables: Fuentes en repositorio web (github), cada alumno con 10 commits,
-documentación. Listado de tareas efectuadas por cada integrante del grupo con %
-completado por cada uno. (podría ser verificable en el historial de git
+Modelo entidad relación
+Manual funcional y técnico. El manual funcional debe tener un enfoque de usuario
+visitante con casos de uso.
+Nota: Implementado con el proyecto de diseño web.
+Entregables: fuentes de php y script para crear base de datos subidas en repositorio de
+versiones. Listado de tareas efectuadas por cada integrante del grupo con % completado
+por cada uno, documentación completa..

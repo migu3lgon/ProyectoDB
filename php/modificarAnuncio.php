@@ -46,9 +46,9 @@
         $count_subcat = count($subcat_arr);
         //insertar la imagen del anuncio en $imagenanuncio
         while($row = mysqli_fetch_array($imagen))  
-                {  
-                     $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  />';  
-                }  
+        {  
+                $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  />';  
+        }  
                 
 
     ?>

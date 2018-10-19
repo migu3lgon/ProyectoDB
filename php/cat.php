@@ -10,18 +10,7 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
-    //querys para poblar los selects
-    $con_subcat = $conn->query("SELECT * FROM subcategorias");
-    //arrays de categorias y sub categorias
-    $subcat_arr = array();
-
-    //Poblar arrays para mostrar las categorias y sub categorias
-    $j = 0;
-    while ($col2 = mysqli_fetch_array( $con_subcat )){
-        $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
-        $j = $j + 1;
-    }
-    $count_subcat = count($subcat_arr);
+    
 ?>
 
 <!DOCTYPE html>
@@ -47,13 +36,15 @@
             if ($_GET['cat']==$subcat_arr[$k][1]) {
                 echo '
                 <div class="cell">
-                <div class="card">
-                    <img src="https://placehold.it/180x180">
-                    <div class="card-section">
-                    <h4>'.$subcat_arr[$k][2].'</h4>
-                    <p>Description</p>
+                <a href="view_p.php?subcat='.$subcat_arr[$k][1].'">
+                    <div class="card">
+                        <img src="https://placehold.it/180x180">
+                        <div class="card-section">
+                        <h4>'.$subcat_arr[$k][2].'</h4>
+                        <p>Description</p>
+                        </div>
                     </div>
-                </div>
+                </a>
                 </div>';
             }
         }
