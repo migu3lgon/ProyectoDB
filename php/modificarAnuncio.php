@@ -80,7 +80,7 @@
             <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
             Precio del articulo:<br>
-            <input type="text" name="precioa" value="<?php echo $preciob ?>" placeholder="Ingrese aqui el Precio de su articulo">
+            <input type="text" name="precioa" value="<?php echo $preciob ?>" placeholder="Ingrese aqui el Precio de su articulo " pattern="[0-9]+">
             <br>
             Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui la descripcion de su anuncio"><?php echo $descripcionb ?></textarea>

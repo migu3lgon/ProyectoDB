@@ -46,6 +46,14 @@
         <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y align-middle">
                 <?php 
+                    if ($count_prod <= 0) {
+                        echo '
+                        <div class="callout">
+                        <h5>Más anuncios proximamente!</h5>
+                        <p>Actualmente esta categoría no posee ningún anuncio, vuelve a intentarlo más tarde</p>
+                        </div>
+                        ';
+                    }
                     for ($i=0; $i < $count_prod ; $i++) { 
                         $imagen = $conn->query("SELECT * from anuncio where idanuncio=".$prod_arr[$i][0]." limit 1;");
                         while($row = mysqli_fetch_array($imagen))  
@@ -69,12 +77,12 @@
                         <div class="cell small-12 medium-3">
                             <div class="product-card cont">
                                 <div class="product-card-thumbnail anuncio">
-                                    <a href="#">';echo $img.'</a>
+                                    <a href="#">'.$img.'</a>
                                 </div>
-                                <h2 class="product-card-title cont"><a href="#">';echo $prodName.'</a></h2>
-                                <span class="product-card-desc">';echo $prodDesc.'</span>
+                                <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a></h2>
+                                <span class="product-card-desc">'.$prodDesc.'</span>
                                 <br/>
-                                <span class="product-card-price">Q ';echo $prodPrice.'</span>
+                                <span class="product-card-price">Q '.$prodPrice.'</span>
                                 <br/>
                                 <button class="button">Comprar</button>
                                 <button class="button">Informacion</button>
