@@ -21,6 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gioscorp2`
 --
+CREATE DATABASE IF NOT EXISTS `gioscorp2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gioscorp2`;
 
 DELIMITER $$
 --
