@@ -56,7 +56,7 @@
                                                 $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
                                             }
                                             else {
-                                                $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
+                                                $img = '<img class="img_anuncio" src="../Imagenes/Sin_imagen_disponible.jpg" alt="Sin imagen"/>';
                                             }
                                             if ($row['descripcion']!= NULL) {
                                                 $prodDesc = $row['descripcion'];
@@ -67,23 +67,23 @@
                                             $prodName = $row['titulo'];
                                             $prodPrice = $row['precio'];
                                             echo    '<div class="grid-x grid-margin-x align-middle">
-                                                    <div class="cell small-12 medium-3">
-                                                        <h4>'.$prodName.'</h4>
-                                                        <br>
-                                                        <h4>Q '.$prodPrice.'</h4>
-                                                    </div>
-                                                    <div class="cell small-12 medium-3">
-                                                        <p> '.$prodDesc.'</p>
-                                                    </div>
-                                                    <div class="cell small-12 medium-3">
-                                                        '.$img.'
-                                                    </div>
-                                                    <div class="cell small-12 medium-3">
+                                                        <div class="cell small-12 medium-3">
+                                                            <h4>'.$prodName.'</h4>
+                                                            <br>
+                                                            <h4>Q '.$prodPrice.'</h4>
+                                                        </div>
+                                                        <div class="cell small-12 medium-3">
+                                                            <p> '.$prodDesc.'</p>
+                                                        </div>
+                                                        <div class="cell small-12 medium-3 anuncio">
+                                                            '.$img.'
+                                                        </div>
+                                                        <div class="cell small-12 medium-3">
                                                         <a href="#0" class="button expanded">Ver</a>
                                                         <br>
                                                         <a href="#0" class="button expanded">Modificar</a>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 <hr>
 
                                         ';
@@ -105,9 +105,9 @@
                                         </div>*/
                                 ?>
                                 </div>
+                                
                                 <hr>
                             </div>
-
                         </div>
                         <div class="tabs-panel" id="panel3">
                             <p>Three</p>
