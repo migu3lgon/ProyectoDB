@@ -19,6 +19,9 @@
   overflow: hidden;
   text-overflow: ellipsis; }
 
+.align {
+  margin: auto; }
+
 #Navigation_Bar_Logo {
   margin-right: 10px; }
 
