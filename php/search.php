@@ -26,6 +26,7 @@
         <div class="grid-container">
         
         <?php 
+            
 
                 if(isset($_POST['search'])){ 
                         
@@ -36,44 +37,38 @@
                     //echo $sql;
                     $sql = "CALL getData('$value')";
                     $result=mysqli_query($conexion, $sql);
-                    
-                    /*
-                    echo "<tr>\n";  
-                    echo "<table><tr> <th>Titulo</th><th>Datos tecnicos</th><th>Descripcion</th><th>Fecha</th><th>Mas informacion</th></tr>";
-                    
-                        while($row=mysqli_fetch_array($result)){ 
-                                    $title =$row['titulo'];
-                                    $tecData = $row['datostecnicos'];
-                                    $description = $row['descripcion'];
-                                    $date=$row['fecha']; 
-                                    $moreInfo = $row['masinformacion'];
-                                    
-                            //-display the result of the array 
-                            echo "<tr>\n"; 
-                            echo "<td>"   .$title . "</td><td> " . $tecData .  "</td><td> " . $description .  "</td><td> " . $date .  "</td><td> " . $moreInfo .  "</td>\n"; 
-                            echo "</tr>"; 
-
-                        
-                    } 
-                    
-                    echo "</table>";*/
-                    for ($i=0; $i < 6; $i++){
+                
+                    echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     while($row=mysqli_fetch_array($result)){
-                                    $title =$row['titulo'];
-                                    $tecData = $row['datostecnicos'];
-                                    $description = $row['descripcion'];
-                                    $date=$row['fecha']; 
-                                    $moreInfo = $row['masinformacion'];
-                                    $price = $row['precio'];
+                        
+                        $title =$row['titulo'];
+                        $tecData = $row['datostecnicos'];
+                        //$description = $row['descripcion'];
+                        $date=$row['fecha']; 
+                        $moreInfo = $row['masinformacion'];
+                        $price = $row['precio'];
+                        $image = $row['Imagen'];
+                        if ($row['Imagen'] != NULL) {
+                            $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
+                        }
+                        else {
+                            $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
+                        }
+                        if ($row['descripcion']!= NULL) {
+                            $description = $row['descripcion'];
+                        }
+                        else {
+                            $description = "Sin descripcion.";
+                        }      
 
                                     
                     echo 
                     '
-                    <div class="grid-x grid-margin-x grid-margin-y">
+                    
                     <div class="cell small-12 medium-3">
                         <div class="product-card">
                             <div class="product-card-thumbnail">
-                                <a href="#"><img src="https://placehold.it/180x180"/></a>
+                                <a href="#"><img src=""/></a>
                             </div>
                             <h2 class="product-card-title"><a href="#">'.$title.'</a></h2>
                             <span class="product-card-desc">'.$description.'</span>
@@ -83,10 +78,10 @@
                             <button class="button">Comprar</button>
                             <button class="button">Informacion</button>
                         </div>
-                    </div>
-                    </div>';
-                    }}
-
+                    </div>'
+                    ;
+                    }
+                    echo '</div>';
                                         
                             }
             
