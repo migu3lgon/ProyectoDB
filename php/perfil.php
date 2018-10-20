@@ -40,11 +40,11 @@
                     </ul>
 
                     <div class="tabs-content" data-tabs-content="example-tabs">
-                        <div class="tabs-panel" id="panel1">
+                        <div class="tabs-panel is-active" id="panel1">
                             <p>One</p>
                             <p>Este es el disenio de miguel</p>
                         </div>
-                        <div class="tabs-panel is-active" id="panel2">
+                        <div class="tabs-panel" id="panel2">
                             <div class="grid-container">
                                 <?php
                                     $id = $_SESSION['id_usuario'];  
@@ -80,7 +80,8 @@
                                                             '.$img.'
                                                         </div>
                                                         <div class="cell small-12 medium-3 large-3">
-                                                        <a href=""anuncio.php?id_add='.$prodID.'" class="button expanded">Ver</a>
+                                                        <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
+                                                        echo '.$prodID.';
                                                         <br>
                                                         <a href="#" class="button expanded">Modificar</a>
                                                         </div>
