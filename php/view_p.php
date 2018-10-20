@@ -78,7 +78,7 @@
                         <div class="cell small-12 medium-3">
                             <div class="product-card cont">
                                 <div class="product-card-thumbnail anuncio">
-                                    <a href="#">'.$img.'</a>
+                                    <a href="anuncio.php?id_add='.$prodID.'">'.$img.'</a>
                                 </div>
                                 <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a></h2>
                                 <span class="product-card-desc">'.$prodDesc.'</span>
