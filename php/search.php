@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     $usuario = "root";
     $contrasena = "";
     $servidor = "localhost";
@@ -23,7 +23,41 @@
 <body>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
-        <div class="grid-container">   
+        <div class="grid-container">
+        
+        <?php 
+
+                if(isset($_POST['search'])){ 
+                        
+                        
+
+                    $value=$_POST['search']; 
+                        
+                    //echo $sql;
+                    $sql = "CALL getData('$value')";
+                    $result=mysqli_query($conexion, $sql);
+                    
+                        
+                        while($row=mysqli_fetch_array($result)){ 
+                                    $title =$row['titulo'];
+                                    $tecData = $row['datostecnicos'];
+                                    $description = $row['descripcion'];
+                                    $date=$row['fecha']; 
+                                    $moreInfo = $row['masinformacion'];
+                                    
+                            //-display the result of the array 
+                        echo "<tr>\n"; 
+                        echo "<table><tr> <th>Titulo</th><th>Datos tecnicos</th><th>Descripcion</th><th>Fecha</th><th>Mas informacion</th></tr>";
+                                echo "<tr>\n";  
+                            echo "<td>"   .$title . "</td><td> " . $tecData .  "</td><td> " . $description .  "</td><td> " . $date .  "</td><td> " . $moreInfo .  "</td>\n"; 
+                            echo "</tr>"; 
+                        echo "</table>";
+                    } 
+                                        
+                            }
+            
+        ?> 
+        
         <?php 
         for ($i=0; $i < 6; $i++) { 
             echo '

@@ -39,8 +39,10 @@
                   <figure>
                         <a href="index.php"><img src="../Imagenes/logo.jpg" class="logo" id="Navigation_Bar_Logo" /></a>
                   </figure>
+                  <form action="search.php" method="POST">
                   <li><input type="search" placeholder="Search"></li>
                   <li><button type="button" class="button">Search</button></li>
+                  </form>
                 </ul>
             </div>
           <div class="top-bar-right">
