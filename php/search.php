@@ -37,7 +37,10 @@
                     $sql = "CALL getData('$value')";
                     $result=mysqli_query($conexion, $sql);
                     
-                        
+                    /*
+                    echo "<tr>\n";  
+                    echo "<table><tr> <th>Titulo</th><th>Datos tecnicos</th><th>Descripcion</th><th>Fecha</th><th>Mas informacion</th></tr>";
+                    
                         while($row=mysqli_fetch_array($result)){ 
                                     $title =$row['titulo'];
                                     $tecData = $row['datostecnicos'];
@@ -46,86 +49,49 @@
                                     $moreInfo = $row['masinformacion'];
                                     
                             //-display the result of the array 
-                        echo "<tr>\n"; 
-                        echo "<table><tr> <th>Titulo</th><th>Datos tecnicos</th><th>Descripcion</th><th>Fecha</th><th>Mas informacion</th></tr>";
-                                echo "<tr>\n";  
+                            echo "<tr>\n"; 
                             echo "<td>"   .$title . "</td><td> " . $tecData .  "</td><td> " . $description .  "</td><td> " . $date .  "</td><td> " . $moreInfo .  "</td>\n"; 
                             echo "</tr>"; 
-                        echo "</table>";
+
+                        
                     } 
+                    
+                    echo "</table>";*/
+                    for ($i=0; $i < 6; $i++){
+                    while($row=mysqli_fetch_array($result)){
+                                    $title =$row['titulo'];
+                                    $tecData = $row['datostecnicos'];
+                                    $description = $row['descripcion'];
+                                    $date=$row['fecha']; 
+                                    $moreInfo = $row['masinformacion'];
+                                    $price = $row['precio'];
+
+                                    
+                    echo 
+                    '
+                    <div class="grid-x grid-margin-x grid-margin-y">
+                    <div class="cell small-12 medium-3">
+                        <div class="product-card">
+                            <div class="product-card-thumbnail">
+                                <a href="#"><img src="https://placehold.it/180x180"/></a>
+                            </div>
+                            <h2 class="product-card-title"><a href="#">'.$title.'</a></h2>
+                            <span class="product-card-desc">'.$description.'</span>
+                            <br/>
+                            <span class="product-card-price">$'.$price.'</span>
+                            <br/>
+                            <button class="button">Comprar</button>
+                            <button class="button">Informacion</button>
+                        </div>
+                    </div>
+                    </div>';
+                    }}
+
                                         
                             }
             
         ?> 
-        
-        <?php 
-        for ($i=0; $i < 6; $i++) { 
-            echo '
-            
-            <div class="grid-x grid-margin-x grid-margin-y">
-
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-
-            </div>
-
-        ';
-        }
-        ?>  
+         
         </div>
     </div>
 
