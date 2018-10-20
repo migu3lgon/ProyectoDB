@@ -66,6 +66,7 @@
                                             }
                                             $prodName = $row['titulo'];
                                             $prodPrice = $row['precio'];
+                                            $prodID = $row['idanuncio'];
                                             echo    '<div class="grid-x grid-margin-x align-middle">
                                                         <div class="cell small-12 medium-3 large-3">
                                                             <h4>'.$prodName.'</h4>
@@ -79,9 +80,9 @@
                                                             '.$img.'
                                                         </div>
                                                         <div class="cell small-12 medium-3 large-3">
-                                                        <a href="#0" class="button expanded">Ver</a>
+                                                        <a href=""anuncio.php?id_add='.$prodID.'" class="button expanded">Ver</a>
                                                         <br>
-                                                        <a href="#0" class="button expanded">Modificar</a>
+                                                        <a href="#" class="button expanded">Modificar</a>
                                                         </div>
                                                       </div>
                                                 <hr>
