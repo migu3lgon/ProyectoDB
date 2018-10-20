@@ -40,11 +40,11 @@
                     </ul>
 
                     <div class="tabs-content" data-tabs-content="example-tabs">
-                        <div class="tabs-panel is-active" id="panel1">
+                        <div class="tabs-panel" id="panel1">
                             <p>One</p>
                             <p>Este es el disenio de miguel</p>
                         </div>
-                        <div class="tabs-panel" id="panel2">
+                        <div class="tabs-panel is-active" id="panel2">
                             <div class="grid-container">
                                 <div class="grid-x grid-margin-x align-middle">
                                 <?php
@@ -54,10 +54,10 @@
                                         while($row = mysqli_fetch_array($imagen))  
                                         {  
                                             if ($row['Imagen'] != NULL) {
-                                                $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
+                                                $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  alt="imagen producto"/>';  
                                             }
                                             else {
-                                                $img = '<img class="img_anuncio" src="../Imagenes/Sin_imagen_disponible.jpg" alt="Sin imagen"/>';
+                                                $img = '<img class="img_anuncio" src="../Imagenes/Sin_imagen_disponible.jpg"  alt="Sin imagen"/>';
                                             }
                                             if ($row['descripcion']!= NULL) {
                                                 $prodDesc = $row['descripcion'];
