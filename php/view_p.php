@@ -75,15 +75,9 @@
                         }  
                         echo '
                         <div class="cell small-12 medium-3">
-<<<<<<< HEAD
-                            <div class="product-card">
-                                <div class="product-card-thumbnail">
-                                    <a href="#">';echo $img.'</a>
-=======
                             <div class="product-card cont">
                                 <div class="product-card-thumbnail anuncio">
                                     <a href="#">'.$img.'</a>
->>>>>>> cfe2a84fed1247305d379fd83ca5db73e06e7f78
                                 </div>
                                 <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a></h2>
                                 <span class="product-card-desc">'.$prodDesc.'</span>
