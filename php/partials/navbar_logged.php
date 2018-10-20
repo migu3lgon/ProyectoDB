@@ -60,7 +60,7 @@
                 <li>
                   <a href="#"><?php echo $usuario;?></a>
                   <ul class="menu vertical nested">
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                     <!-- Temporal -->
                     <li><a href="cambiar_clave.php">Cambio de clave</a></li>
                     <li><a href="#">Mis Anuncios</a></li>

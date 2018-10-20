@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <script src='../js/vendor/foundation.js'></script>
+    
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
@@ -66,24 +67,23 @@
                                             }
                                             $prodName = $row['titulo'];
                                             $prodPrice = $row['precio'];
-                                            echo    '<div class="grid-x grid-margin-x align-middle">
-                                                        <div class="cell small-12 medium-3">
+                                            echo    '
+                                                        <div class="cell small-12 medium-3 large-3">
                                                             <h4>'.$prodName.'</h4>
                                                             <br>
                                                             <h4>Q '.$prodPrice.'</h4>
                                                         </div>
-                                                        <div class="cell small-12 medium-3">
+                                                        <div class="cell small-12 medium-3 large-3">
                                                             <p> '.$prodDesc.'</p>
                                                         </div>
-                                                        <div class="cell small-12 medium-3 anuncio">
+                                                        <div class="cell small-12 medium-3 large-3 anuncio">
                                                             '.$img.'
                                                         </div>
-                                                        <div class="cell small-12 medium-3">
+                                                        <div class="cell small-12 medium-3 large-3">
                                                         <a href="#0" class="button expanded">Ver</a>
                                                         <br>
                                                         <a href="#0" class="button expanded">Modificar</a>
                                                         </div>
-                                                    </div>
                                                 <hr>
 
                                         ';
