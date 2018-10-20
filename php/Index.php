@@ -1,11 +1,27 @@
 ﻿<?php
-    $usuario = "root";
-    $contrasena = "";
-    $servidor = "localhost";
-    $basededatos = "gioscorp2";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "gioscorp2";
 
-    $conexion = mysqli_connect($servidor,$usuario,$contrasena) or die("No se ha podido conectar al servidor de base de datos.");
-    $db = mysqli_select_db($conexion, $basededatos) or die("Parece que ha habido un error.");
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    $con_prod = $conn->query("SELECT idanuncio from anuncio");
+    //arrays de categorias y sub categorias
+    $prod_arr = array();
+
+    //Poblar arrays para mostrar las categorias y sub categorias
+    $j = 0;
+    while ($col2 = mysqli_fetch_array( $con_prod )){
+        $prod_arr[$j] = array($col2[0]);
+        $j = $j + 1;
+    }
+    $count_prod = count($prod_arr);
 ?>
 
 <!DOCTYPE html>
@@ -24,74 +40,54 @@
     <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
         <div class="grid-container">
-        <?php 
-        for ($i=0; $i < 6; $i++) { 
-            echo '
-            
             <div class="grid-x grid-margin-x grid-margin-y">
-
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-                <div class="cell small-12 medium-3">
-                    <div class="product-card">
-                        <div class="product-card-thumbnail">
-                            <a href="#"><img src="https://placehold.it/180x180"/></a>
-                        </div>
-                        <h2 class="product-card-title"><a href="#">Product Name</a></h2>
-                        <span class="product-card-desc">Product Description</span>
-                        <br/>
-                        <span class="product-card-price">$9.99</span>
-                        <br/>
-                        <button class="button">Comprar</button>
-                        <button class="button">Informacion</button>
-                    </div>
-                </div>
-
-            </div>
-
-        ';
-        }
-        ?>  
+                <?php 
+                        if ($count_prod <= 0) {
+                            echo '
+                            <div class="callout small-10 medium-10 large-10 align">
+                                <h5>Más anuncios proximamente!</h5>
+                                <p>Actualmente esta categoría no posee ningún anuncio, vuelve a intentarlo más tarde</p>
+                            </div>
+                            ';
+                        }
+                        for ($i=0; $i < $count_prod ; $i++) { 
+                            $imagen = $conn->query("SELECT Imagen,descripcion,titulo,precio,idanuncio from anuncio where idanuncio=".$prod_arr[$i][0]." limit 1;");
+                            while($row = mysqli_fetch_array($imagen))  
+                            {  
+                                if ($row['Imagen'] != NULL) {
+                                    $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
+                                }
+                                else {
+                                    $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
+                                }
+                                if ($row['descripcion']!= NULL) {
+                                    $prodDesc = $row['descripcion'];
+                                }
+                                else {
+                                    $prodDesc = "Sin descripcion.";
+                                }
+                                $prodName = $row['titulo'];
+                                $prodPrice = $row['precio'];
+                                $prodID = $row['idanuncio'];
+                            }  
+                            echo '
+                            <div class="cell small-12 medium-3">
+                                <div class="product-card cont">
+                                    <div class="product-card-thumbnail anuncio">
+                                        <a href="#">'.$img.'</a>
+                                    </div>
+                                    <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a></h2>
+                                    <span class="product-card-desc">'.$prodDesc.'</span>
+                                    <br/>
+                                    <span class="product-card-price">Q '.$prodPrice.'</span>
+                                    <br/>
+                                    <button class="button">Comprar</button>
+                                    <a href="anuncio.php?id_add='.$prodID.'"><button class="button">Informacion</button></a>
+                                </div>
+                            </div>';
+                        }  
+                    ?> 
+            </div>        
         </div>
     </div>
 
@@ -105,5 +101,5 @@
 </body>
 </html>
 <?php
-    mysqli_close($conexion);
+    mysqli_close($conn);
 ?>
