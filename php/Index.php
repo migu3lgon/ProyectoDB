@@ -52,27 +52,25 @@
                             ';
                         }
                         for ($i=0; $i < $count_prod ; $i++) { 
-                            //$imagen = $conn->query("SELECT Imagen,descripcion,titulo,precio,idanuncio from anuncio where idanuncio=".$prod_arr[$i][0]." limit 1;");
-                            //while($row = mysqli_fetch_array($imagen))  
-                            //{  
-                                if ($prod_arr[$i][2] != NULL) {
-                                    $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($prod_arr[$i][2]).'" width=400  alt="imagen producto"/>';  
-                                }
-                                else {
-                                    $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
-                                }
-                                if ($prod_arr[$i][1]!= NULL) {
-                                    $prodDesc = $prod_arr[$i][1];
-                                }
-                                else {
-                                    $prodDesc = "Sin descripcion.";
-                                }
-                                $prodName = $prod_arr[$i][0];
-                                $prodPrice = $prod_arr[$i][3];
-                                $prodID = $prod_arr[$i][4];
-                                //destacado
-                                $dest = $prod_arr[$i][5];
-                            //}  
+                            if ($prod_arr[$i][2] != NULL) {
+                                $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($prod_arr[$i][2]).'" width=400  alt="imagen producto"/>';  
+                            }
+                            else {
+                                $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
+                            }
+                            if ($prod_arr[$i][1]!= NULL) {
+                                $prodDesc = $prod_arr[$i][1];
+                            }
+                            else {
+                                $prodDesc = "Sin descripcion.";
+                            }
+                            $prodName = $prod_arr[$i][0];
+                            $prodPrice = $prod_arr[$i][3];
+                            $prodID = $prod_arr[$i][4];
+                            //destacado
+                            $dest = $prod_arr[$i][5];
+                        
+                            //imprimir el producto
                             echo '
                             <div class="cell small-12 medium-3">
                                 <div class="product-card cont">
