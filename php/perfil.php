@@ -46,7 +46,6 @@
                         </div>
                         <div class="tabs-panel is-active" id="panel2">
                             <div class="grid-container">
-                                <div class="grid-x grid-margin-x align-middle">
                                 <?php
                                     $id = $_SESSION['id_usuario'];  
                                         $imagen = $conn->query("SELECT * from anuncio where idusuario=".$id.";");
@@ -67,7 +66,7 @@
                                             }
                                             $prodName = $row['titulo'];
                                             $prodPrice = $row['precio'];
-                                            echo    '
+                                            echo    '<div class="grid-x grid-margin-x align-middle">
                                                         <div class="cell small-12 medium-3 large-3">
                                                             <h4>'.$prodName.'</h4>
                                                             <br>
@@ -84,6 +83,7 @@
                                                         <br>
                                                         <a href="#0" class="button expanded">Modificar</a>
                                                         </div>
+                                                      </div>
                                                 <hr>
 
                                         ';
