@@ -6,7 +6,7 @@
 <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gio's Company Add</title>
+    <title>Gio's Company - Anuncio</title>
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
@@ -52,10 +52,10 @@
 
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/navbar_c.php'); ?>
     
     <div class="mainb">
-    <h1 align="center"><?php echo $titulo ?></h1> 
+    <h1 align="center"><?php echo $titulo; ?></h1> 
         <article class="grid-container">
             <div class="grid-x grid-margin-x align-center">
                 <div class="small-10 medium-6 cell">
