@@ -53,7 +53,7 @@
     <!-- incluye al navegador-->
     <?php include('../controladores/navbar_c.php'); ?>
     <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-    <?php //include('../controladores/checksession_c.php'); ?>
+    <?php include('../controladores/checksession_c.php'); ?>
 
   <div class= "grid-container">
       <div class="grid-x grid-margin-x align-center">
@@ -63,7 +63,7 @@
             <input type="text" name="tituloa" value="" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
             Precio del articulo:<br>
-            <input type="text" name="precioa" value="" placeholder="Ingrese aqui el Precio de su articulo">
+            <input type="text" name="precioa" value="" placeholder="Ingrese aqui el Precio de su articulo" pattern="[0-9]+">
             <br>
             Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui su descripcion del producto"></textarea>

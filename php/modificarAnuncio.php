@@ -72,7 +72,6 @@
                 $preciob = $row["precio"];
                 
        ?>
-  <?php /* include('/partials/NavigationBar.php') */?>
   <form class= "grid-container" action="modificarAnuncio.php" method="post" enctype="multipart/form-data">
       <div class="grid-x grid-margin-x align-center">
         <div class= "cell small-12 medium-8">
@@ -81,7 +80,7 @@
             <input type="text" name="tituloa" value="<?php echo $titulob ?>" placeholder="Ingrese aqui el titulo de su anuncio">
             <br>
             Precio del articulo:<br>
-            <input type="text" name="precioa" value="<?php echo $preciob ?>" placeholder="Ingrese aqui el Precio de su articulo">
+            <input type="text" name="precioa" value="<?php echo $preciob ?>" placeholder="Ingrese aqui el Precio de su articulo " pattern="[0-9]+">
             <br>
             Descripción:<br>
             <textarea type="text" name="descripciona" value="" placeholder="Ingrese aqui la descripcion de su anuncio"><?php echo $descripcionb ?></textarea>
