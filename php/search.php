@@ -68,7 +68,7 @@
                     <div class="cell small-12 medium-3">
                         <div class="product-card">
                             <div class="product-card-thumbnail">
-                                <a href="#"><img src=""/></a>
+                                <a href="#">'.$img.'</a>
                             </div>
                             <h2 class="product-card-title"><a href="#">'.$title.'</a></h2>
                             <span class="product-card-desc">'.$description.'</span>

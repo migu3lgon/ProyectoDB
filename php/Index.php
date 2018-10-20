@@ -39,11 +39,7 @@
 <body>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
-        <div class="grid-container">   
-        <?php 
-        for ($i=0; $i < 6; $i++) { 
-            echo '
-            
+        <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y">
                 <?php 
                         if ($count_prod <= 0) {
