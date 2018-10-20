@@ -25,7 +25,12 @@
             die("Connection failed: " . $conn->connect_error);
         } 
 
-        $idanuncio = 75;
+        if (isset($_GET['id_add'])) {
+            $idanuncio = $_GET['id_add'];
+        }
+        else {
+            $idanuncio = 75;
+        }
             //obtener datos para poblar el anuncio
             $conexion = $conn->query("SELECT * from anuncio where idanuncio=$idanuncio limit 1;");
                 $row = $conexion->fetch_assoc(); 

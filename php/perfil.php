@@ -81,7 +81,6 @@
                                                         </div>
                                                         <div class="cell small-12 medium-3 large-3">
                                                         <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
-                                                        echo '.$prodID.';
                                                         <br>
                                                         <a href="#" class="button expanded">Modificar</a>
                                                         </div>
