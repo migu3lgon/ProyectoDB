@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="../css/css.css">
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/navbar_c.php'); ?>
     <div class="mainb" align="center">
         <div class="grid-container"> 
         <!---->
