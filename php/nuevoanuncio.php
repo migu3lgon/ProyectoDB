@@ -125,8 +125,8 @@
                     $imgContent = addslashes(file_get_contents($image));
 
                     //Insert image content into database
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion', '$precio')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,'$imgContent',0,$telefono, '$dataTime', '$id', '$datostecnicos', '$masinformacion', '$precio')");
                     if($insert){
                         echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{
@@ -144,8 +144,8 @@
                     $ubicacion = $_POST["ubicaciona"];
                     $telefono = $_POST["telefonoa"];
 
-                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, destacado, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
-                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion', '$precio')");
+                    $insert = $conn->query("INSERT into anuncio (titulo, descripcion, idsubcategoria, idubicacion, Imagen, vendido, telefono, fecha, idusuario, datostecnicos, masinformacion, precio) 
+                        VALUES ('$titulo','$descripcion',$subcategoria,$ubicacion,null,0,$telefono, '$dataTime',  '$id', '$datostecnicos', '$masinformacion', '$precio')");
                     if($insert){
                         echo '<script language="javascript"> alert("Archivo subido exitosamente") </script>';
                     }else{

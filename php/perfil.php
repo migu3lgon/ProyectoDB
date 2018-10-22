@@ -63,7 +63,6 @@
                             <label>Clave</label>
                             <span>************</span><a href="cambiar_clave.php"> Cambio de clave</a>
                             <p><button class="button" data-open="exampleModal1">Actualizar Informacion</button></p>
-                            <p><button class="button" data-open="exampleModal2">Cambiar clave</button></p>
                         </div>
                         <div class="tabs-panel" id="panel2">
                             <div class="grid-container">
@@ -102,7 +101,7 @@
                                                         <div class="cell small-12 medium-3 large-3">
                                                         <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
                                                         <br>
-                                                        <a href="#" class="button expanded">Modificar</a>
+                                                        <a href="modificarAnuncio.php?id_add='.$prodID.'" class="button expanded">Modificar</a>
                                                         </div>
                                                       </div>
                                                 <hr>
