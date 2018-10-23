@@ -40,12 +40,23 @@
                         <a href="index.php"><img src="../Imagenes/logo.jpg" class="logo" id="Navigation_Bar_Logo" /></a>
                   </figure>
                   <?php
-                      
-                  ?>
-                  <form action="search.php" method="GET">
-                  <li><input type="text" name="search" placeholder="Search"></li>
+                  if(isset($_GET['search'])){  
+                  
+                    $valuee = $_GET['search'];
+                    echo '
+                    <form action="search.php" method="GET">
+                  <li><input type="text" name="search" value="'.$valuee.'"></li>
                   <li><button type="submit" class="button">Search</button></li>
                   </form>
+                    ';}
+                  else {
+                    echo '
+                    <form action="search.php" method="GET">
+                    <li><input type="text" name="search" placeholder="Search"></li>
+                    <li><button type="submit" class="button">Search</button></li>
+                    </form>';
+                  }
+                  ?>
                 </ul>
             </div>
           <div class="top-bar-right">

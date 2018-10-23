@@ -25,17 +25,41 @@
     <div class="mainb" align="center">
         <div class="grid-container">
             
+    <?php include('partials/filter.php') ?>
+        
         <?php 
-
+        $valorglo;
+                {
                 if(isset($_GET['search'])){
                     
-                    $valor = $_GET['search'];
-                    echo "search value: ".$valor; 
+                    $valorglo = $_GET['search'];
+                    //echo "search value: ".$valorglo; 
                     $value=$_GET['search'];
                     
                     $sql = "CALL getData('$value')";
                     $result=mysqli_query($conexion, $sql);
 
+                    /*if(isset($_GET['subcat'])){
+                         
+                    } else {
+                        $sql1 = "SELECT * FROM subcategorias";
+                        $result1=mysqli_query($conexion, $sql1);
+                       
+                       
+                           
+                        echo '<form action="search.php" method="GET">';
+                        //echo '<input type="text" name="searchval" value='.$valuecito.' disabled="disabled">';
+                        while($row1=mysqli_fetch_array($result1)){
+                           $subcategoria =$row1['subcategoria'];
+                           echo '<input type="text" name="search" value="'.$value.'">';
+                           echo '<input type="radio" name="subcat" value="'.$subcategoria.'">'.$subcategoria.'<br>';
+                           //echo "sub es: ".$subcategoria;
+                           
+                        }
+                        echo '<button type="submit" class="button">Filter</button>';
+                        echo "</form>";
+                    }*/
+                    
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     
@@ -74,7 +98,7 @@
                             <button class="button">Comprar</button>
                             <button class="button">Informacion</button>
                         </div>
-                    </div>';} echo '</div>';}
+                    </div>';} echo '</div>';}}
         ?> 
          
         </div>
