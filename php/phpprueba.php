@@ -27,7 +27,8 @@
             
         <?php 
                 
-                /*$con_cat = $conexion->query("SELECT * FROM categorias");
+
+                    $con_cat = $conexion->query("SELECT * FROM categorias");
                     $con_subcat = $conexion->query("SELECT * FROM subcategorias");
                     $con_ubic = $conexion->query("SELECT * FROM ubicaciones");
                     //arrays de categorias y sub categorias
@@ -53,7 +54,7 @@
                     $count_subcat = count($subcat_arr);
                     $count_ub = count($ubic_arr); 
                 echo '
-                <form action="search.php" method="GET">
+                <form action="phpprueba.php" method="GET">
                 Categoría:<br>
                 <select name="subcategoria">';
                     
@@ -79,57 +80,9 @@
                     echo "</br>";
                     echo "search value: ".$subcat;
                     echo "</br>";
-                }*/
+                
+                }
 
-
-                if(isset($_GET['search'])){
-                    
-                    $valor = $_GET['search'];
-                    echo "search value: ".$valor; 
-                    $value=$_GET['search'];
-                    
-                    $sql = "CALL getData('$value')";
-                    $result=mysqli_query($conexion, $sql);
-
-
-                    echo '<div class="grid-x grid-margin-x grid-margin-y">';
-                    
-                    while($row=mysqli_fetch_array($result)){
-                        $title =$row['titulo'];
-                        $tecData = $row['datostecnicos'];
-                        $date=$row['fecha']; 
-                        $moreInfo = $row['masinformacion'];
-                        $price = $row['precio'];
-                        $image = $row['Imagen'];
-                        if ($row['Imagen'] != NULL) {
-                            $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
-                        }
-                        else {
-                            $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
-                        }
-                        if ($row['descripcion']!= NULL) {
-                            $description = $row['descripcion'];
-                        }
-                        else {
-                            $description = "Sin descripcion.";
-                        }      
-              
-                    echo 
-                    '
-                    <div class="cell small-12 medium-3">
-                        <div class="product-card">
-                            <div class="product-card-thumbnail">
-                                <a href="#">'.$img.'</a>
-                            </div>
-                            <h2 class="product-card-title"><a href="#">'.$title.'</a></h2>
-                            <span class="product-card-desc">'.$description.'</span>
-                            <br/>
-                            <span class="product-card-price">$'.$price.'</span>
-                            <br/>
-                            <button class="button">Comprar</button>
-                            <button class="button">Informacion</button>
-                        </div>
-                    </div>';} echo '</div>';}
         ?> 
          
         </div>
