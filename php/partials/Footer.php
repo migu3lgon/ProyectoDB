@@ -11,8 +11,8 @@
                 <div class="cell auto">
                     <h4>Mapa del Sitio</h4>
                     <hr/>
-                    <a href="#">Inicio</a>
-                    <a href="#">Contactenos</a>
+                    <a href="index.php">Inicio</a>
+                    <a href="contact_us.php">Contactenos</a>
                     <a href="informacion.php">Sobre Nosotros</a>
                     <a href="#">Ayuda</a>
                 </div>

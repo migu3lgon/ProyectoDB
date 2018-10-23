@@ -11,14 +11,14 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $con_prod = $conn->query("SELECT idanuncio from anuncio");
+    $con_prod = $conn->query("SELECT * from anuncio ORDER BY destacado DESC");
     //arrays de categorias y sub categorias
     $prod_arr = array();
 
     //Poblar arrays para mostrar las categorias y sub categorias
     $j = 0;
     while ($col2 = mysqli_fetch_array( $con_prod )){
-        $prod_arr[$j] = array($col2[0]);
+        $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
         $j = $j + 1;
     }
     $count_prod = count($prod_arr);
@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
@@ -51,32 +52,36 @@
                             ';
                         }
                         for ($i=0; $i < $count_prod ; $i++) { 
-                            $imagen = $conn->query("SELECT Imagen,descripcion,titulo,precio,idanuncio from anuncio where idanuncio=".$prod_arr[$i][0]." limit 1;");
-                            while($row = mysqli_fetch_array($imagen))  
-                            {  
-                                if ($row['Imagen'] != NULL) {
-                                    $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
-                                }
-                                else {
-                                    $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
-                                }
-                                if ($row['descripcion']!= NULL) {
-                                    $prodDesc = $row['descripcion'];
-                                }
-                                else {
-                                    $prodDesc = "Sin descripcion.";
-                                }
-                                $prodName = $row['titulo'];
-                                $prodPrice = $row['precio'];
-                                $prodID = $row['idanuncio'];
-                            }  
+                            if ($prod_arr[$i][2] != NULL) {
+                                $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($prod_arr[$i][2]).'" width=400  alt="imagen producto"/>';  
+                            }
+                            else {
+                                $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
+                            }
+                            if ($prod_arr[$i][1]!= NULL) {
+                                $prodDesc = $prod_arr[$i][1];
+                            }
+                            else {
+                                $prodDesc = "Sin descripcion.";
+                            }
+                            $prodName = $prod_arr[$i][0];
+                            $prodPrice = $prod_arr[$i][3];
+                            $prodID = $prod_arr[$i][4];
+                            //destacado
+                            $dest = $prod_arr[$i][5];
+                        
+                            //imprimir el producto
                             echo '
                             <div class="cell small-12 medium-3">
                                 <div class="product-card cont">
                                     <div class="product-card-thumbnail anuncio">
-                                        <a href="#">'.$img.'</a>
+                                        <a href="anuncio.php?id_add='.$prodID.'">'.$img.'</a>
                                     </div>
-                                    <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a></h2>
+                                    <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a> ';
+                                    if ($dest) {
+                                        echo '<i class="fi-star estrella"></i>';
+                                    }
+                                    echo '</h2>
                                     <span class="product-card-desc">'.$prodDesc.'</span>
                                     <br/>
                                     <span class="product-card-price">Q '.$prodPrice.'</span>
