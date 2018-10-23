@@ -24,26 +24,31 @@
     <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
         <div class="grid-container">
-        
-        <?php 
             
-
-                if(isset($_POST['search'])){ 
-                        
-                        
-
-                    $value=$_POST['search']; 
-                        
-                    //echo $sql;
+        <?php 
+                
+                if(isset($_GET['search'])){
+                    
+                    $valor = $_GET['search'];
+                    echo "search value: ".$valor; 
+                    $value=$_GET['search']; 
+                  
                     $sql = "CALL getData('$value')";
                     $result=mysqli_query($conexion, $sql);
-                
+                    /*echo '
+                    <form action="search.php">
+                    <h6>Categoria</h6>
+                    <input type="checkbox" name="vehicle1" value="Bike"> I have a bike
+                    <input type="checkbox" name="vehicle2" value="Car"> I have a car
+                    <input type="checkbox" name="vehicle3" value="Boat" checked> I have a boat
+                    <input type="submit" value="Filter">
+                    </form>';*/
+
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
+                    
                     while($row=mysqli_fetch_array($result)){
-                        
                         $title =$row['titulo'];
                         $tecData = $row['datostecnicos'];
-                        //$description = $row['descripcion'];
                         $date=$row['fecha']; 
                         $moreInfo = $row['masinformacion'];
                         $price = $row['precio'];
@@ -60,11 +65,9 @@
                         else {
                             $description = "Sin descripcion.";
                         }      
-
-                                    
+              
                     echo 
                     '
-                    
                     <div class="cell small-12 medium-3">
                         <div class="product-card">
                             <div class="product-card-thumbnail">
@@ -78,13 +81,7 @@
                             <button class="button">Comprar</button>
                             <button class="button">Informacion</button>
                         </div>
-                    </div>'
-                    ;
-                    }
-                    echo '</div>';
-                                        
-                            }
-            
+                    </div>';} echo '</div>';}
         ?> 
          
         </div>

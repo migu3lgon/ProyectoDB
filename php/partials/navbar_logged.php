@@ -40,7 +40,7 @@
                         <a href="index.php"><img src="../Imagenes/logo.jpg" class="logo" id="Navigation_Bar_Logo" /></a>
                   </figure>
                   <form action="search.php" method="POST">
-                  <li><input type="search" name="search" placeholder="Search"></li>
+                  <li><input type="text" name="search" placeholder="Search"></li>
                   <li><button type="submit" class="button">Search</button></li>
                   </form>
                 </ul>
