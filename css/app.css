@@ -32,10 +32,19 @@
 
 .gmap_canvas {
   overflow: hidden;
-  background: none !important;
+  background: none;
   height: 400px;
   width: 600px;
   margin-top: 4em; }
+
+.fondosMonedero {
+  padding: .5rem;
+  background-color: #eaeaea;
+  border: 1px solid rgba(10, 10, 10, 0.25);
+  width: 150px;
+  height: 45px;
+  margin: .5rem;
+  margin-left: 0rem; }
 
 #Navigation_Bar_Logo {
   margin-right: 10px; }
