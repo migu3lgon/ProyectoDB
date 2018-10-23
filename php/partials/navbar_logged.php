@@ -60,7 +60,7 @@
                 <li>
                   <a href="#"><?php echo $usuario;?></a>
                   <ul class="menu vertical nested">
-                    <li><a href="#">Perfil</a></li>
+                    <li><a href="perfil.php">Perfil</a></li>
                     <!-- Temporal -->
                     <li><a href="cambiar_clave.php">Cambio de clave</a></li>
                     <li><a href="#">Mis Anuncios</a></li>
@@ -76,10 +76,10 @@
  </header>
 
 <!--scripts para el accordion menu-->
-<script src="../js/vendor/vendor.js"></script>
-<script src="../js/vendor/foundation.core.js"></script>
-<script src="../js/vendor/foundation.util.nest.js"></script>
-<script src="../js/vendor/foundation.accordion.js"></script>
-<script src="../js/vendor/foundation.accordionMenu.js"></script>
-<script src="../js/vendor/foundation.responsiveAccordionTabs.js"></script>
-<script src="../js/vendor/docs.js"></script>
+<script src="../../js/vendor/vendor.js"></script>
+<script src="../../js/vendor/foundation.core.js"></script>
+<script src="../../js/vendor/foundation.util.nest.js"></script>
+<script src="../../js/vendor/foundation.accordion.js"></script>
+<script src="../../js/vendor/foundation.accordionMenu.js"></script>
+<script src="../../js/vendor/foundation.responsiveAccordionTabs.js"></script>
+<script src="../../js/vendor/docs.js"></script>
