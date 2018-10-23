@@ -7,12 +7,16 @@
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     $conn2 = new mysqli($servername, $username, $password, $dbname);
+    $conn3 = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
     if ($conn2->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
+        die("Connection2 failed: " . $conn->connect_error);
+    }
+    if ($conn3->connect_error) {
+        die("Connection3 failed: " . $conn->connect_error);
     }
     
 ?>
@@ -41,6 +45,26 @@
             $apellido = $row["apellido"];
             $telefono = $row["telefono"];
 ?>
+
+<?php
+    if (isset($_GET['destac'])) {
+        if ($_GET['destac']) {
+            echo '<script language="javascript"> alert("Anuncio destacado con exito") </script>';
+        }
+        else {
+            echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
+        }
+    }
+    if (isset($_GET['err'])) {
+        if ($_GET['err']) {
+            echo '<script language="javascript"> alert("no dispones de saldo suficiente para utilizar este servivio") </script>';
+        } else {
+            echo '<script language="javascript"> alert("porfavor utilize el sitio correctamente") </script>';
+
+        }
+    }
+
+    ?>
     <div class="mainb">
     <div class="grid-container">
             <div class="grid-x grid-margin-x">
@@ -62,7 +86,7 @@
                             <span><?php if($telefono){echo $telefono;} else {echo "Aun no has ingresado tu telefono";}; ?></span>
                             <label>Clave</label>
                             <span>************</span><a href="cambiar_clave.php"> Cambio de clave</a>
-                            <p><button class="button" data-open="exampleModal1">Actualizar Informacion</button></p>
+                            <p><button class="button" data-open="actualizarInformacionModal">Actualizar Informacion</button></p>
                         </div>
                         <div class="tabs-panel" id="panel2">
                             <div class="grid-container">
@@ -102,6 +126,8 @@
                                                         <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
                                                         <br>
                                                         <a href="modificarAnuncio.php?id_add='.$prodID.'" class="button expanded">Modificar</a>
+                                                        <br>
+                                                        <a href="destacar.php?id_add='.$prodID.'" class="button expanded">destacar</a>
                                                         </div>
                                                       </div>
                                                 <hr>
@@ -124,7 +150,7 @@
             </div>
         </div>
 
-        <div class="reveal" id="exampleModal1" data-reveal>
+        <div class="reveal" id="actualizarInformacionModal" data-reveal>
             <form action="perfil.php" method="post" enctype="multipart/form-data">
                 <h2>Actualizacion de perfil</h2>
                 Nombre:<br>
@@ -166,14 +192,39 @@
             $nombre2 = $_POST["nombre"];
             $apellido2 = $_POST["apellido"];
             $telefono2 = $_POST["telefono"];
-            $cons2 = $conn->query("CALL modificar_perfil(".$id.",'".$correo2."','".$nombre2."','".$apellido2."',".$telefono2.");");
+            $cons2 = $conn3->query("CALL modificar_perfil(".$id.",'".$correo2."','".$nombre2."','".$apellido2."',".$telefono2.");");
             if ($cons2){
-                echo "si funciono";
-            } else{
-                echo "Problema con el sp";
+                echo '<script language="javascript"> alert("Perfil actualizado con exito") </script>';
+            }else{
+                echo '<script language="javascript"> alert("Hubo con problema, inténtalo de nuevo") </script>';
             }
         }
         ?>
+
+        <!--
+        <div class="reveal" id="destacadoModal" data-reveal>
+            <form action="../controladores/destacado_c.php" method="post" >
+                <h2>Destacar Anuncio</h2>
+                <input type="hidden" id="id" name="id" value=<?php //echo $id ?>>
+                Fercha para inicio de destacado:
+                <input type="date" name="fechainicio" min="2018-10-22" value="2018-10-22">
+                Fecha para fin de destacado:
+                <input type="date" name="fechafin"  value="2018-11-01">
+                Tiempo:
+                <span> 10 dias</span>
+                <br>
+                Monedero:
+                <span> Q 20</span>
+                <br>
+                Costo:
+                <span> Q 10</span>
+                <input class="button small-12 cell" type="submit" name="submit" value="Destacar" />
+            </form>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        -->
 
     </div>
 
