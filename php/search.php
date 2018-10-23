@@ -26,61 +26,6 @@
         <div class="grid-container">
             
         <?php 
-                
-                /*$con_cat = $conexion->query("SELECT * FROM categorias");
-                    $con_subcat = $conexion->query("SELECT * FROM subcategorias");
-                    $con_ubic = $conexion->query("SELECT * FROM ubicaciones");
-                    //arrays de categorias y sub categorias
-                    $cat_arr = array();
-                    $subcat_arr = array();
-                    $ubic_arr = array();
-            
-                    //Poblar arrays para mostrar las categorias y sub categorias
-                    $i = 0; $j = 0; $h = 0;
-                    while (($col = mysqli_fetch_array( $con_cat ))){  
-                        $cat_arr[$i] = array($col[0],$col[1]);
-                        $i = $i + 1;
-                    }
-                    while ($col2 = mysqli_fetch_array( $con_subcat )){
-                        $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
-                        $j = $j + 1;
-                    }
-                    while ($col3 = mysqli_fetch_array( $con_ubic )){
-                        $ubic_arr[$h] = array($col3[0],$col3[1]);
-                        $h = $h + 1;
-                    }
-                    $count_cat = count($cat_arr);
-                    $count_subcat = count($subcat_arr);
-                    $count_ub = count($ubic_arr); 
-                echo '
-                <form action="search.php" method="GET">
-                Categoría:<br>
-                <select name="subcategoria">';
-                    
-                        for ($i=0; $i < $count_cat ; $i++) { 
-                            echo "<optgroup label=".$cat_arr[$i][1].">";
-                            for ($k=0; $k < $count_subcat; $k++) { 
-                                if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
-                                    echo "<option value=".$subcat_arr[$k][0].">".$subcat_arr[$k][2]."</option>";
-                                }
-                            }
-                        }                    
-                
-                echo '<input type="submit" value="Filter">
-                </form>';
-                if(isset($_GET['submit'])){
-                    $valorcito = $_GET['search'];
-                    $category = $_GET['categoria'];
-                    $subcat = $_GET['subcategoria'];
-                    
-                    echo "search value: ".$valorcito;
-                    echo "</br>";
-                    echo "search value: ".$category;
-                    echo "</br>";
-                    echo "search value: ".$subcat;
-                    echo "</br>";
-                }*/
-
 
                 if(isset($_GET['search'])){
                     
