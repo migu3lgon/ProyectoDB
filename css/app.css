@@ -46,6 +46,12 @@
   margin: .5rem;
   margin-left: 0rem; }
 
+[class~=input-group-field], [class~=input-group-label] {
+  padding: 5px; }
+
+[class~=input-group-label] {
+  min-width: 55px; }
+
 #Navigation_Bar_Logo {
   margin-right: 10px; }
 
