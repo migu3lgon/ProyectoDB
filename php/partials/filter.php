@@ -13,6 +13,9 @@
         <div class="grid-container">
             
         <?php
+        if(isset($_GET['subcat'])){
+            $valuecito = $_GET['search'];
+            echo $valuecito;
          $sql1 = "SELECT * FROM subcategorias";
          $result1=mysqli_query($conexion, $sql1);
         
@@ -29,9 +32,7 @@
          }
          echo '<button type="submit" class="button">Filter</button>';
          echo "</form>"; 
-         if(isset($_GET['subcat'])){
-            $valuecito = $_GET['search'];
-            echo $valuecito;
+         
         }
         ?>
         
