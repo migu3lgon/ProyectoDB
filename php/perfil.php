@@ -123,53 +123,50 @@
                     <div class="tabs-panel <?php echo $pan2 ?>" id="panel2">
                         <div class="grid-container">
                             <?php  
-                                    $imagen = $conn->query("call informacion_mis_anuncios(".$id.");");
-                                    
-                                    while($row = mysqli_fetch_array($imagen))  
-                                    {  
-                                        if ($row['Imagen'] != NULL) {
-                                            $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  alt="imagen producto"/>';  
-                                        }
-                                        else {
-                                            $img = '<img class="img_anuncio" src="../Imagenes/Sin_imagen_disponible.jpg"  alt="Sin imagen"/>';
-                                        }
-                                        if ($row['descripcion']!= NULL) {
-                                            $prodDesc = $row['descripcion'];
-                                        }
-                                        else {
-                                            $prodDesc = "Sin descripcion.";
-                                        }
-                                        $prodName = $row['titulo'];
-                                        $prodPrice = $row['precio'];
-                                        $prodID = $row['idanuncio'];
-                                        echo    '<div class="grid-x grid-margin-x align-middle">
-                                                    <div class="cell small-12 medium-3 large-3">
-                                                        <h4>'.$prodName.'</h4>
-                                                        <br>
-                                                        <h4>Q '.$prodPrice.'</h4>
-                                                    </div>
-                                                    <div class="cell small-12 medium-3 large-3">
-                                                        <p> '.$prodDesc.'</p>
-                                                    </div>
-                                                    <div class="cell small-12 medium-3 large-3 anuncio">
-                                                        '.$img.'
-                                                    </div>
-                                                    <div class="cell small-12 medium-3 large-3">
-                                                    <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
-                                                    <br>
-                                                    <a href="modificarAnuncio.php?id_add='.$prodID.'" class="button expanded">Modificar</a>
-                                                    <br>
-                                                    <a href="destacar.php?id_add='.$prodID.'" class="button expanded">destacar</a>
-                                                    </div>
-                                                </div>
-                                            <hr>
-
-                                    ';
-                                    }  
-                                    
-                            ?>
-                            </div>
-                            <hr>
+                                $imagen = $conn->query("call informacion_mis_anuncios(".$id.");");
+                                
+                                while($row = mysqli_fetch_array($imagen))  
+                                {  
+                                    if ($row['Imagen'] != NULL) {
+                                        $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  alt="imagen producto"/>';  
+                                    }
+                                    else {
+                                        $img = '<img class="img_anuncio" src="../Imagenes/Sin_imagen_disponible.jpg"  alt="Sin imagen"/>';
+                                    }
+                                    if ($row['descripcion']!= NULL) {
+                                        $prodDesc = $row['descripcion'];
+                                    }
+                                    else {
+                                        $prodDesc = "Sin descripcion.";
+                                    }
+                                    $prodName = $row['titulo'];
+                                    $prodPrice = $row['precio'];
+                                    $prodID = $row['idanuncio'];
+                                    echo'<div class="grid-x grid-margin-x align-middle">
+                                            <div class="cell small-12 medium-3 large-3">
+                                                <h4>'.$prodName.'</h4>
+                                                <br>
+                                                <h4>Q '.$prodPrice.'</h4>
+                                            </div>
+                                            <div class="cell small-12 medium-3 large-3">
+                                                <p> '.$prodDesc.'</p>
+                                            </div>
+                                            <div class="cell small-12 medium-3 large-3 anuncio">
+                                                '.$img.'
+                                            </div>
+                                            <div class="cell small-12 medium-3 large-3">
+                                                <a href="anuncio.php?id_add='.$prodID.'"><button class="button expanded">Ver</button></a>
+                                            <br>
+                                                <a href="modificarAnuncio.php?id_add='.$prodID.'" class="button expanded">Modificar</a>
+                                            <br>
+                                                <a href="destacar.php?id_add='.$prodID.'" class="button expanded">destacar</a>
+                                            </div>
+                                        </div>
+                                        <hr>';
+                                }        
+                            ?>    
+                            <a href='nuevoanuncio.php'><button class='button' type='button'>Nuevo Anuncio</button></a>
+                        </div>
                     </div>
                     <div class="tabs-panel <?php echo $pan3 ?>" id="panel3">
                         <h3>Fondos del Monedero</h3>
