@@ -15,6 +15,7 @@
     <title>Gio's Company - Login</title>
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <link type="text/css" rel="stylesheet" href="../css/css.css">
     <style>
     </style>

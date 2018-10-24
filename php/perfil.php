@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src='../js/vendor/foundation.js'></script>
     
 </head>
@@ -72,20 +73,42 @@
 
         }
     }
-
+    if (isset($_GET['pan'])) {
+        $panel = $_GET['pan'];
+        if ($panel == 2) {
+            $pan1 = '';
+            $pan3 = '';
+            $pan2 = 'is-active';
+        }
+        elseif ($panel == 3) {
+            $pan1 = '';
+            $pan2 = '';
+            $pan3 = 'is-active';
+        }
+        else {
+            $pan1 = 'is-active';
+            $pan2 = '';
+            $pan3 = '';
+        }
+    }
+    else {
+        $pan1 = 'is-active';
+        $pan2 = '';
+        $pan3 = '';
+    }
     ?>
     <div class="mainb">
     <div class="grid-container">
             <div class="grid-x grid-margin-x">
                 <div class="cell small-12">
                     <ul class="tabs" data-tabs id="example-tabs">
-                        <li class="tabs-title is-active"><a href="#panel1" aria-selected="true">Mi Perfil</a></li>
-                        <li class="tabs-title"><a href="#panel2">Mis Anuncios</a></li>
-                        <li class="tabs-title"><a href="#panel3">Monedero</a></li>
+                        <li class="tabs-title <?php echo $pan1 ?>"><a href="#panel1" aria-selected="true">Mi Perfil</a></li>
+                        <li class="tabs-title <?php echo $pan2 ?>"><a href="#panel2">Mis Anuncios</a></li>
+                        <li class="tabs-title <?php echo $pan3 ?>"><a href="#panel3">Monedero</a></li>
                     </ul>
 
                 <div class="tabs-content" data-tabs-content="example-tabs">
-                    <div class="tabs-panel is-active" id="panel1">
+                    <div class="tabs-panel <?php echo $pan1 ?>" id="panel1">
                         <h2>Mi Informacion</h2>
                         <label>Usuario</label>
                         <span><?php echo $nombre, " ",  $apellido?></span>
@@ -97,7 +120,7 @@
                         <span>************</span><a href="cambiar_clave.php"> Cambio de clave</a>
                         <p><button class="button" data-open="actualizarInformacionModal">Actualizar Informacion</button></p>
                     </div>
-                    <div class="tabs-panel" id="panel2">
+                    <div class="tabs-panel <?php echo $pan2 ?>" id="panel2">
                         <div class="grid-container">
                             <?php  
                                     $imagen = $conn->query("call informacion_mis_anuncios(".$id.");");
@@ -148,7 +171,7 @@
                             </div>
                             <hr>
                     </div>
-                    <div class="tabs-panel" id="panel3">
+                    <div class="tabs-panel <?php echo $pan3 ?>" id="panel3">
                         <h3>Fondos del Monedero</h3>
                         <div class="fondosMonedero">
                             <p>Q <?php echo $saldo; ?></p>

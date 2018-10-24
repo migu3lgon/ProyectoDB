@@ -60,15 +60,14 @@
                 <li>
                   <a href="#"><?php echo $usuario;?></a>
                   <ul class="menu vertical nested">
-                    <li><a href="perfil.php">Perfil</a></li>
-                    <!-- Temporal -->
+                    <li><a href="perfil.php?pan=1">Perfil</a></li>
                     <li><a href="cambiar_clave.php">Cambio de clave</a></li>
-                    <li><a href="#">Mis Anuncios</a></li>
-                    <li><a href="#">Monedero</a></li>
+                    <li><a href="perfil.php?pan=2">Mis Anuncios</a></li>
+                    <li><a href="perfil.php?pan=3">Monedero</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Mensajes</a></li>
-                <li><a href="../controladores/logout_c.php">Cierra Sesión</a></li>
+                <li><a href="../controladores/logout_c.php">Cerrar Sesión <i class="fi-x"></i></a></li>
               </ul>
             </ul>
           </div>

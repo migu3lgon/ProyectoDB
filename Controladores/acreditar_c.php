@@ -23,11 +23,11 @@
         $cons = "UPDATE usuario SET saldo = ".$monto." WHERE idusuario = ".$id.";";
         $bool = $conex->query($cons);
         if ($bool) { 
-            header('Location: http://localhost/proyectodb/php/perfil.php?bool=1');
+            header('Location: http://localhost/proyectodb/php/perfil.php?bool=1&pan=3');
             exit();
         
         } else { 
-            header("Location: http://localhost/proyectodb/php/perfil.php?bool=0");
+            header("Location: http://localhost/proyectodb/php/perfil.php?bool=0&pan=3");
             exit();
         }
     }
