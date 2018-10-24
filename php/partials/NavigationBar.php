@@ -64,12 +64,3 @@
           </div>
         </div>
  </header>
-
-<!--scripts para el accordion menu-->
-<script src="../js/vendor/vendor.js"></script>
-<script src="../js/vendor/foundation.core.js"></script>
-<script src="../js/vendor/foundation.util.nest.js"></script>
-<script src="../js/vendor/foundation.accordion.js"></script>
-<script src="../js/vendor/foundation.accordionMenu.js"></script>
-<script src="../js/vendor/foundation.responsiveAccordionTabs.js"></script>
-<script src="../js/vendor/docs.js"></script>
