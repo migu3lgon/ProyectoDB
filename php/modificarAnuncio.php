@@ -27,6 +27,8 @@
         }
         else {
             echo '<script language="javascript"> alert("Tienes que elegir un anuncio!") </script>';
+            header('Location: http://localhost/proyectodb/php/index.php');
+            exit();
         }
         //query para obtener la imagen del anuncio
         $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 

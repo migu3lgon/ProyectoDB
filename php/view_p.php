@@ -14,7 +14,7 @@
         $subcat = $_GET['subcat'];
     }
     //querys de anuncios para poblar la pagina
-    $con_prod = $conn->query("SELECT * from anuncio_v WHERE idsubcategoria=$subcat ORDER BY destacado DESC");
+    $con_prod = $conn->query("SELECT * from anunciodestacado WHERE idsubcategoria=$subcat ORDER BY destacado DESC");
     //arrays de categorias y sub categorias
     $prod_arr = array();
 

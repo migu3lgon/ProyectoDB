@@ -14,7 +14,6 @@
     <script src='../js/vendor/foundation.js'></script>
     <script src="../js/vendor/jquery.js"></script>
     <?php
-
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -31,33 +30,48 @@
             $idanuncio = $_GET['id_add'];
         }
         else {
-            $idanuncio = 75;
+            echo '<script language="javascript"> alert("Tienes que elegir un anuncio!") </script>';
+            header('Location: http://localhost/proyectodb/php/index.php');
+            exit();
         }
-            //obtener datos para poblar el anuncio
-            $conexion = $conn->query("SELECT * from anuncio where idanuncio=$idanuncio limit 1;");
-                $row = $conexion->fetch_assoc(); 
-                $titulo = $row["titulo"];
-                $descripcion = $row["descripcion"];
-                $datostecnicos = $row["datostecnicos"];
-                $masinformacion = $row["masinformacion"];
-                $subcategoria = $row["idsubcategoria"];
-                $ubicacion = $row["idubicacion"];
-                $telefono = $row["telefono"];
-                $precio = $row["precio"];
-                //query para obtener la imagen del anuncio
-                $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 
-                while($row = mysqli_fetch_array($imagen))  
-                {  
-                    $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  />';  
-                }  
-       ?>
-
+        
+        //query para obtener la imagen del anuncio
+        $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 
+        while($row = mysqli_fetch_array($imagen))  
+        {  
+            $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'"  />';  
+        }  
+    ?>
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+            type:'GET',
+            url:'../jsons/anuncio_json.php',
+            dataType: "json",
+            data:{'id_add':<?php echo $idanuncio;?>},
+            success:function(data2){
+                var $title = $('#titulo');
+                var $desc = $('#descr');
+                var $precio = $('#precio');
+                var $mas_info = $('#mas_info');
+                var $dat_t = $('#dat_t');
+                $title.append(data2[0][0]);
+                $desc.append(data2[0][1]);
+                $precio.append(data2[0][2]);
+                $dat_t.append(data2[0][3]);
+                $mas_info.append(data2[0][4]);
+                
+                
+            }
+        });
+    });
+    </script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php'); ?>
     
     <div class="mainb">
-    <h1 align="center"><?php echo $titulo; ?></h1> 
+    <h1 id='titulo' align="center"></h1> 
         <article class="grid-container">
             <div class="grid-x grid-margin-x align-center">
                 <div class="small-10 medium-6 cell">
@@ -65,15 +79,15 @@
                 </div>
                 <div class="small-10 medium-4 cell">
                     <h2>Precio:</h2>
-                    <span id= "precio">Q <?php echo number_format($precio, 2)?></span>
+                    <span id= "precio">Q </span>
                     <h2>Informacion General</h2>
-                    <?php echo "<p>$descripcion</p>"; ?>
+                    <p id='descr'></p>
                     <h2>Datos Tecnicos</h2>
-                    <?php echo "<p>$datostecnicos</p>"; ?>
+                    <p id='dat_t'></p>
                 </div>
                 <div class="small-10 cell">
                     <h3>Mas Informacion</h3>
-                    <?php echo "<p>$masinformacion</p>"; ?>
+                    <p id='mas_info'></p>
                 </div>
                 <div id="bones de anuncio" class="cell small-10 button-group">
                         <a class="button">comprar</a>
