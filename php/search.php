@@ -73,6 +73,7 @@
         <?php 
         $valorglo;
         $catglo;
+        $locglo;
                 {
                 if(isset($_GET['search'])){
                     
@@ -82,7 +83,11 @@
                     if(isset($_GET['subcategoria'])){
                     $valSub = $_GET['subcategoria'];
                     $catglo = $valSub;
-                    echo "cat value: ".$catglo;}
+                    echo "cat value: ".$catglo."<br>";}
+                    if(isset($_GET['ubicacion'])){
+                    $valLoc = $_GET['ubicacion'];
+                    $locglo = $valLoc;
+                    echo "locat value: ".$valLoc;}
                     
 
                     echo '
@@ -101,7 +106,13 @@
                                 }
                            
                         echo '</select>';
-                    
+                    echo '<select name="ubicacion">';
+                        
+                            for ($l=0; $l < $count_subcat; $l++) { 
+                                echo "<option value=".$ubic_arr[$l][1].">".$ubic_arr[$l][1]."</option>";
+                            }
+                        
+                    echo '</select>';
                                    
 
                     echo '<input type="submit" value="Submit">
@@ -111,7 +122,13 @@
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     if(isset($_GET['subcategoria'])){
-                    $sql = "CALL getData('$value','$catglo','')";}
+                    $sql = "CALL getData('$value','$catglo','')";
+                    }
+                    else if(isset($_GET['ubicacion'])){
+                        $sql = "CALL getData('$value','','$locglo')";
+                    } else if(isset($_GET['ubicacion'],$_GET['subcategoria'])){
+                    $sql = "CALL getData('$value','$catglo','$locglo')";
+                    }
                     else {
                         $sql = "CALL getData('$value','','')";
                     }
@@ -166,24 +183,7 @@
                                 <a href="anuncio.php?id_add='.$prodId.'"><button class="button">Informacion</button></a>
                             </div>
                         </div>';
-                        /*    
-              
-                    echo 
-                    '
-                    <div class="cell small-12 medium-3">
-                        <div class="product-card">
-                            <div class="product-card-thumbnail">
-                                <a href="#">'.$img.'</a>
-                            </div>
-                            <h2 class="product-card-title"><a href="#">'.$title.'</a></h2>
-                            <span class="product-card-desc">'.$description.'</span>
-                            <br/>
-                            <span class="product-card-price">$'.$price.'</span>
-                            <br/>
-                            <button class="button">Comprar</button>
-                            <button class="button">Informacion</button>
-                        </div>
-                    </div>';} echo '</div>';*/
+                        
                 
                 }}}
         ?> 
