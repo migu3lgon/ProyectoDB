@@ -1,11 +1,27 @@
 <?php
-    $usuario = "root";
-    $contrasena = "";
-    $servidor = "localhost";
-    $basededatos = "gioscorp2";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "gioscorp2";
 
-    $conexion = mysqli_connect($servidor,$usuario,$contrasena) or die("No se ha podido conectar al servidor de base de datos.");
-    $db = mysqli_select_db($conexion, $basededatos) or die("Parece que ha habido un error.");
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    $con_prod = $conn->query("SELECT * from anuncio ORDER BY destacado DESC");
+    //arrays de categorias y sub categorias
+    $prod_arr = array();
+
+    //Poblar arrays para mostrar las categorias y sub categorias
+    $j = 0;
+    while ($col2 = mysqli_fetch_array( $con_prod )){
+        $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
+        $j = $j + 1;
+    }
+    $count_prod = count($prod_arr);
 ?>
 
 <!DOCTYPE html>
@@ -33,33 +49,21 @@
                 if(isset($_GET['search'])){
                     
                     $valorglo = $_GET['search'];
-                    //echo "search value: ".$valorglo; 
+                    echo "search value: ".$valorglo; 
                     $value=$_GET['search'];
                     
                     $sql = "CALL getData('$value')";
-                    $result=mysqli_query($conexion, $sql);
+                    $result=mysqli_query($conn, $sql);
+/*
+                    echo '
+                    <form action="/search.php" method="get">
+                    <input type="hidden" name="search" value="'.$valorglo.'">
 
-                    /*if(isset($_GET['subcat'])){
-                         
-                    } else {
-                        $sql1 = "SELECT * FROM subcategorias";
-                        $result1=mysqli_query($conexion, $sql1);
-                       
-                       
-                           
-                        echo '<form action="search.php" method="GET">';
-                        //echo '<input type="text" name="searchval" value='.$valuecito.' disabled="disabled">';
-                        while($row1=mysqli_fetch_array($result1)){
-                           $subcategoria =$row1['subcategoria'];
-                           echo '<input type="text" name="search" value="'.$value.'">';
-                           echo '<input type="radio" name="subcat" value="'.$subcategoria.'">'.$subcategoria.'<br>';
-                           //echo "sub es: ".$subcategoria;
-                           
-                        }
-                        echo '<button type="submit" class="button">Filter</button>';
-                        echo "</form>";
-                    }*/
-                    
+                    <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
+                    <input type="submit" value="Submit">
+                    </form>
+                    ';
+                    */
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     
@@ -69,6 +73,9 @@
                         $date=$row['fecha']; 
                         $moreInfo = $row['masinformacion'];
                         $price = $row['precio'];
+                        $ubicacion = $row['ubicacion'];
+                        $categoria = $row['categoria'];
+                        $subcategoria = $row['subcategoria'];
                         $image = $row['Imagen'];
                         if ($row['Imagen'] != NULL) {
                             $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
@@ -114,5 +121,5 @@
 </body>
 </html>
 <?php
-    mysqli_close($conexion);
+    mysqli_close($conn);
 ?>
