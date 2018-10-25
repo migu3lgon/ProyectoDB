@@ -1,75 +1,96 @@
 .estrella {
-  font-size: .65em; }
+    font-size: .65em;
+}
 
 .error {
-  color: red; }
+    color: red;
+}
 
 .img_anuncio {
-  /*height: 100%;*/
-  width: auto; }
+    /*height: 100%;*/
+    width: auto;
+}
 
 .anuncio {
-  height: 180px;
-  width: 100%; }
-  .anuncio .img_anuncio {
+    height: 180px;
+    width: 100%;
+}
+
+.anuncio .img_anuncio {
     max-height: 180px;
     max-width: 100%;
-    vertical-align: middle; }
+    vertical-align: middle;
+}
 
 .cont {
-  white-space: nowrap;
-  width: auto;
-  overflow: hidden;
-  text-overflow: ellipsis; }
+    white-space: nowrap;
+    width: auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 .align {
-  margin: auto; }
+    margin: auto;
+}
 
 .mapouter {
-  text-align: right;
-  height: 500px;
-  width: 600px; }
+    text-align: right;
+    height: 500px;
+    width: 600px;
+}
 
 .gmap_canvas {
-  overflow: hidden;
-  background: none;
-  height: 400px;
-  width: 600px;
-  margin-top: 4em; }
+    overflow: hidden;
+    background: none;
+    height: 400px;
+    width: 600px;
+    margin-top: 4em;
+}
 
 .fondosMonedero {
-  padding: .5rem;
-  background-color: #eaeaea;
-  border: 1px solid rgba(10, 10, 10, 0.25);
-  width: 150px;
-  height: 45px;
-  margin: .5rem;
-  margin-left: 0rem; }
+    padding: .5rem;
+    background-color: #eaeaea;
+    border: 1px solid rgba(10, 10, 10, 0.25);
+    width: 150px;
+    height: 45px;
+    margin: .5rem;
+    margin-left: 0rem;
+}
+
+[class~=input-group-field],
+[class~=input-group-label] {
+    padding: 5px;
+}
+
+[class~=input-group-label] {
+    min-width: 55px;
+}
 
 #Navigation_Bar_Logo {
-  margin-right: 10px; }
+    margin-right: 10px;
+}
 
 footer {
-  padding: 80px 0px 40px 0px;
-  background-color: darkslategray;
-  color: white; }
+    padding: 80px 0px 40px 0px;
+    background-color: darkslategray;
+    color: white;
+}
 
 footer a {
-  display: block; }
+    display: block;
+}
 
 header {
-  padding: 0px 0px 80px 0px; }
+    padding: 0px 0px 80px 0px;
+}
 
 .mainb {
-  padding: 0px 0px 100px 0px; }
+    padding: 0px 0px 100px 0px;
+}
 
 .imagendeanuncio {
-  display: block;
-  margin-left: auto;
-  width: 400px;
-  float: right; }
-<<<<<<< HEAD
-.prueba {
-  background-size:cover; }
-=======
->>>>>>> cfe2a84fed1247305d379fd83ca5db73e06e7f78
+    display: block;
+    margin-left: auto;
+    width: 400px;
+    float: right;
+}

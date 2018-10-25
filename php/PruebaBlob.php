@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
+    <script src="../js/vendor/jquery.js"></script>
     <style>
         
     </style>

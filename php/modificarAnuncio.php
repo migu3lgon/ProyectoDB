@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
+    <script src="../js/vendor/jquery.js"></script>    
     <?php
         $servername = "localhost";
         $username = "root";
@@ -24,39 +26,49 @@
             $idanuncio = $_GET['id_add'];
         }
         else {
-            $idanuncio = 75;
+            echo '<script language="javascript"> alert("Tienes que elegir un anuncio!") </script>';
         }
-        //querys para poblar los selects
-        $con_cat = $conn->query("SELECT * FROM categorias");
-        $con_subcat = $conn->query("SELECT * FROM subcategorias");
-        $con_ubic = $conn->query("SELECT * FROM ubicaciones");
         //query para obtener la imagen del anuncio
         $imagen = $conn->query("SELECT Imagen from anuncio where idanuncio=$idanuncio limit 1;"); 
-        //arrays de categorias y sub categorias
-        $cat_arr = array();
-        $subcat_arr = array();
-
-        //Poblar arrays para mostrar las categorias y sub categorias
-        $i = 0;
-        $j = 0;
-        while (($col = mysqli_fetch_array( $con_cat ))){  
-            $cat_arr[$i] = array($col[0],$col[1]);
-            $i = $i + 1;
-        }
-        while ($col2 = mysqli_fetch_array( $con_subcat )){
-            $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
-            $j = $j + 1;
-        }
-        $count_cat = count($cat_arr);
-        $count_subcat = count($subcat_arr);
         //insertar la imagen del anuncio en $imagenanuncio
         while($row = mysqli_fetch_array($imagen))  
         {  
                 $imagenanuncio = '<img class="thumbnail imagendeanuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  />';  
-        }  
-                
-
+        }     
     ?>
+    <script>
+    $(document).ready(function(){
+        $.ajax({
+                type:'POST',
+                url:'../jsons/subcat_json.php',
+                dataType: "json",
+                success:function(data){
+                    var $subc = $('#subc');
+                    $subc.empty();
+                    for (var a = 0; a < data['cat'].length; a++) {
+                        $subc.append('<optgroup label=' + data['cat'][a][1] + '/>')
+                        for (var i = 0; i < data['subcat'].length; i++) {
+                            if (data['cat'][a][0]==data['subcat'][i][1]) {
+                                $subc.append('<option value='+ data['subcat'][i][0] + '>'+ data['subcat'][i][2] +'</option>');   
+                            }                        
+                        }
+                    }
+                }
+            });
+        $.ajax({
+            type:'POST',
+            url:'../jsons/ubic_json.php',
+            dataType: "json",
+            success:function(data2){
+                var $ubic = $('#ubic');
+                $ubic.empty();
+                for (var l=0; l < data2.length; l++) { 
+                    $ubic.append('<option value=' + data2[l][0] + '>' + data2[l][1] + '</option>');
+                }
+            }
+        });
+    });
+    </script>
   </head>
   <body>
     <!-- incluye al navegador-->
@@ -97,27 +109,11 @@
             <textarea type="text" name="masinfo" value="" placeholder="que mas decea indicar sobre su producto?"><?php echo $masinformacionb ?></textarea>
             <br>
             Categoría:<br>
-            <select name="subcategoriaa">
-                <?php
-                    for ($i=0; $i < $count_cat ; $i++) { 
-                        echo "<optgroup label=".$cat_arr[$i][1].">";
-                        for ($k=0; $k < $count_subcat; $k++) { 
-                            if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
-                                echo "<option value=".$subcat_arr[$k][0].">".$subcat_arr[$k][2]."</option>";
-                            }
-                        }
-                    }
-                ?>
+            <select id='subc' name="subcategoriaa">
             </select>
             <br>
             Ubicación:<br>
-            <select name="ubicaciona">
-                <?php
-                    while ($col = mysqli_fetch_array( $con_ubic ))
-                    {
-                        echo "<option value='".$col[0]."'>".$col[1]."</option>";
-                    }
-                ?>
+            <select id='ubic' name="ubicaciona">
             </select>
             <br>
             Teléfono de contacto:<br>
