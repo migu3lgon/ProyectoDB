@@ -95,12 +95,13 @@
                                     echo "<optgroup label=".$cat_arr[$i][1].">";
                                     for ($k=0; $k < $count_subcat; $k++) { 
                                         if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
-                                            echo "<option value=".$subcat_arr[$k][0].">".$subcat_arr[$k][2]."</option>";
+                                            echo "<option value=".$subcat_arr[$k][2].">".$subcat_arr[$k][2]."</option>";
                                         }
                                     }
                                 }
                            
                         echo '</select>';
+                    
                                    
 
                     echo '<input type="submit" value="Submit">
@@ -110,24 +111,28 @@
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     if(isset($_GET['subcategoria'])){
-                    $sql = "CALL getData('$value','$catglo')";}
+                    $sql = "CALL getData('$value','$catglo','')";}
                     else {
-                        $sql = "CALL getData('$value','')";
+                        $sql = "CALL getData('$value','','')";
                     }
                     $result=mysqli_query($conn, $sql);
 
                     while($row=mysqli_fetch_array($result)){
+                        $prodId = $row['idanuncio'];
                         $title =$row['titulo'];
                         $tecData = $row['datostecnicos'];
                         $date=$row['fecha']; 
+                        $description = $row['descripcion'];
                         $moreInfo = $row['masinformacion'];
                         $price = $row['precio'];
                         $ubicacion = $row['ubicacion'];
+                        $dest = $row['destacado'];
                         //$categoria = $row['categoria'];
-                        $subcategoriaAlgo = $row['subcategoria'];
+                        //$subcategoriaAlgo = $row['subcategoria'];
                         $image = $row['Imagen'];
+                        
                         if ($row['Imagen'] != NULL) {
-                            $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
+                            $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen']).'" width=400  alt="imagen producto"/>';  
                         }
                         else {
                             $img = '<img class="img_anuncio" src="https://placehold.it/180x180" alt="Sin imagen"/>';
@@ -137,7 +142,31 @@
                         }
                         else {
                             $description = "Sin descripcion.";
-                        }      
+                        }
+                        
+                        
+                    
+                        //imprimir el producto
+                        echo '
+                        <div class="cell small-12 medium-3">
+                            <div class="product-card cont">
+                                <div class="product-card-thumbnail anuncio">
+                                    <a href="anuncio.php?id_add='.$prodId.'">'.$img.'</a>
+                                </div>
+                                <h2 class="product-card-title cont"><a href="#">'.$title.'</a> ';
+                                if ($dest) {
+                                    echo '<i class="fi-star estrella"></i>';
+                                }
+                                echo '</h2>
+                                <span class="product-card-desc">'.$description.'</span>
+                                <br/>
+                                <span class="product-card-price">Q '.$price.'</span>
+                                <br/>
+                                <button class="button">Comprar</button>
+                                <a href="anuncio.php?id_add='.$prodId.'"><button class="button">Informacion</button></a>
+                            </div>
+                        </div>';
+                        /*    
               
                     echo 
                     '
@@ -154,7 +183,9 @@
                             <button class="button">Comprar</button>
                             <button class="button">Informacion</button>
                         </div>
-                    </div>';} echo '</div>';}}
+                    </div>';} echo '</div>';*/
+                
+                }}}
         ?> 
          
         </div>
