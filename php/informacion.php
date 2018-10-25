@@ -9,39 +9,48 @@
     <link rel="stylesheet" href="../css/foundation.css">
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src='../js/vendor/foundation.js'></script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb">
-        <h1 class="text-center">Informacion sobre Gio's Company</h1>
         <article>
+            <h1 class="text-center">Informacion sobre Gio's Company</h1>
             <div class="grid-container">
-                    <div class="grid-x grid-margin-x">
-                        <!-- <section> -->
-                            <div class="cell small-12 medium-6 large-6 ">
-                                <section>
-                                    <h2>Sobre Nosotros</h2>
-                                    <p>Gio's corp es una empresa dedicada a dar el mejor servicio a las personas que quieren vender sus articulos. 
-                                        La empresa brinda el mejor servicio para la venta de articulos brindando la manera mas comoda para que nuestros clientes 
-                                        puedan vender sus productos de una manera segura y con confianza de tener el respaldo de una empresa de gran integridad
-                                    </p>
-                                    <br/>
-                                    <P>Hasta el dia de hoy todos los clientes de Gio's Corp han disfrutado el mejor servicio en un e-comerce y hay miles de historias de clientes satisfechos.
-                                        Ademas gracias a nuestro ermoso sitio web y nuestras politicas de apoyo a los clientes, nos hemos convertido en un favorito de muchas personas para realizar todas sus compras en linea
-                                    </P>
-                                </section>
-                            </div>
-                        <!-- </section> -->
-                        <!-- <section> -->
-                            <div class= "cell small-12 medium-6 large-6">
-                                <section>
-                                    <h2>Historia</h2>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ea iste similique quidem? Labore inventore a magni natus, quo nisi, delectus voluptate at asperiores est, doloribus iusto! Nesciunt, ut voluptatibus!</p>
-                                </section>
-                            </div>
-                        <!-- </section> -->
+                <div class="grid-x grid-margin-x grid-margin-y">
+                    <!-- <section> -->
+                    <div class="cell small-12 medium-6 large-6 ">
+                        <section>
+                            <h2>Sobre Nosotros</h2>
+                            <p>Gio's corp es una empresa dedicada a dar el mejor servicio a las personas que quieren vender sus articulos. La empresa brinda el mejor servicio para la venta de articulos brindando la manera mas comoda para que nuestros clientes
+                                puedan vender sus productos de una manera segura y con confianza de tener el respaldo de una empresa de gran integridad
+                            </p>
+                            <br/>
+                            <P>Hasta el dia de hoy todos los clientes de Gio's Corp han disfrutado el mejor servicio en un e-comerce y hay miles de historias de clientes satisfechos. Ademas gracias a nuestro ermoso sitio web y nuestras politicas de apoyo
+                                a los clientes, nos hemos convertido en un favorito de muchas personas para realizar todas sus compras en linea
+                            </P>
+                        </section>
                     </div>
+                    <div class="cell small-12 medium-6 large-6 ">
+                        <img src="../Imagenes/002.jpg" alt="imagen de faqs" style="margin-top: 4em">
+                    </div>
+                    <!-- </section> -->
+                    <!-- <section> -->
+                    <div class="cell small-12 medium-6 large-6 hide-for-small-only ">
+                        <img src="../Imagenes/002.jpg" alt="imagen de faqs" style="margin-top: 4em">
+                    </div>
+                    <div class="cell small-12 medium-6 large-6">
+                        <section>
+                            <h2>Historia</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ea iste similique quidem? Labore inventore a magni natus, quo nisi, delectus voluptate at asperiores est, doloribus iusto! Nesciunt, ut voluptatibus!</p>
+                        </section>
+                    </div>
+                    <div class="cell small-12 medium-6 large-6 show-for-small-only ">
+                        <img src="../Imagenes/002.jpg" alt="imagen de faqs" style="margin-top: 4em">
+                    </div>
+                    <!-- </section> -->
+                </div>
             </div>
         </article>
     </div>
@@ -49,10 +58,10 @@
     
 
 
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
+    <script src="../js/vendor/jquery.js"></script>
+    <script src="../js/vendor/what-input.js"></script>
+    <script src="../js/vendor/foundation.js"></script>
+    <script src="../js/app.js"></script>
 
 </body>
 </html>
