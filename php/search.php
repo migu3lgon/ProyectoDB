@@ -22,6 +22,33 @@
         $j = $j + 1;
     }
     $count_prod = count($prod_arr);
+
+    //querys para poblar los selects
+    $con_cat = $conn->query("SELECT * FROM categorias");
+    $con_subcat = $conn->query("SELECT * FROM subcategorias");
+    $con_ubic = $conn->query("SELECT * FROM ubicaciones");
+    //arrays de categorias y sub categorias
+    $cat_arr = array();
+    $subcat_arr = array();
+    $ubic_arr = array();
+
+    //Poblar arrays para mostrar las categorias y sub categorias
+    $i = 0; $j = 0; $h = 0;
+    while (($col = mysqli_fetch_array( $con_cat ))){  
+        $cat_arr[$i] = array($col[0],$col[1]);
+        $i = $i + 1;
+    }
+    while ($col2 = mysqli_fetch_array( $con_subcat )){
+        $subcat_arr[$j] = array($col2[0],$col2[1],$col2[2]);
+        $j = $j + 1;
+    }
+    while ($col3 = mysqli_fetch_array( $con_ubic )){
+        $ubic_arr[$h] = array($col3[0],$col3[1]);
+        $h = $h + 1;
+    }
+    $count_cat = count($cat_arr);
+    $count_subcat = count($subcat_arr);
+    $count_ub = count($ubic_arr);
 ?>
 
 <!DOCTYPE html>
@@ -37,36 +64,58 @@
     <link rel="stylesheet" href="../css/css.css">
 </head>
 <body>
-    <?php include('../controladores/navbar_c.php') ?>
+<?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
         <div class="grid-container">
             
-    <?php include('partials/filter.php') ?>
+    <?php/* include('partials/filter.php') */?>
         
         <?php 
         $valorglo;
+        $catglo;
                 {
                 if(isset($_GET['search'])){
                     
                     $valorglo = $_GET['search'];
-                    echo "search value: ".$valorglo; 
+                    echo "search value: ".$valorglo."<br>"; 
                     $value=$_GET['search'];
+                    if(isset($_GET['subcategoria'])){
+                    $valSub = $_GET['subcategoria'];
+                    $catglo = $valSub;
+                    echo "cat value: ".$catglo;}
                     
-                    $sql = "CALL getData('$value')";
-                    $result=mysqli_query($conn, $sql);
-/*
-                    echo '
-                    <form action="/search.php" method="get">
-                    <input type="hidden" name="search" value="'.$valorglo.'">
 
-                    <input type="checkbox" name="vehicle" value="Car" checked> I have a car<br>
-                    <input type="submit" value="Submit">
+                    echo '
+                    <form action="search.php" method="get">
+                    <input type="hidden" name="search" value="'.$valorglo.'">';
+                    echo '
+                        <select name="subcategoria">';
+                            
+                                for ($i=0; $i < $count_cat ; $i++) { 
+                                    echo "<optgroup label=".$cat_arr[$i][1].">";
+                                    for ($k=0; $k < $count_subcat; $k++) { 
+                                        if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
+                                            echo "<option value=".$subcat_arr[$k][0].">".$subcat_arr[$k][2]."</option>";
+                                        }
+                                    }
+                                }
+                           
+                        echo '</select>';
+                                   
+
+                    echo '<input type="submit" value="Submit">
                     </form>
                     ';
-                    */
+                    
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
-                    
+                    if(isset($_GET['subcategoria'])){
+                    $sql = "CALL getData('$value','$catglo')";}
+                    else {
+                        $sql = "CALL getData('$value','')";
+                    }
+                    $result=mysqli_query($conn, $sql);
+
                     while($row=mysqli_fetch_array($result)){
                         $title =$row['titulo'];
                         $tecData = $row['datostecnicos'];
@@ -74,8 +123,8 @@
                         $moreInfo = $row['masinformacion'];
                         $price = $row['precio'];
                         $ubicacion = $row['ubicacion'];
-                        $categoria = $row['categoria'];
-                        $subcategoria = $row['subcategoria'];
+                        //$categoria = $row['categoria'];
+                        $subcategoriaAlgo = $row['subcategoria'];
                         $image = $row['Imagen'];
                         if ($row['Imagen'] != NULL) {
                             $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($row['Imagen'] ).'" width=400  alt="imagen producto"/>';  
