@@ -60,8 +60,6 @@
                 $precio.append(data2[0][2]);
                 $dat_t.append(data2[0][3]);
                 $mas_info.append(data2[0][4]);
-                
-                
             }
         });
     });

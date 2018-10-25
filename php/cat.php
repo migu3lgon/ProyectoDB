@@ -46,8 +46,6 @@
         <div class="grid-container"> 
         <!---->
         <div id='sub-cat' class="grid-x grid-padding-x small-up-2 medium-up-3">
-            <select id='sub-cat2'>
-            </select>
         </div>
         </div>  
         <!---->
