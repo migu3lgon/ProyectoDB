@@ -27,10 +27,12 @@
     $con_cat = $conn->query("SELECT * FROM categorias");
     $con_subcat = $conn->query("SELECT * FROM subcategorias");
     $con_ubic = $conn->query("SELECT * FROM ubicaciones");
+
     //arrays de categorias y sub categorias
     $cat_arr = array();
     $subcat_arr = array();
     $ubic_arr = array();
+   
 
     //Poblar arrays para mostrar las categorias y sub categorias
     $i = 0; $j = 0; $h = 0;
@@ -46,9 +48,11 @@
         $ubic_arr[$h] = array($col3[0],$col3[1]);
         $h = $h + 1;
     }
+    
     $count_cat = count($cat_arr);
     $count_subcat = count($subcat_arr);
     $count_ub = count($ubic_arr);
+    
 ?>
 
 <!DOCTYPE html>
@@ -74,6 +78,7 @@
         $valorglo;
         $catglo;
         $locglo;
+        $precglo;
                 {
                 if(isset($_GET['search'])){
                     
@@ -87,7 +92,11 @@
                     if(isset($_GET['ubicacion'])){
                     $valLoc = $_GET['ubicacion'];
                     $locglo = $valLoc;
-                    echo "locat value: ".$valLoc;}
+                    echo "locat value: ".$valLoc."<br>";}
+                    if(isset($_GET['precio'])){
+                    $valPrec = $_GET['precio'];
+                    $precglo = $valPrec;
+                    echo "price value: ".$valPrec;}
                     
 
                     echo '
@@ -116,6 +125,10 @@
                             }
                         
                     echo '</select>';
+                    echo '
+                    Precio < 
+                    <input type="text" name="precio" value="">';
+                    
                                    
 
                     echo '<input type="submit" value="Submit">
@@ -125,17 +138,38 @@
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     if(isset($_GET['subcategoria'])){
-                    $sql = "CALL getData('$value','$catglo','')";
+                    $sql = "CALL getData('$value','$catglo','','')";
                     }
                     else if(isset($_GET['ubicacion'])){
-                        $sql = "CALL getData('$value','','$locglo')";
-                    } else if(isset($_GET['ubicacion'],$_GET['subcategoria'])){
-                    $sql = "CALL getData('$value','$catglo','$locglo')";
+                        $sql = "CALL getData('$value','','$locglo','')";
                     }
+                    else if(isset($_GET['precio'])){
+                        $sql = "CALL getData('$value','','','$precglo')";
+                    }
+                    else if(isset($_GET['subcategoria'],$_GET['precio'])){
+                        $sql = "CALL getData('$value','$catglo','','$precglo')";
+                    } 
+                    else if(isset($_GET['ubicacion'],$_GET['subcategoria'])){
+                        $sql = "CALL getData('$value','$catglo','$locglo','')";
+                    }
+                    else if(isset($_GET['ubicacion'],$_GET['precio'])){
+                        $sql = "CALL getData('$value','','$locglo','$precglo')";
+                    }
+                    else if(isset($_GET['ubicacion'],$_GET['subcategoria'],$_GET['precio'])){
+                        $sql = "CALL getData('$value','$catglo','$locglo','$precglo')";
+                    } 
                     else {
-                        $sql = "CALL getData('$value','','')";
+                        $sql = "CALL getData('$value','','','')";
                     }
                     $result=mysqli_query($conn, $sql);
+                    /*$sql3 = "CALL getData('$value','','','')";
+                    $result3=mysqli_query($conn, $sql3);*/
+                    /*
+                    $valorglo;
+                    $catglo;
+                    $locglo;
+                    $precglo;
+                      */
 
                     while($row=mysqli_fetch_array($result)){
                         $prodId = $row['idanuncio'];
