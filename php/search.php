@@ -83,20 +83,20 @@
                 if(isset($_GET['search'])){
                     
                     $valorglo = $_GET['search'];
-                    echo "search value: ".$valorglo."<br>"; 
+                    //echo "search value: ".$valorglo."<br>"; 
                     $value=$_GET['search'];
                     if(isset($_GET['subcategoria'])){
                     $valSub = $_GET['subcategoria'];
                     $catglo = $valSub;
-                    echo "cat value: ".$catglo."<br>";}
+                    //echo "cat value: ".$catglo."<br>";}
                     if(isset($_GET['ubicacion'])){
                     $valLoc = $_GET['ubicacion'];
                     $locglo = $valLoc;
-                    echo "locat value: ".$valLoc."<br>";}
+                    //echo "locat value: ".$valLoc."<br>";}
                     if(isset($_GET['precio'])){
                     $valPrec = $_GET['precio'];
                     $precglo = $valPrec;
-                    echo "price value: ".$valPrec;}
+                    //echo "price value: ".$valPrec;}
                     
 
                     echo '
