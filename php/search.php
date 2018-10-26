@@ -107,7 +107,7 @@
                     <input type="hidden" name="search" value="'.$valorglo.'">';
                     echo '
                         <select name="subcategoria">
-                        <option value="" disabled selected>Categorias</option>'
+                        <option value="'.$catglo.'" disabled selected>Categorias</option>'
                         ;
                             
                                 for ($i=0; $i < $count_cat ; $i++) { 
@@ -121,7 +121,7 @@
                            
                         echo '</select>';
                     echo '<select name="ubicacion">
-                    <option value="" disabled selected>Ubicacion</option>';
+                    <option value="'.$locglo.'" disabled selected>Ubicacion</option>';
                         
                             for ($l=0; $l < $count_subcat; $l++) { 
                                 echo "<option value=".$ubic_arr[$l][1].">".$ubic_arr[$l][1]."</option>";
