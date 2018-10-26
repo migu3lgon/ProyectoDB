@@ -12,7 +12,7 @@
         die("Connection failed: " . $conex->connect_error);
     } 
     $id = $_SESSION['id_usuario']; 
-
+    //include check session
 
         $query = $conex->query("SELECT * FROM usuario where idusuario = ".$id.";");
         $row = mysqli_fetch_array($query); 
