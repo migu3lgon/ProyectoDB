@@ -11,7 +11,7 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $con_prod = $conn->query("SELECT * from anuncio ORDER BY destacado DESC");
+    $con_prod = $conn->query("SELECT * from anunciodestacado ORDER BY destacado DESC");
     //arrays de categorias y sub categorias
     $prod_arr = array();
 
@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
+    <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
