@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src='../js/vendor/foundation.js'></script>
+    <script src="../js/vendor/jquery.js"></script>
     <?php
     $servername = "localhost";
     $username = "root";
@@ -31,15 +32,21 @@
     else {
         $idanuncio = 75;
     }
+    session_start();
+    $id = $_SESSION['id_usuario'];
+    $datosu = $conn->query("select * from usuario where idusuario = $id;");
+    $row = $datosu->fetch_assoc(); 
+        $saldo = $row["saldo"];
+    session_abort();
     
     $datosa = $conn->query("call obtener_anuncio(".$idanuncio.");");
-    $row = $datosa->fetch_assoc(); 
-        $titulo = $row["titulo"];
-        $uid = $row["idusuario"];
+    $row2 = $datosa->fetch_assoc(); 
+        $titulo = $row2["titulo"];
+        $uid = $row2["idusuario"];
     /*$datosu = $conn->query("select * from usuario where idusuario = $id;");
     $row = $datosa->fetch_assoc(); 
         $saldo = $row["saldo"];*/
-?>
+    ?>
 </head>
 <body>
 
@@ -47,11 +54,6 @@
     <?php include('../controladores/navbar_c.php'); ?>
     <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
     <?php include('../controladores/checksession_c.php'); ?>
-    <?php $id = $_SESSION['id_usuario'];
-    $datosu = $conn->query("select * from usuario where idusuario = $id;");
-    $row = $datosu->fetch_assoc(); 
-        $saldo = $row["saldo"];
-    ?>
     <div class="mainb">
     <div class= "grid-container">
         <div class="grid-x grid-margin-x align-center">

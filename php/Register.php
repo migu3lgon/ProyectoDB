@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
+    <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
@@ -49,7 +50,7 @@
                         <input name='fnum' type="text" placeholder="01010101" required pattern="[0-9]+">
                     </label>
                     <label>Contaseña:
-                        <input name='pswd' id='password' type="text" placeholder="Contaseña" required>
+                        <input name='pswd' id='password' type="password" placeholder="Contaseña" required>
                     </label>
                     <!--<input id="show-password" type="checkbox"><label for="show-password">Mostrar contraseña</label>-->
                     <p><input type="submit" class="button expanded" value="Registrate"></p>
