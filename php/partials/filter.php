@@ -104,7 +104,7 @@
                         }
                     }
                     
-                    echo '<div id="filtrado"';
+                    echo "<div id='filtrado'>";
                     echo '
                     <form action="search.php" method="get">
                     <input type="hidden" name="search" value="'.$valorglo.'">';
