@@ -31,8 +31,6 @@
     <link rel="stylesheet" href="../css/css.css">
 </head>
 <body>
-<!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-<?php include('../controladores/checksession_c.php') ?>
 <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
         <div class="grid-container">

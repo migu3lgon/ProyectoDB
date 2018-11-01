@@ -13,8 +13,6 @@
     <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
-    <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-    <?php include('../controladores/checksession_c.php') ?>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
         <?php

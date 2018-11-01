@@ -46,3 +46,4 @@
           </div>
         </div>
  </header>
+ <?php include('../controladores/checksession_c.php') ?>

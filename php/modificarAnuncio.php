@@ -43,8 +43,6 @@
   <body>
     <!-- incluye al navegador-->
     <?php include('../controladores/navbar_c.php') ?>
-    <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
-    <?php include('../controladores/checksession_c.php') ?>
       <?php
             
             $prueba = $conn->query("SELECT * from anuncio where idanuncio=$idanuncio limit 1;");

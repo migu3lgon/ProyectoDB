@@ -1,7 +1,4 @@
 <?php
-#verificar si ha iniciado sesion para acceder a esta pagina
-include('../controladores/checksession_c.php');
-
 session_start();
 $host_db = "localhost";
 $user_db = "root";
