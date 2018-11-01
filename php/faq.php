@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
-    <script src='../js/vendor/foundation.js'></script>
     <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
@@ -58,9 +57,6 @@
     </div>
     <?php include('/partials/Footer.php') ?>
     
-
-
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>
