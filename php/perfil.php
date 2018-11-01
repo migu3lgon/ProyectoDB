@@ -35,7 +35,9 @@
     ?>
 </head>
 <body>
-<?php include('../controladores/navbar_c.php');
+<?php
+    include('../controladores/navbar_c.php');
+    include('../controladores/checksession_c.php');
     $id = $_SESSION['id_usuario']; 
     $prueba = $conn2->query("call datos_perfil(".$id.");");
     $row = $prueba->fetch_assoc(); 

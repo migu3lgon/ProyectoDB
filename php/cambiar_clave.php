@@ -14,6 +14,7 @@
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/checksession_c.php') ?>
     <div class="grid-container">
         <?php
             if (isset($_GET['cambio'])) {
