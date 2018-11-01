@@ -163,7 +163,8 @@
                     </select>';*/
                     echo '
                         <select name="subcategoria">
-                        <option value="'.$catglo.'" disabled selected>';
+                        <option value="'.$catglo.'" disabled selected></option>';
+                        echo '<option value=""></option>';
                         echo '</option>';
                                 echo '<option value="'.$catglo.'" selected>Categoria: '.$catglo.'</option>';
                                 for ($i=0; $i < $count_cat ; $i++) { 
@@ -201,7 +202,7 @@
                     ';
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
-                    if(isset($_GET['search'])){
+                    /*if(isset($_GET['search'])){
                     switch($_GET['search']){
                         case isset($_GET['subcategoria']):
                             $sql = "CALL getData('$value','$catglo','','')";
@@ -229,8 +230,34 @@
                             break;
 
 
-                    }}
-
+                    }}*/
+                        if(isset($_GET['search'])){
+                            //agregar variables que me permitan saber si estan nulos o no
+                            if(isset($_GET['precio'])){
+                                $sql = "CALL getData('$value','','','$precglo')";
+                            }
+                            else if(isset($_GET['ubicacion'])){
+                                $sql = "CALL getData('$value','','$locglo','')";
+                            }
+                            else if(isset($_GET['subcategoria'])){
+                                $sql = "CALL getData('$value','$catglo','','')";
+                                }
+                            else if(isset($_GET['subcategoria'],$_GET['precio'])){
+                                $sql = "CALL getData('$value','$catglo','','$precglo')";
+                            } 
+                            else if(isset($_GET['ubicacion'],$_GET['subcategoria'])){
+                                $sql = "CALL getData('$value','$catglo','$locglo','')";
+                            }
+                            else if(isset($_GET['ubicacion'],$_GET['precio'])){
+                                $sql = "CALL getData('$value','','$locglo','$precglo')";
+                            }
+                            else if(isset($_GET['ubicacion'],$_GET['subcategoria'],$_GET['precio'])){
+                                $sql = "CALL getData('$value','$catglo','$locglo','$precglo')";
+                            } 
+                            else {
+                                $sql = "CALL getData('$value','','','')";
+                            }
+                        }
 
 
                     
