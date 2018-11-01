@@ -1,4 +1,7 @@
 <?php
+#verificar si ha iniciado sesion para acceder a esta pagina
+include('../controladores/checksession_c.php');
+
 session_start();
 $host_db = "localhost";
 $user_db = "root";
@@ -15,7 +18,8 @@ if (isset($_GET['id_add'])) {
     $idanuncio = $_GET['id_add'];
 }
 else {
-    $idanuncio = 75;
+    header('Location: http://localhost/proyectodb/php/perfil.php?err=0');
+    exit();
 }
 
 

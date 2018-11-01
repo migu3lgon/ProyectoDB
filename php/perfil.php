@@ -35,6 +35,8 @@
     ?>
 </head>
 <body>
+<!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+<?php include('../controladores/checksession_c.php') ?>
 <?php include('../controladores/navbar_c.php');
     $id = $_SESSION['id_usuario']; 
     $prueba = $conn2->query("call datos_perfil(".$id.");");

@@ -13,26 +13,28 @@
     <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
+    <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+    <?php include('../controladores/checksession_c.php') ?>
     <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
         <?php
-        if (isset($_GET['cambio'])) {
-            if ($_GET['cambio']) {
-                echo "
-                <div class=\"callout success\">
-                    <h5>El cambio de contraseña ha sido exitoso</h5>
-                </div>
-                ";
+            if (isset($_GET['cambio'])) {
+                if ($_GET['cambio']) {
+                    echo "
+                    <div class=\"callout success\">
+                        <h5>El cambio de contraseña ha sido exitoso</h5>
+                    </div>
+                    ";
+                }
+                else {
+                    echo "
+                    <div class=\"callout alert\">
+                        <h5>Parece que algo ha salido mal</h5>
+                        <p>Por favor revisa tu contraseña</p>
+                    </div>
+                    ";
+                }
             }
-            else {
-                echo "
-                <div class=\"callout alert\">
-                    <h5>Parece que algo ha salido mal</h5>
-                    <p>Por favor revisa tu contraseña</p>
-                </div>
-                ";
-            }
-        }
         ?>
         <div class="grid-x align-center">
             <div class="cell small-5">
