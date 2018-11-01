@@ -104,7 +104,7 @@
                         }
                     }
                     
-
+                    echo '<div id="filtrado"';
                     echo '
                     <form action="search.php" method="get">
                     <input type="hidden" name="search" value="'.$valorglo.'">';
@@ -152,6 +152,7 @@
                     </form></br></br>
                     
                     ';
+                    echo '</div>';
 
                     echo '<div class="grid-x grid-margin-x grid-margin-y">';
                     /*if(isset($_GET['search'])){
