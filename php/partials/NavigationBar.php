@@ -15,15 +15,23 @@
                     $valuee = $_GET['search'];
                     echo '
                     <form action="search.php" method="GET">
-                  <li><input type="text" name="search" value="'.$valuee.'"></li>
-                  <li><button type="submit" class="button">Search</button></li>
-                  </form>
+                      <div class="input-group">
+                        <li><input class="input-group-field" type="text" name="search" value="'.$valuee.'"></li>
+                        <div class="input-group-button">
+                          <li><button type="submit" class="button">Search</button></li>
+                        </div>
+                      </div>
+                    </form>
                     ';}
                   else {
                     echo '
                     <form action="search.php" method="GET">
-                    <li><input type="text" name="search" placeholder="Search"></li>
-                    <li><button type="submit" class="button">Search</button></li>
+                    <div class="input-group">
+                      <li><input  class="input-group-field" type="text" name="search" placeholder="Search"></li>
+                      <div class="input-group-button">
+                        <li><button type="submit" class="button">Search</button></li>
+                      </div>
+                    </div>
                     </form>';
                   }
                   ?>

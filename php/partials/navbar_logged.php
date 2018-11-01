@@ -13,8 +13,12 @@
                         <a href="index.php"><img src="../Imagenes/logo.jpg" class="logo" id="Navigation_Bar_Logo" /></a>
                   </figure>
                   <form action="search.php" method="GET">
-                  <li><input type="text" name="search" placeholder="Search"></li>
-                  <li><button type="submit" class="button">Search</button></li>
+                  <div class="input-group">
+                    <li><input  class="input-group-field" type="text" name="search" placeholder="Search"></li>
+                    <div class="input-group-button">
+                      <li><button type="submit" class="button">Search</button></li>
+                    </div>
+                  </div>
                   </form>
                 </ul>
             </div>
