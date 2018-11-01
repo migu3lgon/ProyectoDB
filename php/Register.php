@@ -16,22 +16,22 @@
     <?php include('../controladores/navbar_c.php') ?>
     <div class="grid-container">
         <?php
-        if (isset($_GET['register'])) {
-            if ($_GET['register']) {
-                echo "
-                <div class=\"callout success\">
-                    <h5>El registro ha sido exitoso</h5>
-                    <p>Si deseas iniciar sesión haz click <a href='login.php'>aquí</a></p>
-                </div>";
+            if (isset($_GET['register'])) {
+                if ($_GET['register']) {
+                    echo "
+                    <div class=\"callout success\">
+                        <h5>El registro ha sido exitoso</h5>
+                        <p>Si deseas iniciar sesión haz click <a href='login.php'>aquí</a></p>
+                    </div>";
+                }
+                else {
+                    echo "
+                    <div class=\"callout alert\">
+                        <h5>El usuario ya existe</h5>
+                        <p>Intentalo con otro correo</p>
+                    </div>";
+                }
             }
-            else {
-                echo "
-                <div class=\"callout alert\">
-                    <h5>El usuario ya existe</h5>
-                    <p>Intentalo con otro correo</p>
-                </div>";
-            }
-        }
         ?>
         <div class="grid-x align-center">
             <div class="cell small-5">
@@ -62,7 +62,6 @@
 
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>

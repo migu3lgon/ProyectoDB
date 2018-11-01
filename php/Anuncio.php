@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
-    <script src='../js/vendor/foundation.js'></script>
     <script src="../js/vendor/jquery.js"></script>
     <?php
         $servername = "localhost";
@@ -43,27 +42,11 @@
         }  
     ?>
     <script>
-    $(document).ready(function(){
-        $.ajax({
-            type:'GET',
-            url:'../jsons/anuncio_json.php',
-            dataType: "json",
-            data:{'id_add':<?php echo $idanuncio;?>},
-            success:function(data2){
-                var $title = $('#titulo');
-                var $desc = $('#descr');
-                var $precio = $('#precio');
-                var $mas_info = $('#mas_info');
-                var $dat_t = $('#dat_t');
-                $title.append(data2[0][0]);
-                $desc.append(data2[0][1]);
-                $precio.append(data2[0][2]);
-                $dat_t.append(data2[0][3]);
-                $mas_info.append(data2[0][4]);
-            }
-        });
-    });
+        var globalVariable={
+        idadd: <?php echo $idanuncio;?>
+        };
     </script>
+    <script src='../js/anuncio.js'></script>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php'); ?>
@@ -97,7 +80,6 @@
     </div>
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>
