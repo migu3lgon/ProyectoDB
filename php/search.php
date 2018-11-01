@@ -163,8 +163,8 @@
                     </select>';*/
                     echo '
                         <select name="subcategoria">
-                        <option value="'.$catglo.'" disabled selected></option>';
-                        echo '<option value=""></option>';
+                        <option value="'.$catglo.'" disabled selected>';
+                        //echo '<option value=""></option>';
                         echo '</option>';
                                 echo '<option value="'.$catglo.'" selected>Categoria: '.$catglo.'</option>';
                                 for ($i=0; $i < $count_cat ; $i++) { 
@@ -178,9 +178,7 @@
                            
                         echo '</select>';
                     echo '<select name="ubicacion">
-                    <option value="'.$locglo.'" disabled selected>';if($locglo==NULL){
-                        echo 'Ubicación';
-                    } else {echo $locglo;}
+                    <option value="'.$locglo.'" disabled selected>';
                     echo '</option>';
                             echo '<option value="'.$locglo.'" selected>Ubicacion: '.$locglo.'</option>';
                             for ($l=0; $l < $hglobal; $l++) { 
@@ -195,8 +193,9 @@
                     <input type="text" name="precio" value="'.$precglo.'">';
                     
                                    
-
+                    
                     echo '<input type="submit" value="Submit">
+                    
                     </form>
                     
                     ';
