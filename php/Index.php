@@ -1,30 +1,4 @@
-﻿<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "gioscorp2";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    } 
-
-    $con_prod = $conn->query("SELECT * from anunciodestacado ORDER BY destacado DESC");
-    //arrays de categorias y sub categorias
-    $prod_arr = array();
-
-    //Poblar arrays para mostrar las categorias y sub categorias
-    $j = 0;
-    while ($col2 = mysqli_fetch_array( $con_prod )){
-        $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
-        $j = $j + 1;
-    }
-    $count_prod = count($prod_arr);
-?>
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,6 +11,31 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "gioscorp2";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+
+        $con_prod = $conn->query("SELECT * from anunciodestacado ORDER BY destacado DESC");
+        //arrays de categorias y sub categorias
+        $prod_arr = array();
+
+        //Poblar arrays para mostrar las categorias y sub categorias
+        $j = 0;
+        while ($col2 = mysqli_fetch_array( $con_prod )){
+            $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
+            $j = $j + 1;
+        }
+        $count_prod = count($prod_arr);
+    ?>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
@@ -99,7 +98,6 @@
 
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>

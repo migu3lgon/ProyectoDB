@@ -15,7 +15,8 @@ if (isset($_GET['id_add'])) {
     $idanuncio = $_GET['id_add'];
 }
 else {
-    $idanuncio = 75;
+    header('Location: http://localhost/proyectodb/php/perfil.php?err=0');
+    exit();
 }
 
 

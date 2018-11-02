@@ -1,4 +1,7 @@
 <?php
+    #verificar si ha iniciado sesion para acceder a esta pagina
+    include('../controladores/checksession_c.php');
+    
     session_start();
     $servername = "localhost";
     $username = "root";
@@ -12,16 +15,18 @@
         die("Connection failed: " . $conex->connect_error);
     } 
     $id = $_SESSION['id_usuario']; 
-    //include check session
-
-        $query = $conex->query("SELECT * FROM usuario where idusuario = ".$id.";");
-        $row = mysqli_fetch_array($query); 
-            $saldo = $row["saldo"]; 
 
     if (isset($_POST['credito'])) {
-        $monto = $_POST['monto'] + $saldo;
-        $cons = "UPDATE usuario SET saldo = ".$monto." WHERE idusuario = ".$id.";";
-        $bool = $conex->query($cons);
+        //variables
+        $monto = $_POST['monto'];
+        $set_res = 'SET @res = ""';
+        $cons = "CALL acreditar($id,$monto,@res)";
+        $select_res = "SELECT @res";
+        //queries
+        $conex->query($set_res);
+        $conex->query($cons);
+        $bool = $conex->query($select_res);
+        //resultado
         if ($bool) { 
             header('Location: http://localhost/proyectodb/php/perfil.php?bool=1&pan=3');
             exit();
