@@ -34,7 +34,6 @@
             $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
             $j = $j + 1;
         }
-        $count_prod = count($prod_arr);
     ?>
 </head>
 <body>
@@ -43,7 +42,7 @@
         <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y">
                 <?php 
-                        if ($count_prod <= 0) {
+                        if ($j <= 0) {
                             echo '
                             <div class="callout small-10 medium-10 large-10 align">
                                 <h5>Más anuncios proximamente!</h5>
@@ -51,7 +50,7 @@
                             </div>
                             ';
                         }
-                        for ($i=0; $i < $count_prod ; $i++) { 
+                        for ($i=0; $i < $j ; $i++) { 
                             if ($prod_arr[$i][2] != NULL) {
                                 $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($prod_arr[$i][2]).'" width=400  alt="imagen producto"/>';  
                             }
