@@ -11,12 +11,6 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    $conn2 = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn2->connect_error) {
-        die("Connection failed: " . $conn2->connect_error);
-    } 
-
     $con_prod = $conn->query("SELECT * from anunciodestacado ORDER BY destacado DESC");
     //arrays de categorias y sub categorias
     $prod_arr = array();
@@ -218,9 +212,7 @@
                             }
                         }
 
-
-                    
-                    $result=mysqli_query($conn2, $sql);
+                    $result=mysqli_query($conn, $sql);
 
                     while($row=mysqli_fetch_array($result)){
                         $prodId = $row['idanuncio'];
