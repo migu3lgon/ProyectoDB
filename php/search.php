@@ -32,14 +32,12 @@
     <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
-<?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/navbar_c.php') ?>
     <div class="mainb" align="center">
         <div class="grid-container">
             
         <?php include('partials/filter.php') ?>
-        
-       
-         
+
         </div>
     </div>
 
@@ -49,7 +47,6 @@
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>
     
-
 </body>
 </html>
 <?php
