@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
+    <?php include('/partials/connect.php') ?>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gioscorp2";
+       
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);

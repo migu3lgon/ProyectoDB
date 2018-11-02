@@ -1,8 +1,6 @@
+<?php include('/partials/connect.php') ?>
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "gioscorp2";
+    
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);

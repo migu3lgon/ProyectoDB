@@ -2,27 +2,28 @@
     //connect to the database
     require_once("partials/connect.php");
     session_start();
-    //shop not login  users from entering 
-    /*if(isset($_SESSION['idusuario'])){
-        $user_id = $_SESSION['idusuario'];
-    }else{
-        header("Location: index.php");
-    }*/
+    if(isset($_SESSION['id'])){
+        $user_id = $_SESSION['id'];
+    }
 ?>
 <!DOCTYPE html>
-<html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <title>Facebook Style Private Messaging System in php</title>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+<meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gio's Company - Home</title>
+    <link rel="stylesheet" href="../css/foundation.css">
+    <link rel="stylesheet" href="../css/app.css">
+    <link rel="stylesheet" href="../css/css.css">
+    <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
+    <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
     <center>
-        <a href="http://blog.hackerkernel.com/2015/09/17/jqueryui-autocomplete-dropdown-with-php-and-json" target="_blank">Tutorial</a> / 
-        <a href="http://demo.hackerkernel.com/download.php?url=1ozuzawpkwuzjd3uzmomwbrt5pnzpjsa" target="_blank">Download Script</a> / 
-        <a href="http://hackerkernel.com/contact.php" target="_blank">Want Me to Work on your Dream Project</a> / 
-        <br>
-        <strong>Welcome <?php echo $_SESSION['username']; ?>  <a href="logout.php">logout</a></strong>
+        
+        <strong>Welcome <?php echo $_SESSION['username']; ?></strong>
     </center>
      
     <div class="message-body">
@@ -30,10 +31,14 @@
             <ul>
                 <?php
                     //show all the users expect me
-                    $q = mysqli_query($con, "SELECT * FROM `usuario` WHERE idusuario='.$user_id.'");
+                    $sql1 = "SELECT * FROM `usuario`"; //WHERE idusuario='.$user_id.'
+                    $q = mysqli_query($con,$sql1);
+                    echo $q;
                     //display all the results
                     while($row = mysqli_fetch_assoc($q)){
-                        echo '<a href="message.php?id="{'.$row["idusuario"].'}"><li> {'.$row["username"].'}</li></a>';
+                        $iduser = $row['idusuario'];
+                        $username = $row['username'];
+                        echo '<a href="message.php?id="{'.$iduser.'}"><li> {'.$username.'}</li></a>';
                     }
                 ?>
             </ul>
