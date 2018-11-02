@@ -76,11 +76,11 @@
                                     <div class="product-card-thumbnail anuncio">
                                         <a href="anuncio.php?id_add='.$prodID.'">'.$img.'</a>
                                     </div>
-                                    <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a> ';
+                                    <h3 class="product-card-title cont"><a href="#">'.$prodName.'</a> ';
                                     if ($dest) {
                                         echo '<i class="fi-star estrella"></i>';
                                     }
-                                    echo '</h2>
+                                    echo '</h3>
                                     <span class="product-card-desc">'.$prodDesc.'</span>
                                     <br/>
                                     <span class="product-card-price">Q '.$prodPrice.'</span>
