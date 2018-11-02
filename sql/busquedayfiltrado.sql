@@ -25,7 +25,7 @@ CREATE PROCEDURE getData(IN elValue VARCHAR(255), IN elOtroValue VARCHAR(255), I
 
 
  SELECT idanuncio,destacado, titulo, datostecnicos, descripcion, fecha, masinformacion, precio, d.ubicacion, Imagen, c.categoria, b.subcategoria 
-FROM anuncio a INNER JOIN subcategorias b on a.idsubcategoria=b.idsubcategoria INNER JOIN categorias c on b.idcategoria=c.idcategoria 
+FROM anunciodestacado a INNER JOIN subcategorias b on a.idsubcategoria=b.idsubcategoria INNER JOIN categorias c on b.idcategoria=c.idcategoria 
 INNER JOIN ubicaciones d on a.idubicacion=d.idubicacion WHERE (titulo LIKE CONCAT('%', @lValue, '%') 
  OR precio LIKE CONCAT('%', @lValue2, '%') OR descripcion LIKE CONCAT('%', @lValue3, '%') OR masinformacion LIKE CONCAT('%', @lValue4, '%')
  OR d.ubicacion LIKE CONCAT('%', @lValue7, '%'))
