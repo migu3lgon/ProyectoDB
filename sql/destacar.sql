@@ -14,6 +14,7 @@ PROCEDURE gioscorp2.destacar(IN      idanuncio_v   INT(11),
    NOT DETERMINISTIC
    CONTAINS SQL
    SQL SECURITY DEFINER
+   Proc_label:
 BEGIN
    DECLARE dias      INT;
    DECLARE precio    INT DEFAULT 10;
