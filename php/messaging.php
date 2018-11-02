@@ -22,7 +22,7 @@
         <a href="http://demo.hackerkernel.com/download.php?url=1ozuzawpkwuzjd3uzmomwbrt5pnzpjsa" target="_blank">Download Script</a> / 
         <a href="http://hackerkernel.com/contact.php" target="_blank">Want Me to Work on your Dream Project</a> / 
         <br>
-        <strong>Welcome <?php echo $_SESSION['nombre']; ?>  <a href="logout.php">logout</a></strong>
+        <strong>Welcome <?php echo $_SESSION['username']; ?>  <a href="logout.php">logout</a></strong>
     </center>
      
     <div class="message-body">
