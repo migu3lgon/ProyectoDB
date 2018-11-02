@@ -14,7 +14,6 @@ PROCEDURE gioscorp2.destacar(IN      idanuncio_v   INT(11),
    NOT DETERMINISTIC
    CONTAINS SQL
    SQL SECURITY DEFINER
-   Proc_label:
 BEGIN
    DECLARE dias      INT;
    DECLARE precio    INT DEFAULT 10;
@@ -25,16 +24,6 @@ BEGIN
                                   WHERE idusuario = usuario);
    SET dias = (SELECT dias(fecha2, fecha1));
    SET total = dias * precio;
-
-   INSERT INTO destacado(idanuncio,
-                         destacado,
-                         fechainicio,
-                         fechafin)
-        VALUES (idanuncio_v,
-                1,
-                fecha1,
-                fecha2);
-
    SET saldo_u = saldo_u - total;
 
    IF (saldo_u < 0)
@@ -44,6 +33,15 @@ BEGIN
 
       LEAVE proc_label;
    END IF;
+
+   INSERT INTO destacado(idanuncio,
+                         destacado,
+                         fechainicio,
+                         fechafin)
+        VALUES (idanuncio_v,
+                1,
+                fecha1,
+                fecha2);
 
    UPDATE usuario
       SET saldo = saldo_u
