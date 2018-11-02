@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 30-10-2018 a las 02:23:40
+-- Tiempo de generación: 02-11-2018 a las 00:26:34
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -21,11 +21,36 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gioscorp2`
 --
+CREATE DATABASE IF NOT EXISTS `gioscorp2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `gioscorp2`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `acreditar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `acreditar` (IN `user` INT, `monto` INT, OUT `res` BOOL)  BEGIN
+	DECLARE usuario_p int;
+	DECLARE monto_p int;
+	DECLARE saldo_p int;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+	BEGIN 
+		ROLLBACK;
+		SELECT 'Ha ocurrido un error con el insert';
+		SET res = false;
+	END;
+	SET usuario_p = user;
+	SELECT saldo FROM usuario where idusuario = usuario_p INTO saldo_p;
+	SET monto_p = monto + saldo_p;
+	
+	/*Aqui estaria la logica de la tarjeta de credito*/
+	
+	UPDATE usuario SET saldo = monto_p WHERE idusuario = usuario_p;
+	SET res = true;
+	Commit;
+	
+END$$
+
 DROP PROCEDURE IF EXISTS `anuncio_nuevo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `anuncio_nuevo` (IN `titulo_v` VARCHAR(45), IN `descripcion_v` MEDIUMTEXT, IN `subcategoria_v` INT, IN `ubicacion_v` INT, IN `imagen_v` MEDIUMBLOB, IN `telefono_v` INT, IN `fecha_v` DATE)  BEGIN
 	INSERT INTO `anuncio` (`titulo`, `descripcion`, `idsubcategoria`, `idubicacion`, `imagen`, `telefono`, `fecha`) 
@@ -150,7 +175,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `getData` (IN `elValue` VARCHAR(255)
 
 
  SELECT idanuncio,destacado, titulo, datostecnicos, descripcion, fecha, masinformacion, precio, d.ubicacion, Imagen, c.categoria, b.subcategoria 
-FROM anuncio a INNER JOIN subcategorias b on a.idsubcategoria=b.idsubcategoria INNER JOIN categorias c on b.idcategoria=c.idcategoria 
+FROM anunciodestacado a INNER JOIN subcategorias b on a.idsubcategoria=b.idsubcategoria INNER JOIN categorias c on b.idcategoria=c.idcategoria 
 INNER JOIN ubicaciones d on a.idubicacion=d.idubicacion WHERE (titulo LIKE CONCAT('%', @lValue, '%') 
  OR precio LIKE CONCAT('%', @lValue2, '%') OR descripcion LIKE CONCAT('%', @lValue3, '%') OR masinformacion LIKE CONCAT('%', @lValue4, '%')
  OR d.ubicacion LIKE CONCAT('%', @lValue7, '%'))
@@ -263,10 +288,6 @@ CREATE TABLE IF NOT EXISTS `anuncio` (
   KEY `fkubicacion_idx` (`idubicacion`),
   KEY `idusuario_idx` (`idusuario`)
 ) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `anuncio`
---
 
 -- --------------------------------------------------------
 
@@ -464,8 +485,8 @@ INSERT INTO `usuario` (`idusuario`, `correo`, `psw`, `nombre`, `apellido`, `tele
 (3, 'correo@correo.com', 'password', NULL, NULL, NULL, '0.00'),
 (4, 'correop@prueba.com', 'nombre procedure', NULL, NULL, NULL, '0.00'),
 (6, 'correopruebaprocedure2', 'facil', NULL, NULL, NULL, '0.00'),
-(7, 'test@m.com', 'test', 'Nombre test', NULL, NULL, '20.00'),
-(8, 'mleiva2@unis2.com', 'cuatro', 'GioDOS', 'LeivaDOS', 202020202, '0.00');
+(7, 'test@m.com', 'test', 'Nombre test', NULL, NULL, '35.00'),
+(8, 'mleiva2@unis2.com', 'cuatro', 'GioDOS', 'LeivaDOS', 202020202, '10.00');
 
 -- --------------------------------------------------------
 
