@@ -13,11 +13,13 @@
     <script src="../js/vendor/jquery.js"></script>
 </head>
 <body>
+
 <?php include('../controladores/navbar_c.php') ?>
 <?php include('/partials/connect.php') ?>
 <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
 <?php //include('../controladores/checksession_c.php'); ?>    
-
+<div class="mainb" align="center">
+        <div class="grid-container">
     <?php
     
     if(isset($_SESSION['loggedin'])){
@@ -32,6 +34,7 @@
     </center>'; 
     }
     ?>
+    
     <?php
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -54,17 +57,34 @@
                     echo $row['idusuario'];
                 $vendorId = $row['idusuario'];
                 $compraId = $_SESSION['id_usuario'];
-                echo "<br>El comprador es: $compraId";
-            
-        }
+                echo "<br>El id del comprador es: $compraId";
+                /*$sqlart = "SELECT titulo FROM anuncio WHERE idanuncio=$value";
+                $adRes = mysqli_query($conn,$sqlart);*/
                 
+
+        echo "<div id='newmsg'>";
+        echo '
         
+            <form action="/convo.php" method="GET">
+            <!--<h4>Mensaje relacionado al anuncio: </h4>-->
+            Sujeto: <input id="subje" placeholder="Ingrese el sujeto" type="text" name="subject">
+            <br>
+            <textarea rows="4" cols="50" placeholder="Ingrese su mensage" name="message" ></textarea>
+            <input type="submit" name="submit" Value="Enviar Mensaje">
+            </form>
+        
+        </div>
+        ';
+                
+        }
     }
     
     ?>
+
+    
      
     
-
+    </div></div>
  <?php include('/partials/Footer.php') ?>
 
 <script src="../js/vendor/what-input.js"></script>

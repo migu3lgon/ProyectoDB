@@ -19,6 +19,17 @@ header {
 }
 
 #filtrado {
-  width:30%;;
+  width:30%;
+}
+
+#newmsg {
+  width:60%;
+  /*float: center;*/
+  /*display: inline-block;*/
+}
+#subje {
+  
+  width:30%;
+  
 }
   
