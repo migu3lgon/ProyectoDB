@@ -55,7 +55,7 @@
     
     <div class="mainb">
     <h1 id='titulo' align="center"></h1> 
-        <article class="grid-container">
+        <div class="grid-container">
             <div class="grid-x grid-margin-x align-center">
                 <div class="small-10 medium-6 cell">
                     <?php echo $imagenanuncio; ?>
@@ -63,7 +63,6 @@
                 <div class="small-10 medium-4 cell">
                     <h2>Precio:</h2>
                     <span id= "precio">Q </span>
-                    <span id= "precio2">Q </span>
                     <h2>Informacion General</h2>
                     <p id='descr'></p>
                     <h2>Datos Tecnicos</h2>
@@ -74,11 +73,49 @@
                     <p id='mas_info'></p>
                 </div>
                 <div id="bones de anuncio" class="cell small-10 button-group">
-                        <a class="button">comprar</a>
+                        <a class="button" data-open="compra">comprar</a>
                         <a href="newmessage.php?vendid=<?php echo $idanuncio ?>" class="button">contactar vendedor</a>
                 </div>
             </div>
-        </article>
+        </div>
+        <div class="reveal" id="compra" data-reveal>
+            <div class="grid-container">
+                <form action="../controladores/compra_c.php?id_add=<?php echo "$idanuncio"?>" class="grid-x" method="post" enctype="multipart/form-data">
+                    <div class="small-12 cell">
+                        <h3>Compra de Producto</h3>
+                    </div>
+                    <div class="small-12 cell">
+                        <h4>Precio</h4>
+                    </div>
+                    <div class="small-12 cell">
+                        <h3 id="precio2">Q </h3>
+                    </div>
+                    <div class="small-12 cell">
+                        <h4>Información de la tarjeta:</h4>
+                    </div>
+                    <div class="input-group small-8 cell">
+                        <span class="input-group-label">Titular:</span>
+                        <input class="input-group-field" type="cvv" name='titular' pattern="[A-Za-z]+" placeholder="Nombre del titular de la tarjeta">
+                    </div>
+                    <div class="input-group small-4 cell">
+                        <span class="input-group-label">cvv:</span>
+                        <input class="input-group-field" type="cvv" name='cvv' pattern="[0-9]{3,4}" placeholder="### or ####">
+                    </div>
+                    <div class="input-group small-12 cell">
+                        <span class="input-group-label">Tarjeta:</span>
+                        <input class="input-group-field" type="card" name="tarjeta" placeholder="Ingrese el numero de la tarjeta" pattern="[0-9]+">
+                    </div>
+                    <div class="input-group small-12 cell">
+                        <span class="input-group-label">Fecha de Vencimiento:</span>
+                        <input class="input-group-field" type="month" name='fecha_vencimiento'>
+                    </div>
+                    <input class="button small-12 cell success" type="submit" name="comprar" value="comprar" />
+                </form>
+            </div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
         
     </div>
     <?php include('/partials/Footer.php') ?>
