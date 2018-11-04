@@ -14,25 +14,26 @@
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
+    <?php include('../controladores/checksession_c.php') ?>
     <div class="grid-container">
         <?php
-        if (isset($_GET['cambio'])) {
-            if ($_GET['cambio']) {
-                echo "
-                <div class=\"callout success\">
-                    <h5>El cambio de contraseña ha sido exitoso</h5>
-                </div>
-                ";
+            if (isset($_GET['cambio'])) {
+                if ($_GET['cambio']) {
+                    echo "
+                    <div class=\"callout success\">
+                        <h5>El cambio de contraseña ha sido exitoso</h5>
+                    </div>
+                    ";
+                }
+                else {
+                    echo "
+                    <div class=\"callout alert\">
+                        <h5>Parece que algo ha salido mal</h5>
+                        <p>Por favor revisa tu contraseña</p>
+                    </div>
+                    ";
+                }
             }
-            else {
-                echo "
-                <div class=\"callout alert\">
-                    <h5>Parece que algo ha salido mal</h5>
-                    <p>Por favor revisa tu contraseña</p>
-                </div>
-                ";
-            }
-        }
         ?>
         <div class="grid-x align-center">
             <div class="cell small-5">
@@ -53,7 +54,6 @@
 
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>

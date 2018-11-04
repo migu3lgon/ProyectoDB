@@ -25,6 +25,7 @@
 ?>
 
 <!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -37,6 +38,32 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
+    <?php include('/partials/connect.php') 
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/?>
+    <?php
+        
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        } 
+
+        $con_prod = $conn->query("SELECT * from anunciodestacado ORDER BY destacado DESC");
+        //arrays de categorias y sub categorias
+        $prod_arr = array();
+
+        //Poblar arrays para mostrar las categorias y sub categorias
+        $j = 0;
+        while ($col2 = mysqli_fetch_array( $con_prod )){
+            $prod_arr[$j] = array($col2['titulo'],$col2['descripcion'],$col2['Imagen'],$col2['precio'],$col2['idanuncio'],$col2['destacado']);
+            $j = $j + 1;
+        }
+    ?>
 </head>
 <body>
     <?php include('../controladores/navbar_c.php') ?>
@@ -44,7 +71,7 @@
         <div class="grid-container">
             <div class="grid-x grid-margin-x grid-margin-y">
                 <?php 
-                        if ($count_prod <= 0) {
+                        if ($j <= 0) {
                             echo '
                             <div class="callout small-10 medium-10 large-10 align">
                                 <h5>Más anuncios proximamente!</h5>
@@ -52,7 +79,7 @@
                             </div>
                             ';
                         }
-                        for ($i=0; $i < $count_prod ; $i++) { 
+                        for ($i=0; $i < $j ; $i++) { 
                             if ($prod_arr[$i][2] != NULL) {
                                 $img = '<img class="img_anuncio" src="data:image/jpeg;base64,'.base64_encode($prod_arr[$i][2]).'" width=400  alt="imagen producto"/>';  
                             }
@@ -78,11 +105,11 @@
                                     <div class="product-card-thumbnail anuncio">
                                         <a href="anuncio.php?id_add='.$prodID.'">'.$img.'</a>
                                     </div>
-                                    <h2 class="product-card-title cont"><a href="#">'.$prodName.'</a> ';
+                                    <h3 class="product-card-title cont"><a href="#">'.$prodName.'</a> ';
                                     if ($dest) {
                                         echo '<i class="fi-star estrella"></i>';
                                     }
-                                    echo '</h2>
+                                    echo '</h3>
                                     <span class="product-card-desc">'.$prodDesc.'</span>
                                     <br/>
                                     <span class="product-card-price">Q '.$prodPrice.'</span>
@@ -99,7 +126,6 @@
 
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>

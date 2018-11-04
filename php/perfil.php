@@ -1,26 +1,3 @@
-<?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "gioscorp2";
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $dbname);
-    $conn2 = new mysqli($servername, $username, $password, $dbname);
-    $conn3 = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    if ($conn2->connect_error) {
-        die("Connection2 failed: " . $conn2->connect_error);
-    }
-    if ($conn3->connect_error) {
-        die("Connection3 failed: " . $conn3->connect_error);
-    }
-
-?>
-
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -33,13 +10,39 @@
     <link rel="stylesheet" href="../css/app.css">
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
-    <script src='../js/vendor/foundation.js'></script>
     <script src="../js/vendor/jquery.js"></script>
-    
+    <?php include('/partials/connect.php') 
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/
+    ?>
+    <?php
+        
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        $conn2 = new mysqli($servername, $username, $password, $dbname);
+        $conn3 = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+        if ($conn2->connect_error) {
+            die("Connection2 failed: " . $conn2->connect_error);
+        }
+        if ($conn3->connect_error) {
+            die("Connection3 failed: " . $conn3->connect_error);
+        }
+        
+    ?>
 </head>
 <body>
-<?php include('../controladores/navbar_c.php');
-    $id = $_SESSION['id_usuario']; 
+<?php
+    include('../controladores/navbar_c.php');
+    include('../controladores/checksession_c.php');
+    $id = $_SESSION['id_usuario'];
+     
     $prueba = $conn2->query("call datos_perfil(".$id.");");
     $row = $prueba->fetch_assoc(); 
         $correo = $row["correo"];
@@ -47,6 +50,9 @@
         $apellido = $row["apellido"];
         $telefono = $row["telefono"];
         $saldo = $row["saldo"];
+    $count_a = $conn->query("SELECT count_ad(".$id.") AS count_ad;");
+    $row = $count_a->fetch_assoc(); 
+        $num_ad = $row['count_ad'];
 ?>
 
 <?php
@@ -110,19 +116,26 @@
 
                 <div class="tabs-content" data-tabs-content="example-tabs">
                     <div class="tabs-panel <?php echo $pan1 ?>" id="panel1">
-                        <h2>Mi Informacion</h2>
-                        <label>Usuario</label>
-                        <span><?php echo $nombre, " ",  $apellido?></span>
-                        <label>Correo</label>
-                        <span><?php echo $correo ?></span>
-                        <label>Telefono</label>
-                        <span><?php if($telefono){echo $telefono;} else {echo "Aun no has ingresado tu telefono";}; ?></span>
-                        <label>Clave</label>
-                        <span>************</span><a href="cambiar_clave.php"> Cambio de clave</a>
+                        <h3>Mi Información</h3>
+                        <hr>
+                        <p>Usuario: 
+                            <span class='descripcion'><?php echo $nombre, " ",  $apellido?></span>
+                        </p>
+                        <p>Correo: 
+                            <span class='descripcion'><?php echo $correo ?></span>
+                        </p>
+                        <p>Telefono: 
+                            <span class='descripcion'><?php if($telefono){echo $telefono;} else {echo "Aun no has ingresado tu telefono";}; ?></span>
+                        </p>
+                        <p>Clave: 
+                            <span class='descripcion'>************ </span><a href="cambiar_clave.php"> Cambio de clave</a>
+                        </p>
                         <p><button class="button" data-open="actualizarInformacionModal">Actualizar Informacion</button></p>
                     </div>
                     <div class="tabs-panel <?php echo $pan2 ?>" id="panel2">
                         <div class="grid-container">
+                        <h3>Mis Anuncios <span class='float-right'><?php echo $num_ad; ?></span></h3>
+                        <hr>
                             <?php  
                                 $imagen = $conn->query("call informacion_mis_anuncios(".$id.");");
                                 
@@ -171,6 +184,7 @@
                     </div>
                     <div class="tabs-panel <?php echo $pan3 ?>" id="panel3">
                         <h3>Fondos del Monedero</h3>
+                        <hr>
                         <div class="fondosMonedero">
                             <p>Q <?php echo $saldo; ?></p>
                         </div>
@@ -183,17 +197,17 @@
 
         <div class="reveal" id="actualizarInformacionModal" data-reveal>
             <form action="perfil.php" method="post" enctype="multipart/form-data">
-                <h2>Actualizacion de perfil</h2>
+                <h3>Actualización de perfil</h3>
                 Nombre:<br>
                 <input type="text" name="nombre" value="<?php echo $nombre ?>" placeholder="Ingrese aqui su nombre">
                 Apellido:<br>
                 <input type="text" name="apellido" value="<?php echo $apellido ?>" placeholder="Ingrese aqui su apellido">
                 <br> 
-                Correo Electronico:
+                Correo Electrónico:
                 <br>
                 <input type="text" name="correoe" value="<?php echo $correo ?>" placeholder="Ingrese aqui su correo electronico">
                 <br> 
-                Telefono:
+                Teléfono:
                 <br>
                 <input type="text" name="telefono" value="<?php echo $telefono?>" placeholder="Ingrese aqui su numero de telefono">
                 <br> 
@@ -210,7 +224,7 @@
             <div class="grid-container">
                 <form action="../controladores/acreditar_c.php" class="grid-x" method="post" enctype="multipart/form-data">
                     <div class="small-12 cell">
-                        <h2>Agregar Fondos</h2>
+                        <h3>Agregar Fondos</h3>
                     </div>
                     <div class="small-12 cell">
                         <h4>Cantidad:</h4>
@@ -274,7 +288,7 @@
         <!--
         <div class="reveal" id="destacadoModal" data-reveal>
             <form action="../controladores/destacado_c.php" method="post" >
-                <h2>Destacar Anuncio</h2>
+                <h3>Destacar Anuncio</h3>
                 <input type="hidden" id="id" name="id" value=<?php //echo $id ?>>
                 Fercha para inicio de destacado:
                 <input type="date" name="fechainicio" min="2018-10-22" value="2018-10-22">
@@ -300,7 +314,6 @@
 
     <?php include('/partials/Footer.php') ?>
 
-    <script src="../js/vendor/jquery.js"></script>
     <script src="../js/vendor/what-input.js"></script>
     <script src="../js/vendor/foundation.js"></script>
     <script src="../js/app.js"></script>

@@ -1,22 +1,7 @@
 <?php
   $usuario = $_SESSION['username'];
 ?>
-<script>
-  $(document).ready(function(){
-    $.ajax({
-          type:'POST',
-          url:'../jsons/cat_json.php',
-          dataType: "json",
-          success:function(data){
-              var $cat = $('#cat');
-              $cat.empty();
-              for (var i=0; i < data.length ; i++) { 
-                $cat.append("<li><a href=\"cat.php?cat=" + data[i][0] + "\">" + data[i][1] + "</a></li>");
-              }
-          }
-      });
-  });
-</script>
+<script src='../js/cat.js'></script>
 
 <!--logged navbar-->
 <header>
@@ -27,8 +12,14 @@
                   <figure>
                         <a href="index.php"><img src="../Imagenes/logo.jpg" class="logo" id="Navigation_Bar_Logo" /></a>
                   </figure>
-                  <li><input type="search" placeholder="Search"></li>
-                  <li><button type="submit" class="button">Search</button></li>
+                  <form action="search.php" method="GET">
+                  <div class="input-group">
+                    <li><input  class="input-group-field" type="text" name="search" placeholder="Search"></li>
+                    <div class="input-group-button">
+                      <li><button type="submit" class="button">Search</button></li>
+                    </div>
+                  </div>
+                  </form>
                 </ul>
             </div>
           <div class="top-bar-right">
@@ -55,3 +46,4 @@
           </div>
         </div>
  </header>
+ <?php include('../controladores/checksession_c.php') ?>

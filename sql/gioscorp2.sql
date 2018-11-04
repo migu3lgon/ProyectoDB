@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 24-10-2018 a las 04:54:28
+-- Tiempo de generación: 02-11-2018 a las 00:26:34
 -- Versión del servidor: 5.7.21
 -- Versión de PHP: 5.6.35
 
@@ -21,21 +21,41 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `gioscorp2`
 --
-DROP DATABASE IF EXISTS `gioscorp2`;
-CREATE DATABASE IF NOT EXISTS `gioscorp2`;
+CREATE DATABASE IF NOT EXISTS `gioscorp2` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `gioscorp2`;
 
 DELIMITER $$
 --
 -- Procedimientos
 --
+DROP PROCEDURE IF EXISTS `acreditar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `acreditar` (IN `user` INT, `monto` INT, OUT `res` BOOL)  BEGIN
+	DECLARE usuario_p int;
+	DECLARE monto_p int;
+	DECLARE saldo_p int;
+	DECLARE EXIT HANDLER FOR SQLEXCEPTION 
+	BEGIN 
+		ROLLBACK;
+		SELECT 'Ha ocurrido un error con el insert';
+		SET res = false;
+	END;
+	SET usuario_p = user;
+	SELECT saldo FROM usuario where idusuario = usuario_p INTO saldo_p;
+	SET monto_p = monto + saldo_p;
+	
+	/*Aqui estaria la logica de la tarjeta de credito*/
+	
+	UPDATE usuario SET saldo = monto_p WHERE idusuario = usuario_p;
+	SET res = true;
+	Commit;
+	
+END$$
+
 DROP PROCEDURE IF EXISTS `anuncio_nuevo`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `anuncio_nuevo` (IN `titulo_v` VARCHAR(45), IN `descripcion_v` MEDIUMTEXT, IN `subcategoria_v` INT, IN `ubicacion_v` INT, IN `imagen_v` MEDIUMBLOB, IN `telefono_v` INT, IN `fecha_v` DATE)  BEGIN
 	INSERT INTO `anuncio` (`titulo`, `descripcion`, `idsubcategoria`, `idubicacion`, `imagen`, `telefono`, `fecha`) 
 		VALUES (titulo_v, descripcion_v, subcategoria_v, ubicacion_v, imagen_v, telefono_v, fecha_v);
 END$$
-
-DROP PROCEDURE IF EXISTS `anuncio_nuevoo`$$
 
 DROP PROCEDURE IF EXISTS `cambio_clave`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `cambio_clave` (IN `correo_v` VARCHAR(100), IN `clave_v` VARCHAR(255), IN `clavenueva_v` VARCHAR(255), OUT `res` BOOLEAN)  BEGIN
@@ -58,26 +78,111 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `datos_perfil` (IN `id_v` INT(11))  
     WHERE idusuario = id_v;
 END$$
 
-DROP PROCEDURE IF EXISTS `destacar`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `destacar` (IN `idanuncio_v` INT, IN `fecha1` DATE, IN `fecha2` DATE, IN `usuario` INT, OUT `res` BOOLEAN)  proc_label:BEGIN
-	declare dias int;
-    declare precio int default 10;
-    declare total int;
-    declare saldo_u int default (select saldo from usuario where idusuario = usuario);
-    set dias = (select dias(fecha2, fecha1));
-    set total = dias * precio;
-    INSERT INTO destacado (idanuncio, destacado, fechainicio, fechafin)
-		VALUES (idanuncio_v, 1, fecha1, fecha2);
-	set saldo_u = saldo_u-total;
-    if (saldo_u<0) then
-		select true into res;
-		LEAVE proc_label; 
-	END if;
-    UPDATE usuario
-		SET saldo = saldo_u
-		WHERE idusuario= usuario;
-	select false into res;
+DROP PROCEDURE IF EXISTS `desdestacar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `desdestacar` ()  BEGIN
+   DECLARE now      DATE;
+   DECLARE done     INT DEFAULT 0;
+   DECLARE vence    DATE;
+   DECLARE iddest   INT;
+
+   DECLARE
+      cur1 CURSOR FOR SELECT fechafin, iddestacado FROM gioscorp2.destacado;
+
+   DECLARE CONTINUE HANDLER FOR NOT FOUND
+   SET done = 1;
+   SET now = (SELECT CURDATE());
+
+   OPEN cur1;
+
+  read_loop:
+   LOOP
+      FETCH cur1 INTO vence, iddest;
+
+      IF done = 1
+      THEN
+         BEGIN
+            LEAVE read_loop;
+         END;
+      END IF;
+
+      IF now >= vence
+      THEN
+         UPDATE gioscorp2.destacado
+            SET destacado = 0
+          WHERE iddestacado = iddest;
+      END IF;
+   END LOOP;
 END$$
+
+DROP PROCEDURE IF EXISTS `destacar`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `destacar` (IN `idanuncio_v` INT(11), IN `fecha1` DATE, IN `fecha2` DATE, IN `usuario` INT(11), OUT `res` TINYINT(1))  Proc_label:
+BEGIN
+   DECLARE dias      INT;
+   DECLARE precio    INT DEFAULT 10;
+   DECLARE total     INT;
+   DECLARE saldo_u   INT
+                        DEFAULT (SELECT saldo
+                                   FROM usuario
+                                  WHERE idusuario = usuario);
+   SET dias = (SELECT dias(fecha2, fecha1));
+   SET total = dias * precio;
+
+   INSERT INTO destacado(idanuncio,
+                         destacado,
+                         fechainicio,
+                         fechafin)
+        VALUES (idanuncio_v,
+                1,
+                fecha1,
+                fecha2);
+
+   SET saldo_u = saldo_u - total;
+
+   IF (saldo_u < 0)
+   THEN
+      SELECT TRUE
+        INTO res;
+
+      LEAVE proc_label;
+   END IF;
+
+   UPDATE usuario
+      SET saldo = saldo_u
+    WHERE idusuario = usuario;
+
+   SELECT FALSE
+     INTO res;
+END$$
+
+DROP PROCEDURE IF EXISTS `getData`$$
+CREATE DEFINER=`root`@`localhost` PROCEDURE `getData` (IN `elValue` VARCHAR(255), IN `elOtroValue` VARCHAR(255), IN `locValue` VARCHAR(255), IN `precValue` VARCHAR(255))  BEGIN
+ SET @lValue = elValue;
+ SET @lValue2 = @lValue;
+ SET @lValue3 = @lValue;
+ SET @lValue4 = @lValue;
+ SET @lValue5 = @lValue;
+ SET @lValue6 = @lValue;
+ SET @lValue7 = @lValue;
+ SET @lValue8 = @lValue;
+ SET @lValue9 = @lValue;
+ 
+ SET @lValor = elOtroValue; 
+ 
+ SET @locVal = locValue;
+ 
+ SET @precValor = precValue;
+ 
+
+
+ SELECT idanuncio,destacado, titulo, datostecnicos, descripcion, fecha, masinformacion, precio, d.ubicacion, Imagen, c.categoria, b.subcategoria 
+FROM anunciodestacado a INNER JOIN subcategorias b on a.idsubcategoria=b.idsubcategoria INNER JOIN categorias c on b.idcategoria=c.idcategoria 
+INNER JOIN ubicaciones d on a.idubicacion=d.idubicacion WHERE (titulo LIKE CONCAT('%', @lValue, '%') 
+ OR precio LIKE CONCAT('%', @lValue2, '%') OR descripcion LIKE CONCAT('%', @lValue3, '%') OR masinformacion LIKE CONCAT('%', @lValue4, '%')
+ OR d.ubicacion LIKE CONCAT('%', @lValue7, '%'))
+ AND (b.subcategoria LIKE CONCAT('%', @lValor, '%')) AND (d.ubicacion LIKE CONCAT('%', @locVal, '%')) AND (precio LIKE CONCAT('%', @precValor, '%'));
+ 
+
+ END$$
 
 DROP PROCEDURE IF EXISTS `informacion_mis_anuncios`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `informacion_mis_anuncios` (IN `id_v` INT(11))  BEGIN
@@ -115,7 +220,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `obtener_anuncio` (IN `id` INT)  BEG
 END$$
 
 DROP PROCEDURE IF EXISTS `registro`$$
-CREATE DEFINER=`root`@`localhost` PROCEDURE `registro` (IN `correo` VARCHAR(100) CHARACTER SET latin1 COLLATE latin1_swedish_ci, IN `clave` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci, IN `name` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci, IN `last_l` VARCHAR(255) CHARACTER SET latin1 COLLATE latin1_swedish_ci, IN `tel` INT(14), OUT `res` TINYINT(1))  BEGIN
+CREATE DEFINER=`root`@`localhost` PROCEDURE `registro` (IN `correo` VARCHAR(100), IN `clave` VARCHAR(255), IN `name` VARCHAR(255), IN `last_l` VARCHAR(255), IN `tel` INT(14), OUT `res` TINYINT(1))  BEGIN
    DECLARE EXIT HANDLER FOR SQLEXCEPTION
    SELECT 'SQLException invoked';
 
@@ -136,7 +241,7 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `registro` (IN `correo` VARCHAR(100)
                 name,
                 last_l,
                 tel,
-                NULL);
+                0);
 
    SELECT TRUE
      INTO res;
@@ -171,8 +276,7 @@ CREATE TABLE IF NOT EXISTS `anuncio` (
   `idsubcategoria` int(11) DEFAULT NULL,
   `idubicacion` int(11) DEFAULT NULL,
   `Imagen` mediumblob,
-  `vendido` bit(1) DEFAULT NULL,
-  `destacado` bit(1) DEFAULT NULL,
+  `vendido` bit(1) DEFAULT b'0',
   `telefono` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `idusuario` int(11) DEFAULT NULL,
@@ -183,7 +287,31 @@ CREATE TABLE IF NOT EXISTS `anuncio` (
   KEY `fksubcategoria_idx` (`idsubcategoria`),
   KEY `fkubicacion_idx` (`idubicacion`),
   KEY `idusuario_idx` (`idusuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=86 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura Stand-in para la vista `anunciodestacado`
+-- (Véase abajo para la vista actual)
+--
+DROP VIEW IF EXISTS `anunciodestacado`;
+CREATE TABLE IF NOT EXISTS `anunciodestacado` (
+`idanuncio` int(11)
+,`precio` decimal(13,2)
+,`vendido` bit(1)
+,`descripcion` mediumtext
+,`masinformacion` text
+,`idubicacion` int(11)
+,`titulo` varchar(45)
+,`fecha` date
+,`idusuario` int(11)
+,`idsubcategoria` int(11)
+,`Imagen` mediumblob
+,`datostecnicos` text
+,`telefono` int(11)
+,`destacado` bit(1)
+);
 
 -- --------------------------------------------------------
 
@@ -206,17 +334,16 @@ INSERT INTO `categorias` (`idcategoria`, `categoria`) VALUES
 (1, 'categoria1'),
 (2, 'categoria2');
 
-
 -- --------------------------------------------------------
 
 --
--- Stand-in structure for view `compradestacado`
--- (See below for the actual view)
+-- Estructura Stand-in para la vista `compradestacado`
+-- (Véase abajo para la vista actual)
 --
 DROP VIEW IF EXISTS `compradestacado`;
 CREATE TABLE IF NOT EXISTS `compradestacado` (
 `iddestacado` int(11)
-,`saldo` int(11)
+,`saldo` decimal(13,2)
 ,`fechafin` date
 ,`fechainicio` date
 ,`idanuncio` int(11)
@@ -226,19 +353,29 @@ CREATE TABLE IF NOT EXISTS `compradestacado` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `destacado`
+-- Estructura de tabla para la tabla `destacado`
 --
 
 DROP TABLE IF EXISTS `destacado`;
 CREATE TABLE IF NOT EXISTS `destacado` (
   `iddestacado` int(11) NOT NULL AUTO_INCREMENT,
   `idanuncio` int(11) NOT NULL,
-  `destacado` bit(1) NOT NULL,
+  `destacado` bit(1) DEFAULT b'0',
   `fechainicio` date NOT NULL,
   `fechafin` date NOT NULL,
   PRIMARY KEY (`iddestacado`),
   KEY `idanuncio_idx` (`idanuncio`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `destacado`
+--
+
+INSERT INTO `destacado` (`iddestacado`, `idanuncio`, `destacado`, `fechainicio`, `fechafin`) VALUES
+(3, 86, b'1', '2018-10-22', '2018-10-26'),
+(4, 87, b'1', '2018-10-25', '2018-10-29'),
+(5, 88, b'1', '2018-10-25', '2018-10-26'),
+(6, 93, NULL, '2018-10-25', '2018-05-16');
 
 -- --------------------------------------------------------
 
@@ -348,14 +485,22 @@ INSERT INTO `usuario` (`idusuario`, `correo`, `psw`, `nombre`, `apellido`, `tele
 (3, 'correo@correo.com', 'password', NULL, NULL, NULL, '0.00'),
 (4, 'correop@prueba.com', 'nombre procedure', NULL, NULL, NULL, '0.00'),
 (6, 'correopruebaprocedure2', 'facil', NULL, NULL, NULL, '0.00'),
-(7, 'test@m.com', 'test', 'Nombre test', NULL, NULL, '190.00'),
-(8, 'mleiva2@unis2.com', 'cuatro', 'GioDOS', 'LeivaDOS', 202020202, '0.00');
-
+(7, 'test@m.com', 'test', 'Nombre test', NULL, NULL, '35.00'),
+(8, 'mleiva2@unis2.com', 'cuatro', 'GioDOS', 'LeivaDOS', 202020202, '10.00');
 
 -- --------------------------------------------------------
 
 --
--- Structure for view `compradestacado`
+-- Estructura para la vista `anunciodestacado`
+--
+DROP TABLE IF EXISTS `anunciodestacado`;
+
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `anunciodestacado`  AS  select `anuncio`.`idanuncio` AS `idanuncio`,`anuncio`.`precio` AS `precio`,`anuncio`.`vendido` AS `vendido`,`anuncio`.`descripcion` AS `descripcion`,`anuncio`.`masinformacion` AS `masinformacion`,`anuncio`.`idubicacion` AS `idubicacion`,`anuncio`.`titulo` AS `titulo`,`anuncio`.`fecha` AS `fecha`,`anuncio`.`idusuario` AS `idusuario`,`anuncio`.`idsubcategoria` AS `idsubcategoria`,`anuncio`.`Imagen` AS `Imagen`,`anuncio`.`datostecnicos` AS `datostecnicos`,`anuncio`.`telefono` AS `telefono`,max(`destacado`.`destacado`) AS `destacado` from (`anuncio` left join `destacado` on((`anuncio`.`idanuncio` = `destacado`.`idanuncio`))) group by `anuncio`.`idanuncio` order by `destacado`.`destacado` desc ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura para la vista `compradestacado`
 --
 DROP TABLE IF EXISTS `compradestacado`;
 
@@ -373,14 +518,6 @@ ALTER TABLE `anuncio`
   ADD CONSTRAINT `fkubicacion` FOREIGN KEY (`idubicacion`) REFERENCES `ubicaciones` (`idubicacion`),
   ADD CONSTRAINT `fkusuario` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`idusuario`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
-
---
--- Constraints for table `destacado`
---
-ALTER TABLE `destacado`
-  ADD CONSTRAINT `idanuncio` FOREIGN KEY (`idanuncio`) REFERENCES `anuncio` (`idanuncio`);
-
---
 --
 -- Filtros para la tabla `mensajes`
 --
@@ -394,6 +531,15 @@ ALTER TABLE `mensajes`
 --
 ALTER TABLE `subcategorias`
   ADD CONSTRAINT `fkcategoria` FOREIGN KEY (`idcategoria`) REFERENCES `categorias` (`idcategoria`);
+
+DELIMITER $$
+--
+-- Eventos
+--
+DROP EVENT `e_desdestacar`$$
+CREATE DEFINER=`root`@`localhost` EVENT `e_desdestacar` ON SCHEDULE EVERY 1 DAY STARTS '2018-10-23 00:00:00' ON COMPLETION PRESERVE ENABLE DO call desdestacar()$$
+
+DELIMITER ;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
