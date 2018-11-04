@@ -57,11 +57,11 @@
         //echo $newConvo;
         echo "Mensaje enviado";
         echo "<br>";
-        echo $idad; 
+        /*echo $idad; 
         echo '<br>';
         echo $idbuy;
         echo '<br>';
-        echo $idsell;
+        echo $idsell;*/
 
         echo '<a href="messages.php?convoid='.$conv.'">Regresar al hilo de mensajes</a>
         '; 
