@@ -113,7 +113,7 @@
                                     <br/>
                                     <span class="product-card-price">Q '.$prodPrice.'</span>
                                     <br/>
-                                    <button class="button">Comprar</button>
+                                    <a href="anuncio.php?id_add='.$prodID.'"><button class="button">Comprar</button></a>
                                     <a href="anuncio.php?id_add='.$prodID.'"><button class="button">Informacion</button></a>
                                 </div>
                             </div>';
