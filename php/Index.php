@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
-    <?php include('/partials/connect.php') ?>
+    <?php include('/partials/connect.php') 
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/?>
     <?php
         
 

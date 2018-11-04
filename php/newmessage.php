@@ -1,8 +1,3 @@
-<?php
-    //connect to the database
-    require_once("/partials/connect.php");
-    //session_start();
-?>
 <!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
@@ -19,21 +14,52 @@
 </head>
 <body>
 <?php include('../controladores/navbar_c.php') ?>
-    <center>
-        
-        <strong>Welcome <?php echo $_SESSION['username']; ?></strong>
-    </center>
+<?php include('/partials/connect.php') ?>
+<!-- verificar si ha iniciado sesion para acceder a esta pagina-->
+<?php //include('../controladores/checksession_c.php'); ?>    
+
     <?php
+    
+    if(isset($_SESSION['loggedin'])){
+    echo '<center>
+        
+        <strong>Welcome '.$_SESSION['username'].'</strong>
+    </center>';}
+    else {
+        echo '<center>
+        
+        <strong>Por favor inicie sesion</strong><br>
+    </center>'; 
+    }
+    ?>
+    <?php
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
+
+    if(isset($_SESSION['loggedin'])){
         if(isset($_GET['vendid'])){
                     
             $valorglo = $_GET['vendid'];
             //echo "search value: ".$valorglo."<br>"; 
             $value=$_GET['vendid'];
+            echo "El id del anuncio es: $value";
+                $getusr = "CALL getUserInfo('$value')";
+                $userRes = mysqli_query($conn,$getusr);
+                    echo "<br>El id del vendedor es: ";
+                    $row = $userRes->fetch_assoc();
+                    echo $row['idusuario'];
+                $vendorId = $row['idusuario'];
+                $compraId = $_SESSION['id_usuario'];
+                echo "<br>El comprador es: $compraId";
             
         }
-        echo $value;
-
-        //$sql12 = "SELECT "
+                
+        
+    }
     
     ?>
      
@@ -48,5 +74,27 @@
 </body>
 </html>
 <?php
-//mysqli_close($conn);
+mysqli_close($conn);
+?>
+
+<?php
+/*
+        $sql12 = "SELECT idanuncio, a.idusuario, nombre, apellido FROM anuncio a INNER JOIN usuario b ON a.idusuario=b.idusuario WHERE idanuncio=$value";
+        $result12=mysqli_query($conn, $sql12);
+        echo "<table><tr> <th>idanuncio</th><th>iduser</th><th>nombre</th><th>apellido</th></tr>";
+        while($row=mysqli_fetch_array($result12)){
+            $idad = $row['idanuncio'];
+            $iduser =$row['idusuario'];
+            $name = $row['nombre'];
+            $apellido = $row['apellido'];
+           
+            
+                  echo "<tr>\n"; 
+              	  echo "<td>" . "<a  href=\"anuncio.php?id_add=$idad\">"   .$idad . "</td><td> " . $iduser .  "</td><td> " . $name .  "</td><td> " . $apellido .  "</td>\n"; 
+                  echo "</tr>";
+        }        
+                  echo "</table>";
+        */
+
+            //$sqlmsg = "CALL newMsg('','','')"
 ?>
