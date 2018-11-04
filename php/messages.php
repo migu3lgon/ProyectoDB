@@ -32,6 +32,7 @@
     }
     ?>
     
+    
     <?php
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -44,6 +45,11 @@
     if ($conn2->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } 
+    $conn3 = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn3->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    } 
     if(isset($_SESSION['loggedin'])){
         echo '<center>
             
@@ -52,16 +58,20 @@
 
         
         
-            
+            $anuid;
+            $idrec;
+            $idse;
             $usuarioId = $_SESSION['id_usuario'];
             
             $convoid = $_GET['convoid'];    
             $convMensajes = "CALL messageThreadSent('$convoid')";
             
-            $resultMsg = mysqli_query($conn, $convMensajes);            
+            $resultMsg = mysqli_query($conn, $convMensajes);
+            $resultMsg2 = mysqli_query($conn2, $convMensajes);
+            $resultMsg3 = mysqli_query($conn3, $convMensajes);
 
             echo '
-            <table id="customers">Mensajes
+            <table id="customers">
             <tr>
                 <th>Mensaje para</th>
                 <th>Mensaje de</th>
@@ -76,8 +86,10 @@
                 $mensaje = $row['mensaje'];
                 $fecha =$row['fecha'];
                 $titulo = $row['title'];
+                $dir = $row['direccion'];
                 
                 
+                if(isset($dir)){
                 echo '
                 <tr>
                     <td>'.$senderName.'</td>
@@ -87,27 +99,66 @@
                     <td>'.$titulo.'</td>
                     
                 </tr>';
-  
+                }
+            }
+            echo '
+            <br><table id="customers">
+            <tr>
+                <th>Mensaje para</th>
+                <th>Mensaje de</th>
+                <th>Mensaje</th>
+                <th>Fecha y hora</th>
+                <th>Anuncio</th>
+            </tr>
+            ';
+            while($row=mysqli_fetch_array($resultMsg3)){
+                $senderName = $row['sender'];
+                $receiverName = $row['receiver'];
+                $mensaje = $row['mensaje'];
+                $fecha =$row['fecha'];
+                $titulo = $row['title'];
+                $dir = $row['direccion'];
+                
+                
+                if(isset($dir)){
+                }
+                else {
+                    echo '<tr>
+                    <td>'.$receiverName.'</td>
+                    <td>'.$senderName.'</td>
+                    <td>'.$mensaje.'</td>
+                    <td>'.$fecha.'</td>
+                    <td>'.$titulo.'</td>
+                    
+                </tr>';
+                }
             }
             echo '</table>';
-                            
-            {$row2 = $resultMsg->fetch_assoc();        
-                $idrec = $row['idcomprador'];
-                $idse = $row['idvendedor'];
-                $anuid = $row['anuncad'];
-                $convosid = $row['idconversation'];
+            /*$anuid;
+            $idrec;
+            $idse; */      
+            {$row2 = $resultMsg2->fetch_assoc();        
+                $idrec = $row2['idcomprador'];
+                $idse = $row2['idvendedor'];
+                $anuid = $row2['anuncad'];
+                $convosid = $row2['idconversacion'];
+                /*echo $idrec;
+                echo $anuid;
+                echo $idse;*/
+
                 
             echo "<div id='newmsg'>";
             echo '
             
-                <form action="newconvo.php" method="POST">
+                <form action="newAnsMsg.php" method="POST">
                 <!--<h4>Mensaje relacionado al anuncio: </h4>-->
                 <!-- : <input id="subje" placeholder="Ingrese el sujeto" type="text" name="subject">
                 <br>-->
+                <input type="hidden" name="convosid" value="'.$convosid.'">
+                <input type="hidden" name="idanuncio" value="'.$anuid.'">
+                <input type="hidden" name="idcomprador" value="'.$idse.'">
+                <input type="hidden" name="idvendedor" value="'.$idrec.'">
                 
-                <input type="hidden" name="idanuncio"value="'.$anuid.'">
-                <input type="hidden" name="idcomprador"value="'.$idse.'">
-                <input type="hidden" name="idvendedor"value="'.$idrec.'">
                 <textarea rows="4" cols="50" placeholder="Ingrese su mensage" name="message"  required></textarea>
                 <input type="submit" name="submit" Value="Enviar">
                 </form>
