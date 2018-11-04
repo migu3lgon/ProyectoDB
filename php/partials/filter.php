@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+<?php include('/partials/connect.php') ?>
+=======
 <?php include('/partials/connect.php'); 
 
+>>>>>>> master
 
+<?php
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
