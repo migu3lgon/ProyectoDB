@@ -48,18 +48,14 @@
         echo '<center>
             
             <strong>Welcome '.$_SESSION['username'].'</strong>
-        </center>';}
-        else {
-            echo '<center>
-            
-            <strong>Por favor inicie sesion</strong><br>
-        </center>'; 
-        }
-    if(isset($_SESSION['loggedin'])){
+        </center>';
+
+        
         
             
             $usuarioId = $_SESSION['id_usuario'];
-            $convoid = $_GET['convoid'];         
+            
+            $convoid = $_GET['convoid'];    
             $convMensajes = "CALL messageThreadSent('$convoid')";
             
             $resultMsg = mysqli_query($conn, $convMensajes);            
@@ -67,10 +63,11 @@
             echo '
             <table id="customers">Mensajes
             <tr>
-                <th>Mensaje de</th>
                 <th>Mensaje para</th>
+                <th>Mensaje de</th>
                 <th>Mensaje</th>
                 <th>Fecha y hora</th>
+                <th>Anuncio</th>
             </tr>
             ';
             while($row=mysqli_fetch_array($resultMsg)){
@@ -78,6 +75,7 @@
                 $receiverName = $row['receiver'];
                 $mensaje = $row['mensaje'];
                 $fecha =$row['fecha'];
+                $titulo = $row['title'];
                 
                 
                 echo '
@@ -86,16 +84,48 @@
                     <td>'.$receiverName.'</td>
                     <td>'.$mensaje.'</td>
                     <td>'.$fecha.'</td>
+                    <td>'.$titulo.'</td>
                     
                 </tr>';
   
             }
             echo '</table>';
+                            
+            {$row2 = $resultMsg->fetch_assoc();        
+                $idrec = $row['idcomprador'];
+                $idse = $row['idvendedor'];
+                $anuid = $row['anuncad'];
+                $convosid = $row['idconversation'];
+                
+            echo "<div id='newmsg'>";
+            echo '
+            
+                <form action="newconvo.php" method="POST">
+                <!--<h4>Mensaje relacionado al anuncio: </h4>-->
+                <!-- : <input id="subje" placeholder="Ingrese el sujeto" type="text" name="subject">
+                <br>-->
+                
+                <input type="hidden" name="idanuncio"value="'.$anuid.'">
+                <input type="hidden" name="idcomprador"value="'.$idse.'">
+                <input type="hidden" name="idvendedor"value="'.$idrec.'">
+                <textarea rows="4" cols="50" placeholder="Ingrese su mensage" name="message"  required></textarea>
+                <input type="submit" name="submit" Value="Enviar">
+                </form>
+            
+            </div>
+            ';}
+                    
+            
             echo '<form action="myconversations.php">
                 <input type="submit" value="Regresar a mensajes" />
             </form>';
+        }
+        else {
+            echo '<center>
             
-    }
+            <strong>Por favor inicie sesion</strong><br>
+        </center>'; 
+            }
     
     ?>
 
