@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+<?php include('/partials/connect.php') ?>
+=======
 <?php include('/partials/connect.php'); 
 
+>>>>>>> master
 
+<?php
     // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
@@ -127,7 +132,7 @@
                                     }
                                     ?>
                             </select>
-                            Precio:
+                            <span class='margin-ext'> Precio:</span>
                             <input class="input-group-field margin-ext" type="text" name="precio" value="<?php echo $precglo;?>">
                             <div class="input-group-button margin-ext">
                                 <input type="submit"  class="button" value="Buscar">

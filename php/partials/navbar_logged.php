@@ -39,7 +39,7 @@
                     <li><a href="perfil.php?pan=3">Monedero</a></li>
                   </ul>
                 </li>
-                <li><a href="#">Mensajes</a></li>
+                <li><a href="myconversations.php">Mensajes</a></li>
                 <li><a href="../controladores/logout_c.php">Cerrar Sesión <i class="fi-x"></i></a></li>
               </ul>
             </ul>
