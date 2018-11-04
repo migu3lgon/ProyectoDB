@@ -63,6 +63,7 @@
                 <div class="small-10 medium-4 cell">
                     <h2>Precio:</h2>
                     <span id= "precio">Q </span>
+                    <span id= "precio2">Q </span>
                     <h2>Informacion General</h2>
                     <p id='descr'></p>
                     <h2>Datos Tecnicos</h2>

@@ -16,8 +16,8 @@
                     echo '
                     <form action="search.php" method="GET">
                       <div class="input-group">
-                        <li><input class="input-group-field" type="text" name="search" value="'.$valuee.'"></li>
-                        <div class="input-group-button">
+                        <li><input class="input-group-field margin-ext" type="text" name="search" value="'.$valuee.'"></li>
+                        <div class="input-group-button  margin-ext">
                           <li><button type="submit" class="button">Search</button></li>
                         </div>
                       </div>
@@ -27,8 +27,8 @@
                     echo '
                     <form action="search.php" method="GET">
                     <div class="input-group">
-                      <li><input  class="input-group-field" type="text" name="search" placeholder="Search"></li>
-                      <div class="input-group-button">
+                      <li><input  class="input-group-field margin-ext" type="text" name="search" placeholder="Search"></li>
+                      <div class="input-group-button  margin-ext">
                         <li><button type="submit" class="button">Search</button></li>
                       </div>
                     </div>
