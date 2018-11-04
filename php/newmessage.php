@@ -67,8 +67,8 @@
         
             <form action="/convo.php" method="GET">
             <!--<h4>Mensaje relacionado al anuncio: </h4>-->
-            Sujeto: <input id="subje" placeholder="Ingrese el sujeto" type="text" name="subject">
-            <br>
+            <!-- : <input id="subje" placeholder="Ingrese el sujeto" type="text" name="subject">
+            <br>-->
             <textarea rows="4" cols="50" placeholder="Ingrese su mensage" name="message" ></textarea>
             <input type="submit" name="submit" Value="Enviar Mensaje">
             </form>
