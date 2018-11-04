@@ -50,20 +50,11 @@
             $idbuy = $_POST['idcomprador'];
             $idsell = $_POST['idvendedor'];
             $mssg = $_POST['message'];
-
-            echo $idad;
-            echo "<br>";
-            echo $idbuy;
-            echo "<br>";
-            echo $idsell;
-            echo "<br>";
-            echo $mssg;
-            echo "<br>";
                 
         $sqlNewMsg = "CALL newMsg('$idad',$idbuy,$idsell,'$mssg')";
         $newConvo=mysqli_query($conn, $sqlNewMsg);
         
-                
+        echo "Mensaje enviado";   
         }
     }
     
@@ -83,26 +74,4 @@
 </html>
 <?php
 mysqli_close($conn);
-?>
-
-<?php
-/*
-        $sql12 = "SELECT idanuncio, a.idusuario, nombre, apellido FROM anuncio a INNER JOIN usuario b ON a.idusuario=b.idusuario WHERE idanuncio=$value";
-        $result12=mysqli_query($conn, $sql12);
-        echo "<table><tr> <th>idanuncio</th><th>iduser</th><th>nombre</th><th>apellido</th></tr>";
-        while($row=mysqli_fetch_array($result12)){
-            $idad = $row['idanuncio'];
-            $iduser =$row['idusuario'];
-            $name = $row['nombre'];
-            $apellido = $row['apellido'];
-           
-            
-                  echo "<tr>\n"; 
-              	  echo "<td>" . "<a  href=\"anuncio.php?id_add=$idad\">"   .$idad . "</td><td> " . $iduser .  "</td><td> " . $name .  "</td><td> " . $apellido .  "</td>\n"; 
-                  echo "</tr>";
-        }        
-                  echo "</table>";
-        */
-
-            //$sqlmsg = "CALL newMsg('','','')"
 ?>

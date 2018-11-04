@@ -48,15 +48,15 @@
                     
             $valorglo = $_GET['vendid'];
             $advalue=$_GET['vendid'];
-            echo "El id del anuncio es: $advalue";
+            //echo "El id del anuncio es: $advalue";
                 $getusr = "CALL getUserInfo('$advalue')";
                 $userRes = mysqli_query($conn,$getusr);
-                    echo "<br>El id del vendedor es: ";
+                    //echo "<br>El id del vendedor es: ";
                     {$row = $userRes->fetch_assoc();
-                    echo $row['idusuario'];
+                    //echo $row['idusuario'];
                 $vendorId = $row['idusuario'];}
                 $compraId = $_SESSION['id_usuario'];
-                echo "<br>El id del comprador es: $compraId";
+                //echo "<br>El id del comprador es: $compraId";
                 
                 
 
