@@ -43,7 +43,20 @@
         die("Connection failed: " . $conn->connect_error);
     } 
 
-    include('/partials/newmsg.php');
+    if(isset($_SESSION['loggedin'])){
+        if(isset($_POST['idanuncio'],$_POST['idcomprador'],$_POST['idvendedor'],$_POST['message'])){
+                    
+            $idad = $_POST['idanuncio'];
+            $idbuy = $_POST['idcomprador'];
+            $idsell = $_POST['idvendedor'];
+            $mssg = $_POST['message'];
+                
+        $sqlNewMsg = "CALL newMsg('$idad',$idbuy,$idsell,'$mssg')";
+        $newConvo=mysqli_query($conn, $sqlNewMsg);
+        
+        echo "Mensaje enviado";   
+        }
+    }
     
     ?>
 
