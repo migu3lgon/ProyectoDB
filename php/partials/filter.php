@@ -1,4 +1,4 @@
-<?php include('/partials/connect.php') 
+<?php include('/partials/connect.php'); 
 
 
     // Create connection
@@ -100,87 +100,44 @@
                             $precglo2=NULL;
                         }
                     }
-                    
-                    echo "<div id='filtrado'>";
-                    echo '
+                    ?>
+            
+                    <div id='filtrado'>
                     <form action="search.php" method="get">
-                    <input type="hidden" name="search" value="'.$valorglo.'">';
-                    /*echo '<select id="subc" name="subcategoriaa">
-                    </select>';
-                    echo "<select id='ubic'";
-                    echo 'name="ubicaciona">
-                    </select>';*/
-                    echo '
-                        <select name="subcategoria">
-                        <option value="'.$catglo.'" disabled selected>';
-                        //echo '<option value=""></option>';
-                        echo '</option>';
-                                echo '<option value="'.$catglo.'" selected>Categoria: '.$catglo.'</option>';
-                                for ($i=0; $i < $count_cat ; $i++) { 
-                                    echo "<optgroup label=".$cat_arr[$i][1].">";
-                                    for ($k=0; $k < $count_subcat; $k++) { 
-                                        if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
-                                            echo '<option value="'.$subcat_arr[$k][2].'">'.$subcat_arr[$k][2].'</option>';
+                        <div class="input-group">                        
+                            <input class="input-group-field" type="hidden" name="search" <?php echo 'value="'.$valorglo.'"'; ?>>
+                                <select class="input-group-field margin-ext" name="subcategoria">
+                                    <?php 
+                                        echo '<option value="'.$catglo.'" selected disabled selected>Categoria: '.$catglo.'</option>';
+                                        for ($i=0; $i < $count_cat ; $i++) { 
+                                            echo "<optgroup label=".$cat_arr[$i][1].">";
+                                            for ($k=0; $k < $count_subcat; $k++) { 
+                                                if ($cat_arr[$i][0]==$subcat_arr[$k][1]) {
+                                                    echo '<option value="'.$subcat_arr[$k][2].'">'.$subcat_arr[$k][2].'</option>';
+                                                }
+                                            }
                                         }
+                                    ?>
+                                </select>
+                            <select class="input-group-field margin-ext" name="ubicacion">
+                                    <option value="<?php echo $locglo ?>" disabled selected>Ubicacion: <?php echo $locglo;?></option>
+                                    <?php
+                                    for ($l=0; $l < $hglobal; $l++) { 
+                                        echo '<option value="'.$ubic_arr[$l][0].'">'.$ubic_arr[$l][1].'</option>';
                                     }
-                                }
-                                echo '<option value=""></option>';
-                           
-                        echo '</select>';
-                    echo '<select name="ubicacion">
-                    <option value="'.$locglo.'" disabled selected>';
-                    echo '</option>';
-                            echo '<option value="'.$locglo.'" selected>Ubicacion: '.$locglo.'</option>';
-                            for ($l=0; $l < $hglobal; $l++) { 
-                                echo '<option value="'.$ubic_arr[$l][0].'">'.$ubic_arr[$l][1].'</option>';
-                            }
-                            echo '<option value=""></option>';
-                    echo '</select>';
-                    /*if($locglo2!=NULL){
-                    echo '<input type="hidden" name="subcategoria" value="'.$locglo2.'">';}*/
-                    echo '
-                    Precio < 
-                    <input type="text" name="precio" value="'.$precglo.'">';
+                                    ?>
+                            </select>
+                            Precio:
+                            <input class="input-group-field margin-ext" type="text" name="precio" value="<?php echo $precglo;?>">
+                            <div class="input-group-button margin-ext">
+                                <input type="submit"  class="button" value="Buscar">
+                            </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div class="grid-x grid-margin-x grid-margin-y">
+                    <?php
                     
-                                   
-                    
-                    echo '<input type="submit" value="Submit">
-                    
-                    </form></br></br>
-                    
-                    ';
-                    echo '</div>';
-
-                    echo '<div class="grid-x grid-margin-x grid-margin-y">';
-                    /*if(isset($_GET['search'])){
-                    switch($_GET['search']){
-                        case isset($_GET['subcategoria']):
-                            $sql = "CALL getData('$value','$catglo','','')";
-                            break;
-                        case isset($_GET['ubicacion']):
-                            $sql = "CALL getData('$value','','$locglo','')";
-                            break;
-                        case isset($_GET['precio']):
-                            $sql = "CALL getData('$value','','','$precglo')";
-                            break;
-                        case isset($_GET['subcategoria'],$_GET['precio']):
-                            $sql = "CALL getData('$value','$catglo','','$precglo')";
-                            break;
-                        case isset($_GET['ubicacion'],$_GET['subcategoria']):
-                            $sql = "CALL getData('$value','$catglo','$locglo','')";
-                            break;
-                        case isset($_GET['ubicacion'],$_GET['precio']):
-                            $sql = "CALL getData('$value','','$locglo','$precglo')";
-                            break;
-                        case isset($_GET['ubicacion'],$_GET['subcategoria'],$_GET['precio']):
-                            $sql = "CALL getData('$value','$catglo','$locglo','$precglo')";
-                            break;
-                        case isset($_GET['search']):
-                            $sql = "CALL getData('$value','','','')";
-                            break;
-
-
-                    }}*/
                         if(isset($_GET['search'])){
                             //agregar variables que me permitan saber si estan nulos o no
                             if(isset($_GET['precio']) && $locglo ==NULL && $catglo==NULL){
