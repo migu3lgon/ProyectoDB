@@ -7,6 +7,10 @@
     $username = "root";
     $password = "";
     $dbname = "gioscorp2";
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/
 
     // Create connection
     $conex = new mysqli($servername, $username, $password, $dbname);

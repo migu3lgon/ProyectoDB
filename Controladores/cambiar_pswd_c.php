@@ -5,6 +5,10 @@
     $pass_db = "";
     $db_name = "gioscorp2";
     $tbl_name = "usuario";
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/
 
     $conexion = new mysqli($host_db, $user_db, $pass_db, $db_name);
 

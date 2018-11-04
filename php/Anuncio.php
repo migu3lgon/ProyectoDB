@@ -12,11 +12,13 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
+    <?php include('/partials/connect.php') 
+    /*$servername = "ns8481.hostgator.com";
+    $username = "yosoyman_connect";
+    $password = "conn1234!";
+    $dbname = "yosoyman_gioscorp";*/?>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gioscorp2";
+        
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -72,7 +74,7 @@
                 </div>
                 <div id="bones de anuncio" class="cell small-10 button-group">
                         <a class="button">comprar</a>
-                        <a class="button">contactar vendedor</a>
+                        <a href="newmessage.php?vendid=<?php echo $idanuncio ?>" class="button">contactar vendedor</a>
                 </div>
             </div>
         </article>

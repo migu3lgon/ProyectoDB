@@ -11,11 +11,9 @@
     <link rel="stylesheet" href="../css/css.css">
     <link rel="stylesheet" href="../css/foundation-icons/foundation-icons.css">
     <script src="../js/vendor/jquery.js"></script>
+    <?php include('/partials/connect.php') ?>
     <?php
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "gioscorp2";
+       
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $dbname);
@@ -48,7 +46,6 @@
 
     <!-- incluye al navegador-->
     <?php include('../controladores/navbar_c.php'); ?>
-    <?php include('../controladores/checksession_c.php') ?>
     <!-- verificar si ha iniciado sesion para acceder a esta pagina-->
     <?php include('../controladores/checksession_c.php'); ?>
     <div class="mainb">
